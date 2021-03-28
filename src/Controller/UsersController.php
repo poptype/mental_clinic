@@ -35,6 +35,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $result = $this->Authentication->getResult();
         $user = $this->Users->get($id, [
             'contain' => ['DiseaseCategories', 'Reviews'],
         ]);
@@ -123,15 +124,17 @@ class UsersController extends AppController
         $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
 
-        var_dump($result);
     // POSTやGETに関係なく、ユーザーがログインしていればリダイレクトします
     //
         if ($result->isValid()) {
             // ログイン成功後に /article にリダイレクトします
-          //
+            //$id = $this->getRequest()->getSession()->read('Auth.id'); //sessionからログインID取得
+            $result = $this->Authentication->getResult();
+            $user = $result->getData();
             $redirect = $this->request->getQuery('redirect', [
             'controller' => 'Users',
-            'action' => 'view/1',
+            'action' => 'view', //ログインUserのviewにリンク
+            $user->id,
             ]);
             return $this->redirect($redirect);
         }

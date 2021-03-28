@@ -43,6 +43,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+<?php
+   $session = $this->getRequest()->getSession()->read('Auth.id'); //sessionからログインID取得
+if (is_null($session)) : ?>
+       <a target="_self" rel="noopener" href="/mental_clinic/users/login">login</a>
+<?php else : ?>
+    <a target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
+<?php endif ?>
         </div>
     </nav>
     <main class="main">
