@@ -128,7 +128,6 @@ class UsersController extends AppController
     //
         if ($result->isValid()) {
             // ログイン成功後に /article にリダイレクトします
-            //$id = $this->getRequest()->getSession()->read('Auth.id'); //sessionからログインID取得
             $result = $this->Authentication->getResult();
             $user = $result->getData();
             $redirect = $this->request->getQuery('redirect', [
