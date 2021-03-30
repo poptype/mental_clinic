@@ -47,8 +47,9 @@ class ReviewsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($user_id = null)
     {
+        var_dump($user_id);
         $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
             $review = $this->Reviews->patchEntity($review, $this->request->getData());
@@ -59,9 +60,9 @@ class ReviewsController extends AppController
             }
             $this->Flash->error(__('The review could not be saved. Please, try again.'));
         }
-        $users = $this->Reviews->Users->find('list', ['limit' => 200]);
+        //$users = $this->Reviews->Users->find('list', ['limit' => 200]);
         $clinics = $this->Reviews->Clinics->find('list', ['limit' => 200]);
-        $this->set(compact('review', 'users', 'clinics'));
+        $this->set(compact('review', 'user_id', 'clinics'));
     }
 
     /**

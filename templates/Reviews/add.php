@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Review $review
  */
 ?>
+<?php var_dump($user_id); ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -19,7 +20,7 @@
                 <?php
                     echo $this->Form->control('text');
                     echo $this->Form->control('voting');
-                    echo $this->Form->control('user_id', ['options' => $users]);
+                    echo $this->Form->hidden("user_id", ['value' => $user_id ]);
                     echo $this->Form->control('clinic_id', ['options' => $clinics]);
                 ?>
             </fieldset>

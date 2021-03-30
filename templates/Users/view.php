@@ -11,7 +11,13 @@
             <?= $this->Html->link(__('プロフィール編集'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
             <?= $this->Form->postLink(__('アカウントを削除する'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('ユーザーリスト'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('口コミ投稿'), ['controller' => 'Reviews'], ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(
+                __('口コミ投稿'),
+                ['controller' => 'Reviews',
+                'action' => 'add',
+                $user->id],
+                ['class' => 'side-nav-item']
+            ) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
