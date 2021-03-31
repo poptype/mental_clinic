@@ -44,10 +44,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
 <?php
-   $session = $this->getRequest()->getSession()->read('Auth.id'); //sessionからログインID取得
-if (is_null($session)) : ?>
+  $session = $this->getRequest()->getSession(); //session取得
+  $auth_id = $session->read('Auth.id'); //Auth.id取得
+  $auth_username = $session->read('Auth.username'); //Auth.username取得
+if (is_null($auth_id)) : ?>
        <a target="_self" rel="noopener" href="/mental_clinic/users/login">login</a>
 <?php else : ?>
+    <a target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/".  "$auth_id" ?>> <?= $auth_username ?></a>
     <a target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
 <?php endif ?>
         </div>

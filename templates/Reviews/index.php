@@ -3,9 +3,11 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Review[]|\Cake\Collection\CollectionInterface $reviews
  */
+$session_id = $this->getRequest()->getSession()->read('Auth.id');
 ?>
 <div class="reviews index content">
-    <?= $this->Html->link(__('New Review'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New Review'), ['action' => 'add', $session_id], ['class' => 'button float-right']) ?>
+
     <h3><?= __('Reviews') ?></h3>
     <div class="table-responsive">
         <table>
@@ -21,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($reviews as $review): ?>
+                <?php foreach ($reviews as $review) : ?>
                 <tr>
                     <td><?= $this->Number->format($review->id) ?></td>
                     <td><?= $this->Number->format($review->voting) ?></td>
