@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$query = $clinics->find('list')->toArray();
+print_r($query);
 ?>
 <div class="row">
     <aside class="column">
@@ -59,28 +61,23 @@
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Text') ?></th>
-                            <th><?= __('Voting') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Clinic Id') ?></th>
+                            <th><?= __('感想') ?></th>
+                            <th><?= __('投票') ?></th>
+                            <th><?= __('投稿日') ?></th>
+                            <th><?= __('編集日') ?></th>
+                            <th><?= __('病院名') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->reviews as $reviews) : ?>
                         <tr>
-                            <td><?= h($reviews->id) ?></td>
                             <td><?= h($reviews->text) ?></td>
                             <td><?= h($reviews->voting) ?></td>
                             <td><?= h($reviews->created) ?></td>
                             <td><?= h($reviews->modified) ?></td>
-                            <td><?= h($reviews->user_id) ?></td>
-                            <td><?= h($reviews->clinic_id) ?></td>
+                            <td><?= h($query[$reviews->clinic_id])?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Reviews', 'action' => 'view', $reviews->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Reviews', 'action' => 'edit', $reviews->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Reviews', 'action' => 'delete', $reviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $reviews->id)]) ?>
+                                <?= $this->Html->link(__('編集'), ['controller' => 'Reviews', 'action' => 'edit', $reviews->id]) ?>
+                                <?= $this->Form->postLink(__('削除'), ['controller' => 'Reviews', 'action' => 'delete', $reviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $reviews->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

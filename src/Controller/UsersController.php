@@ -35,12 +35,14 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $this->loadModel('Clinics');
         $result = $this->Authentication->getResult();
         $user = $this->Users->get($id, [
             'contain' => ['DiseaseCategories', 'Reviews'],
         ]);
 
         $this->set(compact('user'));
+        $this->set('clinics', $this->Clinics->find('all'));
     }
 
     /**

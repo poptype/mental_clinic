@@ -50,7 +50,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 if (is_null($auth_id)) : ?>
        <a target="_self" rel="noopener" href="/mental_clinic/users/login">login</a>
 <?php else : ?>
-    <a target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/".  "$auth_id" ?>> <?= $auth_username ?></a>
+    <a target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/".  "$auth_id" ?>> <?= $auth_username ?></a> <!-- login username to view.php -->
     <a target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
 <?php endif ?>
         </div>
