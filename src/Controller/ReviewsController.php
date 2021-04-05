@@ -47,8 +47,9 @@ class ReviewsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add($user_id = null)
+    public function add()
     {
+        $user_id = $this->Authentication->getResult()->getData()->id;
         var_dump($user_id);
         $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
@@ -72,8 +73,9 @@ class ReviewsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit()
     {
+        $id = $this->Authentication->getResult()->getData()->id; //認証ID取得
         $review = $this->Reviews->get($id, [
             'contain' => [],
         ]);
@@ -98,8 +100,9 @@ class ReviewsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete()
     {
+        $id = $this->Authentication->getResult()->getData()->id; //認証ID取得
         $this->request->allowMethod(['post', 'delete']);
         $review = $this->Reviews->get($id);
         if ($this->Reviews->delete($review)) {

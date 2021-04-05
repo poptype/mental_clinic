@@ -3,21 +3,24 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+// --clinicsテーブルから配列でエンティティを取得　＊スコープの関係上 $clinicsはここでqueryオブジェクトに変換-- /
 $query = $clinics->find('list')->toArray();
-print_r($query);
+// --sessionからログイン情報取得 -- //
+$session_id = $this->getRequest()->getSession()->read('Auth.id');
+$session_name = $this->getRequest()->getSession()->read('Auth.username');
 ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('プロフィール編集'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('アカウントを削除する'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('プロフィール編集'), ['action' => 'edit', $session_id], ['class' => 'side-nav-item']) ?>
+            <?= $this->Form->postLink(__('アカウントを削除する'), ['action' => 'delete', $session_id], ['confirm' => __('本当に 『'. "$session_name". '』さんのアカウントを削除しますか？', $session_id), 'class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('ユーザーリスト'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
             <?= $this->Html->link(
                 __('口コミ投稿'),
                 ['controller' => 'Reviews',
                 'action' => 'add',
-                $user->id],
+                $session_id],
                 ['class' => 'side-nav-item']
             ) ?>
         </div>
@@ -70,11 +73,11 @@ print_r($query);
                         </tr>
                         <?php foreach ($user->reviews as $reviews) : ?>
                         <tr>
-                            <td><?= h($reviews->text) ?></td>
+                            <td><?= $this->Html->link($reviews->text, ['controller' => 'Reviews', 'action' => 'view', $reviews->id]) ?></td>
                             <td><?= h($reviews->voting) ?></td>
                             <td><?= h($reviews->created) ?></td>
                             <td><?= h($reviews->modified) ?></td>
-                            <td><?= h($query[$reviews->clinic_id])?></td>
+                            <td><?= $this->Html->link($query[$reviews->clinic_id], ['controller' => 'Clinics', 'action' => 'view', $reviews->clinic_id]) ?></td> <!-- clinicsの配列からidで取得-->
                             <td class="actions">
                                 <?= $this->Html->link(__('編集'), ['controller' => 'Reviews', 'action' => 'edit', $reviews->id]) ?>
                                 <?= $this->Form->postLink(__('削除'), ['controller' => 'Reviews', 'action' => 'delete', $reviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $reviews->id)]) ?>
