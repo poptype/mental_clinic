@@ -73,9 +73,14 @@ class ReviewsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit()
+    public function edit($id = null)
     {
-        $id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+      // --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
+        $user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+        if ($user_id != $id) {
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }//-- END --//
+        
         $review = $this->Reviews->get($id, [
             'contain' => [],
         ]);
@@ -100,9 +105,14 @@ class ReviewsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete()
+    public function delete($id = null)
     {
-        $id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+       // --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
+        $user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+        if ($user_id != $id) {
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }//-- END --//
+
         $this->request->allowMethod(['post', 'delete']);
         $review = $this->Reviews->get($id);
         if ($this->Reviews->delete($review)) {
