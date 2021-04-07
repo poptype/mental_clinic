@@ -46,6 +46,12 @@ class ClinicsController extends AppController
      */
     public function add()
     {
+        // --管理者ID（１）で一致しなければ強制ページ移動-- //
+        $user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+        if ($user_id != 1) {
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }//-- END --//
+ 
         $clinic = $this->Clinics->newEmptyEntity();
         if ($this->request->is('post')) {
             $clinic = $this->Clinics->patchEntity($clinic, $this->request->getData());
@@ -68,6 +74,12 @@ class ClinicsController extends AppController
      */
     public function edit($id = null)
     {
+         // --管理者ID（１）で一致しなければ強制ページ移動-- //
+        $user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+        if ($user_id != 1) {
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }//-- END --//
+
         $clinic = $this->Clinics->get($id, [
             'contain' => [],
         ]);
@@ -92,6 +104,12 @@ class ClinicsController extends AppController
      */
     public function delete($id = null)
     {
+        // --管理者ID（１）で一致しなければ強制ページ移動-- //
+        $user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+        if ($user_id != 1) {
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }//-- END --//
+ 
         $this->request->allowMethod(['post', 'delete']);
         $clinic = $this->Clinics->get($id);
         if ($this->Clinics->delete($clinic)) {

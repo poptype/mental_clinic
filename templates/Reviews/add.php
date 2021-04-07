@@ -4,7 +4,11 @@
  * @var \App\Model\Entity\Review $review
  */
 ?>
-<?php var_dump($user_id); ?>
+<?php var_dump($user_id);
+$this->start("script");
+    echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>';
+$this->end();
+?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">

@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($clinics as $clinic): ?>
+                <?php foreach ($clinics as $clinic) : ?>
                 <tr>
                     <td><?= $this->Number->format($clinic->id) ?></td>
                     <td><?= h($clinic->name) ?></td>
