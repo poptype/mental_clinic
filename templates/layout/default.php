@@ -64,4 +64,3 @@ if (is_null($auth_id)) : ?>
     <footer>
     </footer>
 </body>
-</html>

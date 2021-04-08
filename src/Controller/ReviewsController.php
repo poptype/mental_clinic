@@ -50,7 +50,6 @@ class ReviewsController extends AppController
     public function add()
     {
         $user_id = $this->Authentication->getResult()->getData()->id;
-        var_dump($user_id);
         $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
             $review = $this->Reviews->patchEntity($review, $this->request->getData());
@@ -62,8 +61,12 @@ class ReviewsController extends AppController
             $this->Flash->error(__('The review could not be saved. Please, try again.'));
         }
         //$users = $this->Reviews->Users->find('list', ['limit' => 200]);
-        $clinics = $this->Reviews->Clinics->find('list', ['limit' => 200]);
-        $this->set(compact('review', 'user_id', 'clinics'));
+
+        // -- autosuggestのための処理 -- //
+        $clinics = $this->Reviews->Clinics->find('list', ['limit' => 200])->toArray(); //clinicのレコードを配列で抽出
+        $suggestWordJson = json_encode($clinics);    // 配列をJsonデータへ変換 *Jsonにしないと受け取れない
+
+        $this->set(compact('review', 'user_id', 'suggestWordJson'));
     }
 
     /**
