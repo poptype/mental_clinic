@@ -20,15 +20,17 @@
         <div class="reviews form content">
             <?= $this->Form->create($review) ?>
             <fieldset>
-                <legend><?= __('Edit Review') ?></legend>
+                <legend><?= __('口コミレビューの編集') ?></legend>
                 <?php
-                    echo $this->Form->control('text');
-                    echo $this->Form->control('voting');
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('clinic_id', ['options' => $clinics]);
+                    echo $this->Form->control('text', ['label' => '感想']);
+                   // echo $this->Form->control('投票', ['name' => 'voting']);
+                   // echo $this->Form->control('user_id', ['options' => $users]);
+                   /* echo $this->Form->control('病院名', [
+                    'options' => $clinics,
+                    'name' => 'clinic_id']);*/
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+                </fieldset>
+                <?= $this->Form->button(__('送信')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

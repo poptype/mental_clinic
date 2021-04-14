@@ -52,7 +52,10 @@ class ReviewsController extends AppController
         $user_id = $this->Authentication->getResult()->getData()->id;
         $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
-            $review = $this->Reviews->patchEntity($review, $this->request->getData());
+            $post_record = $this->request->getData(); //postRecordの配列取得
+            $clinic = $this->Reviews->Clinics->find('list')->select(['id'])->where(['name ' =>$post_record['clinic_id']])->toArray(); //postされた病院名からその行のidとの連想配列を取得
+            $post_record["clinic_id"] = array_search($post_record['clinic_id'], $clinic);//postされた配列をさっきの連想配列のidと入れ替える
+            $review = $this->Reviews->patchEntity($review, $post_record);
             if ($this->Reviews->save($review)) {
                 $this->Flash->success(__('The review has been saved.'));
 
@@ -63,8 +66,8 @@ class ReviewsController extends AppController
         //$users = $this->Reviews->Users->find('list', ['limit' => 200]);
 
         // -- autosuggestのための処理 -- //
-        $clinics = $this->Reviews->Clinics->find('list', ['limit' => 200])->toArray(); //clinicのレコードを配列で抽出
-        $suggestWordJson = json_encode($clinics);    // 配列をJsonデータへ変換 *Jsonにしないと受け取れない
+        $clinics_list = $this->Reviews->Clinics->find('list', ['limit' => 200])->toArray(); //clinicのレコードを配列で抽出
+        $suggestWordJson = json_encode($clinics_list);    // 配列をJsonデータへ変換 *Jsonにしないと受け取れない
 
         $this->set(compact('review', 'user_id', 'suggestWordJson'));
     }

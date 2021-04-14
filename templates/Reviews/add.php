@@ -27,10 +27,10 @@ $this->assign('css', '<link rel="stylesheet" href="https://ajax.googleapis.com/a
             <fieldset>
                 <legend><?= __('口コミ投稿') ?></legend>
                 <?php
-                    echo $this->Form->control('感想');
-                    echo $this->Form->control('投稿');
+                    echo $this->Form->control('text', ['label' => '感想']);
+                    echo $this->Form->control('voting', ['label' => '投稿']);
                     echo $this->Form->hidden("user_id", ['value' => $user_id ]);
-                    echo $this->Form->control('病院名', ['id' => 'autocomplete']);
+                    echo $this->Form->control('病院名', ['id' => 'autocomplete', 'name' => 'clinic_id']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('投稿')) ?>

@@ -80,7 +80,7 @@ $session_name = $this->getRequest()->getSession()->read('Auth.username');
                             <td><?= $this->Html->link($query[$reviews->clinic_id], ['controller' => 'Clinics', 'action' => 'view', $reviews->clinic_id]) ?></td> <!-- clinicsの配列からidで取得-->
                             <td class="actions">
                                 <?= $this->Html->link(__('編集'), ['controller' => 'Reviews', 'action' => 'edit', $reviews->id]) ?>
-                                <?= $this->Form->postLink(__('削除'), ['controller' => 'Reviews', 'action' => 'delete', $reviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $reviews->id)]) ?>
+                                <?= $this->Form->postLink(__('削除'), ['controller' => 'Reviews', 'action' => 'delete', $reviews->id], ['confirm' => __('本当にこの口コミを削除しますか?', $reviews->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
