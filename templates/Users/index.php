@@ -5,40 +5,34 @@
  */
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
+    <?= $this->Html->link(__('新規ユーザー登録'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('ユーザーリスト') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('username') ?></th>
-                    <th><?= $this->Paginator->sort('password') ?></th>
-                    <th><?= $this->Paginator->sort('gender') ?></th>
-                    <th><?= $this->Paginator->sort('age') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('disease_categorie_id') ?></th>
+                    <th><?= $this->Paginator->sort('アカウント名') ?></th>
+                    <th><?= $this->Paginator->sort('性別') ?></th>
+                    <th><?= $this->Paginator->sort('年齢') ?></th>
+                    <th><?= $this->Paginator->sort('登録日') ?></th>
+                    <th><?= $this->Paginator->sort('編集日') ?></th>
+                    <th><?= $this->Paginator->sort('病名') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user) : ?>
                 <tr>
-                    <td><?= $this->Number->format($user->id) ?></td>
-                    <td><?= h($user->username) ?></td>
-                    <td><?= h($user->password) ?></td>
+                    <td>
+                        <?= $this->Html->link($user->username, ['action' => 'view', $user->id]) ?>
+</td>
                     <td><?= h($user->gender) ?></td>
                     <td><?= $this->Number->format($user->age) ?></td>
                     <td><?= h($user->created) ?></td>
                     <td><?= h($user->modified) ?></td>
                     <td><?= $user->has('disease_category') ? $this->Html->link($user->disease_category->name, ['controller' => 'DiseaseCategories', 'action' => 'view', $user->disease_category->id]) : '' ?></td>
                     <td><?= h($user->email) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

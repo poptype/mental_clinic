@@ -52,10 +52,11 @@ class ReviewsController extends AppController
         $user_id = $this->Authentication->getResult()->getData()->id;
         $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
+          //-- postされた病院名とidを照合してDataBaseにinsertする配列を文字列からidに入れ替える --//
             $post_record = $this->request->getData(); //postRecordの配列取得
             $clinic = $this->Reviews->Clinics->find('list')->select(['id'])->where(['name ' =>$post_record['clinic_id']])->toArray(); //postされた病院名からその行のidとの連想配列を取得
             $post_record["clinic_id"] = array_search($post_record['clinic_id'], $clinic);//postされた配列をさっきの連想配列のidと入れ替える
-            $review = $this->Reviews->patchEntity($review, $post_record);
+            $review = $this->Reviews->patchEntity($review, $post_record);//patchEntity
             if ($this->Reviews->save($review)) {
                 $this->Flash->success(__('The review has been saved.'));
 

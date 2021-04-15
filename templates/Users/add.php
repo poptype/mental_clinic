@@ -15,17 +15,23 @@
         <div class="users form content">
             <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Add User') ?></legend>
+                <legend><?= __('新規アカウント作成') ?></legend>
                 <?php
-                    echo $this->Form->control('username');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('gender');
-                    echo $this->Form->control('age');
-                    echo $this->Form->control('disease_categorie_id', ['options' => $diseaseCategories]);
+                    echo $this->Form->control('username', ['label' => 'アカウント名']);
+                    echo $this->Form->control('password', ['label' => 'パスワード']);
+                    echo $this->Form->control('gender', [
+                      'options' => ['男', '女'],
+                      'label' => [
+                        'text' => '性別']
+                    ]);
+                    echo $this->Form->control('disease_categorie_id', [
+                      'options' => $diseaseCategories,
+                      'label' => '病名'
+                    ]);
                     echo $this->Form->control('email');
-                ?>
+                    ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('送信')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
