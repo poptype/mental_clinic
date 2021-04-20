@@ -19,6 +19,7 @@
                 <?php
                     echo $this->Form->control('username', ['label' => 'アカウント名']);
                     echo $this->Form->control('password', ['label' => 'パスワード']);
+                    echo $this->Form->control('age', ['label' => '年齢']);
                     echo $this->Form->control('gender', [
                       'options' => ['男', '女'],
                       'label' => [
