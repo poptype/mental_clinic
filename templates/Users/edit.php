@@ -26,9 +26,11 @@ $session_name = $this->getRequest()->getSession()->read('Auth.username');
                     echo $this->Form->control('アカウント名', ['name' => 'username']);
                     echo $this->Form->control('パスワード', ['name' => 'password']);
                     echo $this->Form->control('gender', [
-                      'options' => ['男', '女'],
-                      'label' => [
-                        'text' => '性別']
+                      'options' => [
+                        ['value' => '男', 'text' => '男'],
+                        ['value' => '女', 'text' => '女']
+                      ],
+                      'label' => [ 'text' => '性別']
                     ]);
                     echo $this->Form->control('年齢', ['name' => 'age']);
                     echo $this->Form->control(

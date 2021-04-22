@@ -21,12 +21,11 @@
                     echo $this->Form->control('password', ['label' => 'パスワード']);
                     echo $this->Form->control('age', ['label' => '年齢']);
                     echo $this->Form->control('gender', [
-                      'options' => [ ['value' => '男',
-                      'text' => '男' ],
-                                    ['value' => '女',
-                                   'text' => '女']],
-                      'label' => [
-                        'text' => '性別']
+                      'options' => [
+                       ['value' => '男', 'text' => '男' ],
+                       ['value' => '女', 'text' => '女' ]
+                      ],
+                      'label' => [ 'text' => '性別']
                       ]);
                     echo $this->Form->control('disease_categorie_id', [
                       'options' => $diseaseCategories,
