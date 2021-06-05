@@ -130,4 +130,14 @@ class ReviewsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function top($id = null)
+    {
+        $this->paginate = [
+            'contain' => ['Users', 'Clinics'],
+        ];
+        $reviews = $this->paginate($this->Reviews);
+
+        $this->set(compact('reviews'));
+    }
 }
