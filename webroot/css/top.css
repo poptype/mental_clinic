@@ -1,0 +1,20 @@
+.top-gredContainer {
+    max-width: none !important;
+    display: grid;
+    justify-content: center;
+}
+
+.hero-wrapper {
+    width: 152.2rem;
+    height: 84.6rem;
+    background: #e5e5e5;
+    border: 0.1rem solid #707070;
+    margin-top: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-wrapper>p:nth-child(1) {
+    font-size: 10rem;
+}

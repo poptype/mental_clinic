@@ -1,4 +1,4 @@
-/* Miligram overrides */
+/* ------------Miligram overrides-------------- */
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -6,27 +6,37 @@ body {
 
 .top-nav-links,
 .side-nav,
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Raleway", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     color: #363637;
 }
 
 a {
-    color:#2f85ae;
-    -webkit-transition:all 0.2s linear;
-    transition:all 0.2s linear;
+    color: #2f85ae;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 
 a:hover,
 a:focus,
-a:active  {
-    color:#2a6496;
-    -webkit-transition:all 0.2s easeout;
-    transition:all 0.2s ease-out;
+a:active {
+    color: #2a6496;
+    -webkit-transition: all 0.2s easeout;
+    transition: all 0.2s ease-out;
 }
 
 .side-nav a,
@@ -40,10 +50,10 @@ th a,
 .side-nav a:focus,
 .actions a:hover,
 .actions a:focus {
-    color:#2f85ae;
+    color: #2f85ae;
 }
 
-/* Utility */
+/* --------------Utility---------------------- */
 .table-responsive {
     display: block;
     width: 100%;
@@ -51,10 +61,11 @@ th a,
     -webkit-overflow-scrolling: touch;
 }
 
-/* Main */
+/* ---------------Main--------------------- */
 body {
     background: #f5f7fa;
 }
+
 .content {
     padding: 2rem;
     background: #ffffff;
@@ -63,36 +74,72 @@ body {
     box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1),
         0 3px 6px 0 rgba(0, 0, 0, 0.07);
 }
+
 .actions a {
     font-weight: bold;
     padding: 0 0.4rem;
 }
+
 th {
     white-space: nowrap;
 }
 
-/* Nav bar */
+/* -------------Nav bar------------------- */
 .top-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 112rem;
-    padding: 2rem;
-    margin: 0 auto 2rem;
+    justify-content: center;
+    background-color: #6200EE;
+    height: 5.6rem;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0,0.1),0 0.8rem 0.5rem rgba(0, 0, 0,0.2),0 0.3rem 0.7rem rgba(0, 0, 0,0.12);
 }
-.top-nav-title a {
-    font-size: 2.4rem;
-    color: #d33c43;
+
+.top-nav-link {
+    display: flex;
+    align-content: center;
 }
-.top-nav-title span {
-    color: #404041;
+
+.log-link {
+    display: flex;
 }
-.top-nav-links a {
-    margin: 0 0.5rem;
-}
+
 .top-nav-title a,
 .top-nav-links a {
     font-weight: bold;
+    display: flex;
+    align-content: center;
+}
+
+.nav-seach {
+    margin-right: 2rem;
+}
+
+.nav-list {
+    margin-right: 2rem;
+}
+
+.nav-tileLogo {
+    margin-right: 2rem;
+}
+
+.nav-logo {
+    margin-right: 2rem;
+}
+
+.nav-titleLogo {
+    margin-right: 2rem;
+}
+
+.nav-serach {
+    margin-right: 2rem;
+}
+
+.nav-logout {
+    margin-right: 2rem;
+}
+
+.nav-userName {
+    margin-right: 2rem;
 }
 
 .side-nav-item {
@@ -100,10 +147,11 @@ th {
     padding: 0.5rem 0;
 }
 
-/* View action */
+/* ---------------View action---------------- */
 .view.content .text {
     margin-top: 1.2rem;
 }
+
 .related {
     margin-top: 2rem;
 }
@@ -121,14 +169,17 @@ th {
     border-radius: 4px;
     margin-bottom: 2rem;
 }
+
 .message.hidden {
     display: none;
 }
+
 .message.success {
     background: #e3fcec;
     color: #1f9d55;
     border-color: #51d88a;
 }
+
 .message.error {
     background: #fcebea;
     color: #cc1f1a;
@@ -138,30 +189,35 @@ th {
 /* Forms */
 .input.radio,
 .input.checkbox {
-    margin-bottom: 2.0rem;
+    margin-bottom: 2rem;
 }
+
 .input.radio input,
 .input.checkbox input {
     margin: 0;
 }
+
 .input.radio label,
 .input.checkbox label {
     margin: 0;
     display: flex;
     align-items: center;
 }
-.input.radio label > input,
-.input.checkbox label > input {
-    margin-right: 1.0rem;
+
+.input.radio label>input,
+.input.checkbox label>input {
+    margin-right: 1rem;
 }
+
 .input.radio label:first-of-type {
-    margin-bottom: 2.0rem;
+    margin-bottom: 2rem;
 }
 
 /* Paginator */
 .paginator {
     text-align: right;
 }
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -169,17 +225,21 @@ th {
     padding: 0;
     margin: 0 0 1rem;
 }
+
 .pagination li {
     margin: 0 0.5rem;
 }
+
 .prev.disabled a,
 .next.disabled a {
     cursor: not-allowed;
     color: #606c76;
 }
+
 .asc:after {
     content: " \2193";
 }
+
 .desc:after {
     content: " \2191";
 }
@@ -197,19 +257,24 @@ th {
     .top-nav {
         margin: 0 auto;
     }
+
     .side-nav {
         margin-bottom: 1rem;
     }
+
     .heading {
         margin-bottom: 1rem;
     }
+
     .side-nav-item {
         display: inline;
         margin: 0 1.5rem 0 0;
     }
+
     .asc:after {
         content: " \2192";
     }
+
     .desc:after {
         content: " \2190";
     }
