@@ -87,7 +87,7 @@ class ReviewsController extends AppController
         if ($user_id != $id) {
             return $this->redirect(['controller' => 'Users', 'action' => 'index']);
         }//-- END --//
-        
+
         $review = $this->Reviews->get($id, [
             'contain' => [],
         ]);
@@ -133,11 +133,13 @@ class ReviewsController extends AppController
 
     public function top($id = null)
     {
+        $this->loadModel('DiseaseCategories');
         $this->paginate = [
             'contain' => ['Users', 'Clinics'],
         ];
         $reviews = $this->paginate($this->Reviews);
 
         $this->set(compact('reviews'));
+        $this->set('disease_categories', $this->DiseaseCategories->find('all'));
     }
 }

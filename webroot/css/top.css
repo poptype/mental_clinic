@@ -1,12 +1,14 @@
-.top-gredContainer {
-    max-width: none !important;
+.container {
+    margin: 0 auto;
+    max-width: 152.2rem;
+    padding: 0 2.0rem;
+    position: relative;
+    width: 100%;
     display: grid;
-    justify-content: center;
 }
 
 /* -----Hero and Guideline------ */
 .hero-wrapper {
-    width: 152.2rem;
     height: 84.6rem;
     background: #e5e5e5;
     border: 0.1rem solid #707070;
@@ -20,13 +22,31 @@
     font-size: 10rem;
 }
 
-/* -------sort----------- */
+/* ===============reviews================= */
+.reviews {
+    max-width: 96rem;
+    margin: 0 26rem;
+}
+
+/* ---sort--- */
 .sort-wrapper {
     margin-bottom: 10rem;
 }
 
-.sort-wrapper >a{
+.sort-wrapper>a {
     padding: 1rem;
     margin-right: 1rem;
     box-shadow: 0.5rem 0.2rem 0.8rem rgba(0, 0, 0, 0.2), 0 0.8rem 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+/* ~~~~~~article~~~~~~ */
+.review-container {
+    display: grid;
+    height: 25.3rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    margin-bottom: 4.5rem;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #c4c4c4;
+    box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.5rem 0.3rem rgba(0, 0, 0, 0.1), 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
 }
