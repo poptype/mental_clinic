@@ -20,18 +20,24 @@ $query = $disease_categories->find('list')->toArray();
     <article>
         <?php foreach ($reviews as $review) : ?>
             <div class="review-container">
-            <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
-            <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示?>
-            <?= h($review->text) ?>
-            <!--?=// $this->Number->format($review->id) ?-->
-            <?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
-            <?= h($review->created) ?>
-            <?= $this->Number->format($review->voting) ?>
-            <!--?=// h($review->modified) ?-->
-            <!--?=// $this->Html->link(__('View'), ['action' => 'view', $review->id]) ?-->
-            <!--?=// $this->Html->link(__('Edit'), ['action' => 'edit', $review->id]) ?-->
-            <!--?=// $this->Form->postLink(__('Delete'), ['action' => 'delete', $review->id], ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]) ?-->
-       </div>
+                <h3 class="clinic-name">
+                    <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
+                </h3>
+                <span class="disease_name">
+                    <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示 ?>
+                </span>
+                <p class="body"><?= h($review->text) ?></p>
+                <!--?=// $this->Number->format($review->id) ?-->
+                <span class="username">
+                <?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
+                </span>
+                <span class="created"><?= h($review->created) ?></span>
+                <span class="voting"><?= $this->Number->format($review->voting) ?></span>
+                <!--?=// h($review->modified) ?-->
+                <!--?=// $this->Html->link(__('View'), ['action' => 'view', $review->id]) ?-->
+                <!--?=// $this->Html->link(__('Edit'), ['action' => 'edit', $review->id]) ?-->
+                <!--?=// $this->Form->postLink(__('Delete'), ['action' => 'delete', $review->id], ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]) ?-->
+            </div>
         <?php endforeach; ?>
     </article>
     <div class="paginator">

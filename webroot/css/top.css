@@ -42,11 +42,81 @@
 /* ~~~~~~article~~~~~~ */
 .review-container {
     display: grid;
-    height: 25.3rem;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto auto auto;
+}
+
+article>div {
+    min-height: 25.3rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     margin-bottom: 4.5rem;
+    padding: 1rem;
     border-style: solid;
     border-width: 1px 1px 1px 1px;
     border-color: #c4c4c4;
     box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.5rem 0.3rem rgba(0, 0, 0, 0.1), 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.clinic-name {
+    grid-column: span 3;
+    font-size: 2rem;
+    font-weight: var(--Medium);
+    margin: 1rem 0;
+}
+
+.clinic-name>a {
+    box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
+    background-color: #6300ee;
+    border-radius: 2.8rem;
+    border: 0.1rem solid #6300ee;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0.8rem 3.1rem;
+    text-decoration: none;
+    text-shadow: 0px 0.1rem 0px #999999;
+}
+
+.clinic-name>a:hover {
+    background-color: #8654d1;
+}
+
+.clinic-name>a:active {
+    position: relative;
+    top: 0.1rem;
+}
+
+.disease_name {
+    grid-column: span 3;
+    margin: 0 0 1rem 2rem;
+}
+
+.disease_name>a {
+    box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
+    background-color: rgba(115, 55, 196, 0.1);
+    border-radius: 0.7rem;
+    border: 0.1rem solid rgba(115, 55, 196, 0.1);
+    display: inline-block;
+    cursor: pointer;
+    color: #6200EE;
+    padding: 0.4rem 1.5rem;
+    text-decoration: none;
+}
+
+.disease_name>a:hover {
+    background-color: #bca3e26e;
+}
+
+.disease_name>a:active {
+    position: relative;
+    top: 0.1rem;
+}
+
+.body {
+    grid-column: span 3;
+    margin-bottom: 0.5rem;
+}
+
+.username {
+    justify-self: end;
+    margin-right: 1rem;
 }

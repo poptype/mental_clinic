@@ -1,6 +1,17 @@
+/*---------variable------- */
+:root {
+    --Thin: 100;
+    --Light: 300;
+    --Regular: 400;
+    --Medium: 500;
+    --Bold: 700;
+    --Black: 900;
+}
+
+
 /* ------------Miligram overrides-------------- */
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Noto Sans JP";
     font-weight: 400;
 }
 
@@ -12,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Raleway", sans-serif;
+    font-family: "Noto Sans JP";
 }
 
 h1,
@@ -91,7 +102,7 @@ th {
     justify-content: center;
     background-color: #6200EE;
     height: 5.6rem;
-    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0,0.1),0 0.8rem 0.5rem rgba(0, 0, 0,0.2),0 0.3rem 0.7rem rgba(0, 0, 0,0.12);
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1), 0 0.8rem 0.5rem rgba(0, 0, 0, 0.2), 0 0.3rem 0.7rem rgba(0, 0, 0, 0.12);
 }
 
 .top-nav-link {
