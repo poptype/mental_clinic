@@ -24,19 +24,23 @@ $query = $disease_categories->find('list')->toArray();
                     <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
                 </h3>
                 <span class="disease_name">
-                    <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示 ?>
+                    <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示
+                    ?>
                 </span>
                 <p class="body"><?= h($review->text) ?></p>
-                <!--?=// $this->Number->format($review->id) ?-->
                 <span class="username">
-                <?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
+                    <?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
                 </span>
-                <span class="created"><?= h($review->created) ?></span>
-                <span class="voting"><?= $this->Number->format($review->voting) ?></span>
-                <!--?=// h($review->modified) ?-->
-                <!--?=// $this->Html->link(__('View'), ['action' => 'view', $review->id]) ?-->
-                <!--?=// $this->Html->link(__('Edit'), ['action' => 'edit', $review->id]) ?-->
-                <!--?=// $this->Form->postLink(__('Delete'), ['action' => 'delete', $review->id], ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]) ?-->
+                <span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
+                <span class="voting">
+                    <?php #votingの変数個を☆icon表示
+                    $num = 0;
+                    while ($num < $this->Number->format($review->voting)) : ?>
+                        <i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
+                    <?php $num++;
+                    endwhile;
+                    ?>
+                </span>
             </div>
         <?php endforeach; ?>
     </article>
