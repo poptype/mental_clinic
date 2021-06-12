@@ -1,4 +1,16 @@
 <?php
+
+/**
+ * voting incriment method
+ *
+ * @param Object|reviewsObject $review reviewのインスタンス
+ * @return int: incrimentした変数$num 投票ボタンを押すとインクリメントしてpostするため（変数に入れ直さないと動かなかった）
+ */
+function voting_incr($review)
+{
+    $num = $review->voting + 1;
+    return $num;
+}
 // top.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'top']));
 //disease_categoriesテーブルから連想配列で取得
@@ -33,6 +45,21 @@ $query = $disease_categories->find('list')->toArray();
                 </span>
                 <span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
                 <span class="voting">
+                    <?= $this->Form->create($review) ?>
+                    <fieldset>
+                        <?php
+                        echo $this->Form->hidden('voting', ['value' => voting_incr($review)]);
+                        echo $this->Form->hidden('id');#review_idもpost
+                        ?>
+                    </fieldset>
+                    <?= $this->Form->button('', array(
+			    'class' => 'voting_image',
+			    'div' => false)
+		    );
+		    ?>
+                    <?= $this->Form->end() ?>
+		    <div>
+			    <p>いいね！</p>
                     <?php #votingの変数個を☆icon表示
                     $num = 0;
                     while ($num < $this->Number->format($review->voting)) : ?>
@@ -40,6 +67,7 @@ $query = $disease_categories->find('list')->toArray();
                     <?php $num++;
                     endwhile;
                     ?>
+		    </div>
                 </span>
             </div>
         <?php endforeach; ?>

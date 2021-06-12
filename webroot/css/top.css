@@ -1,11 +1,22 @@
-
-.container {/* @override */
+/* --- @override --- */
+.container {
     margin: 0 auto;
     max-width: 152.2rem;
     padding: 0 2.0rem;
     position: relative;
     width: 100%;
     display: grid;
+}
+
+button:hover {
+    background-color: unset;
+    border-color: unset;
+    color: unset;
+    outline: 0;
+}
+
+fieldset {
+    margin-bottom: 1.5rem;
 }
 
 /* -----Hero and Guideline------ */
@@ -25,8 +36,8 @@
 
 /* ===============reviews================= */
 .reviews {
-    max-width: 96rem;
-    margin: 0 26rem;
+    width: 90rem;
+    margin: 0 auto;
 }
 
 /* ---sort--- */
@@ -44,7 +55,7 @@
 .review-container {
     display: grid;
     grid-template-rows: auto auto auto auto;
-    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto 5rem;
 }
 
 article>div {
@@ -119,5 +130,30 @@ article>div {
 
 .username {
     justify-self: end;
+    align-self: end;
     margin-right: 1rem;
+}
+
+.created {
+    align-self: end;
+}
+
+.voting {
+    display: flex;
+}
+
+.voting>div {
+    transform: translateY(15%);
+}
+
+.voting>div>p {
+    font-weight: var(--Bold);
+}
+
+.voting_image {
+    background-image: url('../img/Voting+.svg');
+    background-position: center center;
+    height: 4.5rem;
+    background-color: rgb(255, 255, 255, 1);
+    border-width: 0;
 }
