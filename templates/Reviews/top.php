@@ -39,7 +39,15 @@ $query = $disease_categories->find('list')->toArray();
                     <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示
                     ?>
                 </span>
-                <p class="body"><?= h($review->text) ?></p>
+                <p class="body">
+                    <?php $content = $review->text;
+                    echo mb_strimwidth($content, 0, 211, '…', 'UTF-8');
+                    ?>
+
+                </p>
+                <span class="view_link">
+                    <?= $this->Html->link(__('続きを読む'), ['controller' => 'Reviews', 'action' => 'view', $review->id]) ?>
+                </span>
                 <span class="username">
                     <?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
                 </span>
@@ -49,25 +57,28 @@ $query = $disease_categories->find('list')->toArray();
                     <fieldset>
                         <?php
                         echo $this->Form->hidden('voting', ['value' => voting_incr($review)]);
-                        echo $this->Form->hidden('id');#review_idもpost
+                        echo $this->Form->hidden('id'); #review_idもpost
                         ?>
                     </fieldset>
-                    <?= $this->Form->button('', array(
-			    'class' => 'voting_image',
-			    'div' => false)
-		    );
-		    ?>
-                    <?= $this->Form->end() ?>
-		    <div>
-			    <p>いいね！</p>
-                    <?php #votingの変数個を☆icon表示
-                    $num = 0;
-                    while ($num < $this->Number->format($review->voting)) : ?>
-                        <i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
-                    <?php $num++;
-                    endwhile;
+                    <?= $this->Form->button(
+                        '',
+                        array(
+                            'class' => 'voting_image',
+                            'div' => false
+                        )
+                    );
                     ?>
-		    </div>
+                    <?= $this->Form->end() ?>
+                    <div>
+                        <p>いいね！</p>
+                        <?php #votingの変数個を☆icon表示
+                        $num = 0;
+                        while ($num < $this->Number->format($review->voting)) : ?>
+                            <i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
+                        <?php $num++;
+                        endwhile;
+                        ?>
+                    </div>
                 </span>
             </div>
         <?php endforeach; ?>

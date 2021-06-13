@@ -140,7 +140,7 @@ class ReviewsController extends AppController
 		];
 		$reviews = $this->paginate($this->Reviews);
 
-		// --request form post されてきた value of voting のみpatchEntityする-- //
+		// --form post されてきた value of voting のみpatchEntityする-- //
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$review = $this->Reviews->get($this->request->getData('id'), [ #get reviews_id from requestObject
 				'contain' => [],
