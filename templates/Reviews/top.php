@@ -70,10 +70,17 @@ $query = $disease_categories->find('list')->toArray();
                     ?>
                     <?= $this->Form->end() ?>
                     <div>
-                        <p>いいね！</p>
+                        <p><?php if ($this->Number->format($review->voting) != 0) : ?>
+                                <span class="voting_num"><?= $this->Number->format($review->voting) ?></span>
+                            <?php endif ?> いいね！
+                        </p>
                         <?php #votingの変数個を☆icon表示
                         $num = 0;
                         while ($num < $this->Number->format($review->voting)) : ?>
+                            <?php if ($num > 10) {
+                                echo '……';
+                                break;
+                            } ?>
                             <i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
                         <?php $num++;
                         endwhile;
@@ -85,13 +92,14 @@ $query = $disease_categories->find('list')->toArray();
     </article>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->first('<< ') ?>
+            <?= $this->Paginator->prev(__('前へ')) ?>
+            <?= $this->Paginator->numbers(['modulus' => 4, 'after' => '…']) ?>
+            <?= $this->Paginator->next(__('次へ')) ?>
+            <?= $this->Paginator->last(' >>') ?>
+            <li class="page_count"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}')) ?></li>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <!--<p><!?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>-->
     </div>
 </section>
 <!--END reviews-->

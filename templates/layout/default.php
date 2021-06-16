@@ -102,5 +102,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </main>
     <footer>
+	    <p class="copyright">Copyright © 2021 ○○○○ All Rights Reserved.</p>
     </footer>
 </body>

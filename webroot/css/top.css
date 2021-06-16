@@ -59,6 +59,10 @@ fieldset {
     grid-row-gap: 1rem;
 }
 
+article {
+    margin-bottom: 8rem;
+}
+
 article>div {
     min-height: 25.3rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -193,12 +197,15 @@ article>div {
     display: flex;
 }
 
-.voting>div {
-    transform: translateY(15%);
-}
-
 .voting>div>p {
     font-weight: var(--Bold);
+}
+
+.voting_num {
+    color: #6300ee;
+    font-family: 'Comic Sans MS';
+    font-size: 2rem;
+    text-shadow: rgb(210, 183, 84) 3px 0px 0px, rgb(210, 183, 84) 2.83487px 0.981584px 0px, rgb(210, 183, 84) 2.35766px 1.85511px 0px, rgb(210, 183, 84) 1.62091px 2.52441px 0px, rgb(210, 183, 84) 0.705713px 2.91581px 0px, rgb(210, 183, 84) -0.287171px 2.98622px 0px, rgb(210, 183, 84) -1.24844px 2.72789px 0px, rgb(210, 183, 84) -2.07227px 2.16926px 0px, rgb(210, 183, 84) -2.66798px 1.37182px 0px, rgb(210, 183, 84) -2.96998px 0.42336px 0px, rgb(210, 183, 84) -2.94502px -0.571704px 0px, rgb(210, 183, 84) -2.59586px -1.50383px 0px, rgb(210, 183, 84) -1.96093px -2.27041px 0px, rgb(210, 183, 84) -1.11013px -2.78704px 0px, rgb(210, 183, 84) -0.137119px -2.99686px 0px, rgb(210, 183, 84) 0.850987px -2.87677px 0px, rgb(210, 183, 84) 1.74541px -2.43999px 0px, rgb(210, 183, 84) 2.44769px -1.73459px 0px, rgb(210, 183, 84) 2.88051px -0.838247px 0px;
 }
 
 .voting_image {
@@ -217,4 +224,39 @@ article>div {
 .voting_image:active {
     position: relative;
     top: 0.1rem;
+}
+
+/* --pagenation-- */
+
+.active {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    background-color: #6300ee;
+}
+
+.active>a {
+    color: #f5f5f5 !important;
+}
+
+.paginator>.pagination>li {
+    padding: 0 0.75rem 0.2rem 0.65rem;
+    pointer-events: none;
+}
+
+.paginator>.pagination>li>a {
+    color: #606c76;
+    pointer-events: auto;
+}
+
+.paginator>.pagination>li>a:hover {
+    color: #f5f5f5;
+}
+
+.paginator>.pagination>li:not(.page_count):hover {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    background-color: #9c67e7;
+}
+
+.paginator>.pagination>li:not(.page_count):active {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    background-color: #6300ee;
 }
