@@ -51,10 +51,16 @@ class ClinicsController extends AppController
         if ($user_id != 1) {
             return $this->redirect(['controller' => 'Users', 'action' => 'index']);
         }//-- END --//
- 
         $clinic = $this->Clinics->newEmptyEntity();
         if ($this->request->is('post')) {
             $clinic = $this->Clinics->patchEntity($clinic, $this->request->getData());
+	    //-- Image upload process --//
+	    $image = $this->request->getData('image_file');
+	    $name = $image->getClientFilename();
+	    $targetPath = WWW_ROOT. 'img' .DS.$name;
+	    if($name)
+		$image->moveTo($targetPath);
+            //-- END Image upload process-- //
             if ($this->Clinics->save($clinic)) {
                 $this->Flash->success(__('The clinic has been saved.'));
 
@@ -83,8 +89,21 @@ class ClinicsController extends AppController
         $clinic = $this->Clinics->get($id, [
             'contain' => [],
         ]);
+
+        //中身を見たい変数などがあれば確認できます。
+        //debug();
+        //処理をここで止めます。
+        //return;
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $clinic = $this->Clinics->patchEntity($clinic, $this->request->getData());
+	    //-- Image upload process --//
+	    $image = $this->request->getData('image_file');
+	    $name = $image->getClientFilename();
+	    $targetPath = WWW_ROOT. 'img' .DS.$name;
+	    if($name)
+		$image->moveTo($targetPath);
+            //-- END Image upload process-- //
             if ($this->Clinics->save($clinic)) {
                 $this->Flash->success(__('The clinic has been saved.'));
 
@@ -109,7 +128,7 @@ class ClinicsController extends AppController
         if ($user_id != 1) {
             return $this->redirect(['controller' => 'Users', 'action' => 'index']);
         }//-- END --//
- 
+
         $this->request->allowMethod(['post', 'delete']);
         $clinic = $this->Clinics->get($id);
         if ($this->Clinics->delete($clinic)) {

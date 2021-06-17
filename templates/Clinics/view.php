@@ -17,6 +17,7 @@
     <div class="column-responsive column-80">
         <div class="clinics view content">
             <h3><?= h($clinic->name) ?></h3>
+	    <?= $this->Html->image($clinic->image, ['alt' => 'textalternatif']) ?>
             <table>
                 <tr>
                     <th><?= __('Name') ?></th>
