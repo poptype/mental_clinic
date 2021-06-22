@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $station
  * @property string $time
  * @property string $phone_number
+ * @property string $image
  *
  * @property \App\Model\Entity\Review[] $reviews
  */
@@ -38,6 +39,7 @@ class Clinic extends Entity
         'station' => true,
         'time' => true,
         'phone_number' => true,
+	'image' => true,
         'reviews' => true,
     ];
 }

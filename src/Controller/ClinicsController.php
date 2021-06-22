@@ -54,12 +54,15 @@ class ClinicsController extends AppController
         $clinic = $this->Clinics->newEmptyEntity();
         if ($this->request->is('post')) {
             $clinic = $this->Clinics->patchEntity($clinic, $this->request->getData());
-	    //-- Image upload process --//
-	    $image = $this->request->getData('image_file');
-	    $name = $image->getClientFilename();
-	    $targetPath = WWW_ROOT. 'img' .DS.$name;
-	    if($name)
-		$image->moveTo($targetPath);
+            //-- Image upload process --//
+            if (!$clinic->getErrors) {
+                $image = $this->request->getData('image_file');
+                $name = $image->getClientFilename();
+                $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
+                if ($name) $image->moveTo($targetPath);
+                print($name);
+                $clinic->image = $name;
+            }
             //-- END Image upload process-- //
             if ($this->Clinics->save($clinic)) {
                 $this->Flash->success(__('The clinic has been saved.'));
@@ -98,11 +101,14 @@ class ClinicsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $clinic = $this->Clinics->patchEntity($clinic, $this->request->getData());
 	    //-- Image upload process --//
-	    $image = $this->request->getData('image_file');
-	    $name = $image->getClientFilename();
-	    $targetPath = WWW_ROOT. 'img' .DS.$name;
-	    if($name)
-		$image->moveTo($targetPath);
+        if(!$clinic->getErrors) {
+            $image = $this->request->getData('image_file');
+            $name = $image->getClientFilename();
+            $targetPath = WWW_ROOT. 'img/upload' .DS.$name;
+            if($name) $image->moveTo($targetPath);
+            print($name);
+            $clinic->image = $name;
+        }
             //-- END Image upload process-- //
             if ($this->Clinics->save($clinic)) {
                 $this->Flash->success(__('The clinic has been saved.'));

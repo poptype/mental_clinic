@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -31,88 +32,101 @@ use Cake\Validation\Validator;
  */
 class ClinicsTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config): void
-    {
-        parent::initialize($config);
+	/**
+	 * Initialize method
+	 *
+	 * @param array $config The configuration for the Table.
+	 * @return void
+	 */
+	public function initialize(array $config): void
+	{
+		parent::initialize($config);
 
-        $this->setTable('clinics');
-        $this->setDisplayField('name');
-        $this->setPrimaryKey('id');
+		$this->setTable('clinics');
+		$this->setDisplayField('name');
+		$this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
+		$this->addBehavior('Timestamp');
 
-        $this->hasMany('Reviews', [
-            'foreignKey' => 'clinic_id',
-        ]);
-    }
+		$this->hasMany('Reviews', [
+			'foreignKey' => 'clinic_id',
+		]);
+	}
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', null, 'create');
+	/**
+	 * Default validation rules.
+	 *
+	 * @param \Cake\Validation\Validator $validator Validator instance.
+	 * @return \Cake\Validation\Validator
+	 */
+	public function validationDefault(Validator $validator): Validator
+	{
+		$validator
+			->integer('id')
+			->allowEmptyString('id', null, 'create');
 
-        $validator
-            ->scalar('name')
-            ->maxLength('name', 32)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name')
-            ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+		$validator
+			->scalar('name')
+			->maxLength('name', 32)
+			->requirePresence('name', 'create')
+			->notEmptyString('name')
+			->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-        $validator
-            ->scalar('address')
-            ->maxLength('address', 64)
-            ->requirePresence('address', 'create')
-            ->notEmptyString('address')
-            ->add('address', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+		$validator
+			->scalar('address')
+			->maxLength('address', 64)
+			->requirePresence('address', 'create')
+			->notEmptyString('address')
+			->add('address', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-        $validator
-            ->scalar('station')
-            ->maxLength('station', 32)
-            ->requirePresence('station', 'create')
-            ->notEmptyString('station');
+		$validator
+			->scalar('station')
+			->maxLength('station', 32)
+			->requirePresence('station', 'create')
+			->notEmptyString('station');
 
-        $validator
-            ->scalar('time')
-            ->maxLength('time', 32)
-            ->requirePresence('time', 'create')
-            ->notEmptyString('time');
+		$validator
+			->scalar('time')
+			->maxLength('time', 32)
+			->requirePresence('time', 'create')
+			->notEmptyString('time');
 
-        $validator
-            ->scalar('phone_number')
-            ->maxLength('phone_number', 32)
-            ->requirePresence('phone_number', 'create')
-            ->notEmptyString('phone_number')
-            ->add('phone_number', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+		$validator
+			->scalar('phone_number')
+			->maxLength('phone_number', 32)
+			->requirePresence('phone_number', 'create')
+			->notEmptyString('phone_number')
+			->add('phone_number', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-        return $validator;
-    }
+		$validator
+			->allowEmptyFile('image')
+			->add('image', [
+				'mimeType' => [
+					'rule' => ['mineType', ['image/jpg', 'image/png', 'image/jpeg']],
+					'message' => 'Please upload only jpg and png.',
+				],
+				'fileSize' => [
+					'rule' => ['fileSize', '<=', '1MB'],
+					'message' => 'Image filw size must be less than 1MB.',
+				],
+			]);
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->isUnique(['name']), ['errorField' => 'name']);
-        $rules->add($rules->isUnique(['address']), ['errorField' => 'address']);
-        $rules->add($rules->isUnique(['phone_number']), ['errorField' => 'phone_number']);
+		return $validator;
+	}
 
-        return $rules;
-    }
+	/**
+	 * Returns a rules checker object that will be used for validating
+	 * application integrity.
+	 *
+	 * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+	 * @return \Cake\ORM\RulesChecker
+	 */
+	public function buildRules(RulesChecker $rules): RulesChecker
+	{
+		$rules->add($rules->isUnique(['name']), ['errorField' => 'name']);
+		$rules->add($rules->isUnique(['address']), ['errorField' => 'address']);
+		$rules->add($rules->isUnique(['phone_number']), ['errorField' => 'phone_number']);
+
+		return $rules;
+	}
 }

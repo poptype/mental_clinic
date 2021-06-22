@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Clinic $clinic
  */
+
+$image = $clinic->image; //clinic image path add into string
 ?>
 <div class="row">
     <aside class="column">
@@ -17,7 +19,7 @@
     <div class="column-responsive column-80">
         <div class="clinics view content">
             <h3><?= h($clinic->name) ?></h3>
-	    <?= $this->Html->image($clinic->image, ['alt' => 'textalternatif']) ?>
+	    <?= $this->Html->image("upload/${image}", ['alt' => 'clinic image']) ?>
             <table>
                 <tr>
                     <th><?= __('Name') ?></th>
