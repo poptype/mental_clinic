@@ -32,6 +32,11 @@ $query = $disease_categories->find('list')->toArray();
     <article>
         <?php foreach ($reviews as $review) : ?>
             <div class="review-container">
+                <?php if (is_null($review->clinic->image)) {
+                    echo $this->Html->image("upload/no-image.jpg", ['alt' => 'clinic image', 'class' => 'thumbnail']);
+                } else {
+                    echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'thumbnail']);
+                } ?>
                 <h3 class="clinic-name">
                     <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
                 </h3>
