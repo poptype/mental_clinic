@@ -37,6 +37,7 @@ class User extends Entity
       '*' => true,
         'id' => false,
         'username' => true,
+	'avatar' => true,
         'password' => true,
         'gender' => true,
         'age' => true,

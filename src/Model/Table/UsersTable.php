@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -32,89 +33,102 @@ use Cake\Validation\Validator;
  */
 class UsersTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config): void
-    {
-        parent::initialize($config);
+	/**
+	 * Initialize method
+	 *
+	 * @param array $config The configuration for the Table.
+	 * @return void
+	 */
+	public function initialize(array $config): void
+	{
+		parent::initialize($config);
 
-        $this->setTable('users');
-        $this->setDisplayField('username');
-        $this->setPrimaryKey('id');
+		$this->setTable('users');
+		$this->setDisplayField('username');
+		$this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
+		$this->addBehavior('Timestamp');
 
-        $this->belongsTo('DiseaseCategories', [
-            'foreignKey' => 'disease_categorie_id',
-            'joinType' => 'INNER',
-        ]);
-        $this->hasMany('Reviews', [
-            'foreignKey' => 'user_id',
-        ]);
-    }
+		$this->belongsTo('DiseaseCategories', [
+			'foreignKey' => 'disease_categorie_id',
+			'joinType' => 'INNER',
+		]);
+		$this->hasMany('Reviews', [
+			'foreignKey' => 'user_id',
+		]);
+	}
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->integer('id')
-            ->allowEmptyString('id', null, 'create');
+	/**
+	 * Default validation rules.
+	 *
+	 * @param \Cake\Validation\Validator $validator Validator instance.
+	 * @return \Cake\Validation\Validator
+	 */
+	public function validationDefault(Validator $validator): Validator
+	{
+		$validator
+			->integer('id')
+			->allowEmptyString('id', null, 'create');
 
-        $validator
-            ->scalar('username')
-            ->maxLength('username', 255)
-            ->requirePresence('username', 'create')
-            ->notEmptyString('username');
+		$validator
+			->scalar('username')
+			->maxLength('username', 255)
+			->requirePresence('username', 'create')
+			->notEmptyString('username');
 
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password')
-            ->add('password', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+		$validator
+			->allowEmptyFile('avatar')
+			->add('image', [
+				'mimeType' => [
+					'rule' => ['mineType', ['image/jpg', 'image/png', 'image/jpeg']],
+					'message' => 'Please upload only jpg and png.',
+				],
+				'fileSize' => [
+					'rule' => ['fileSize', '<=', '1MB'],
+					'message' => 'Image filw size must be less than 1MB.',
+				],
+			]);
 
-        $validator
-            ->scalar('gender')
-            ->requirePresence('gender', 'create')
-            ->notEmptyString('gender');
+		$validator
+			->scalar('password')
+			->maxLength('password', 255)
+			->requirePresence('password', 'create')
+			->notEmptyString('password')
+			->add('password', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-        $validator
-            ->integer('age')
-            ->requirePresence('age', 'create')
-            ->notEmptyString('age');
+		$validator
+			->scalar('gender')
+			->requirePresence('gender', 'create')
+			->notEmptyString('gender');
 
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+		$validator
+			->integer('age')
+			->requirePresence('age', 'create')
+			->notEmptyString('age');
 
-        return $validator;
-    }
+		$validator
+			->email('email')
+			->requirePresence('email', 'create')
+			->notEmptyString('email')
+			->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
-        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
-        $rules->add($rules->isUnique(['password']), ['errorField' => 'password']);
-        $rules->add($rules->existsIn(['disease_categorie_id'], 'DiseaseCategories'), ['errorField' => 'disease_categorie_id']);
+		return $validator;
+	}
 
-        return $rules;
-    }
+	/**
+	 * Returns a rules checker object that will be used for validating
+	 * application integrity.
+	 *
+	 * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+	 * @return \Cake\ORM\RulesChecker
+	 */
+	public function buildRules(RulesChecker $rules): RulesChecker
+	{
+		$rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
+		$rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+		$rules->add($rules->isUnique(['password']), ['errorField' => 'password']);
+		$rules->add($rules->existsIn(['disease_categorie_id'], 'DiseaseCategories'), ['errorField' => 'disease_categorie_id']);
+
+		return $rules;
+	}
 }

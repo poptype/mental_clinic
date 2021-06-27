@@ -33,6 +33,7 @@ class Review extends Entity
     protected $_accessible = [
         'text' => true,
         'voting' => true,
+	'rating' => true,
         'created' => true,
         'modified' => true,
         'user_id' => true,

@@ -111,6 +111,10 @@ class ClinicsTable extends Table
 				],
 			]);
 
+		$validator
+			->decimal('rating')
+			->allowEmptyString('rating');
+
 		return $validator;
 	}
 

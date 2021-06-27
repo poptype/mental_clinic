@@ -29,6 +29,7 @@ $this->assign('css', '<link rel="stylesheet" href="https://ajax.googleapis.com/a
                 <?php
                     echo $this->Form->control('text', ['label' => '感想']);
                     echo $this->Form->control('voting', ['label' => '投稿']);
+                    echo $this->Form->control('rating', ['label' => '評点']);
                     echo $this->Form->hidden("user_id", ['value' => $user_id ]);
                     echo $this->Form->control('病院名', ['id' => 'autocomplete', 'name' => 'clinic_id']);
                 ?>
@@ -53,16 +54,3 @@ void function autocomplete(undefined) {
 
 }(undefined);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-

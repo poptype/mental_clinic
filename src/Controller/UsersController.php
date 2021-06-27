@@ -55,6 +55,17 @@ class UsersController extends AppController
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+	    //-- Image upload process --//
+            if (!$user->getErrors) {
+                $image = $this->request->getData('image_file');
+		debug($image);
+                $name = $image->getClientFilename();
+                $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
+                if ($name) $image->moveTo($targetPath);
+                print($name);
+                $user->avatar = $name;
+            }
+            //-- END Image upload process-- //
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
@@ -80,6 +91,17 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+	    //-- Image upload process --//
+            if (!$user->getErrors) {
+                $image = $this->request->getData('image_file');
+		debug($image);
+                $name = $image->getClientFilename();
+                $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
+                if ($name) $image->moveTo($targetPath);
+                print($name);
+                $user->avatar = $name;
+            }
+            //-- END Image upload process-- //
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

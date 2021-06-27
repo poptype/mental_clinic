@@ -40,6 +40,9 @@ $query = $disease_categories->find('list')->toArray();
                 <h3 class="clinic-name">
                     <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
                 </h3>
+                <div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product is 2.3 out of 5.">
+                   <?= $review->rating ?>
+                </div>
                 <span class="disease_name">
                     <?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示
                     ?>

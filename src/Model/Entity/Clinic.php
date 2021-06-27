@@ -41,5 +41,6 @@ class Clinic extends Entity
         'phone_number' => true,
 	'image' => true,
         'reviews' => true,
+	'rating' => true
     ];
 }

@@ -1,3 +1,10 @@
+/* --variable-- */
+:root {
+    --star-size: 3rem;
+    --star-color: #fff;
+    --star-background: #fc0;
+}
+
 /* --- @override --- */
 .container {
     margin: 0 auto;
@@ -108,8 +115,22 @@ article>div {
     box-shadow: unset;
 }
 
+.Stars {
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    /* make sure ★ appears correctly*/
+    line-height: 1;
+}
+
+.Stars::before {
+    content: '★★★★★';
+    background: linear-gradient(90deg, var(--star-background) calc(var(--rating) / 5 * 100%), var(--star-color) calc(var(--rating) / 5 * 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .disease_name {
-    grid-column: span 2;
     margin-left: 2rem;
 }
 

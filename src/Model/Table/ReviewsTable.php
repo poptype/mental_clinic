@@ -79,6 +79,10 @@ class ReviewsTable extends Table
             ->integer('voting')
             ->allowEmptyString('voting');
 
+	$validator
+            ->decimal('rating')
+            ->allowEmptyString('rating');
+
         return $validator;
     }
 
