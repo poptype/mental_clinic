@@ -48,14 +48,11 @@ class ReviewsController extends AppController
 	 *
 	 * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
 	 */
-	public function add()
+	public function add($clinic_id = null)
 	{
 		$user_id = $this->Authentication->getResult()->getData()->id;
 		$review = $this->Reviews->newEmptyEntity();
 		$this->loadModel('Clinics');
-		$clinic = $this->Clinics->get($review->clinic_id, [
-			'contain' => [],
-		]);
 		if ($this->request->is('post')) {
 			//-- postされた病院名とidを照合してDataBaseにinsertする配列を文字列からidに入れ替える --//
 			$post_record = $this->request->getData(); //postRecordの配列取得
@@ -64,6 +61,10 @@ class ReviewsController extends AppController
 			$review = $this->Reviews->patchEntity($review, $post_record); //patchEntity
 			if ($this->Reviews->save($review)) {
 				// --update to average of clinic rating-- //
+				# debug(array_keys($clinic));
+				$clinic = $this->Clinics->get(array_keys($clinic), [#連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+					'contain' => [],
+				]);
 				$rating = $this->request->getData('rating');
 				$datas = array($clinic->rating, $rating);
 				$sum = array_sum($datas);

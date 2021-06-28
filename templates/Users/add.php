@@ -14,7 +14,7 @@
 	</aside>
 	<div class="column-responsive column-80">
 		<div class="users form content">
-			<?= $this->Form->create($user) ?>
+			<?= $this->Form->create($user, ['type'=>'file']) ?>
 			<fieldset>
 				<legend><?= __('新規アカウント作成') ?></legend>
 				<?php

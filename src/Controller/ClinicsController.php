@@ -106,7 +106,6 @@ class ClinicsController extends AppController
             $name = $image->getClientFilename();
             $targetPath = WWW_ROOT. 'img/upload' .DS.$name;
             if($name) $image->moveTo($targetPath);
-            print($name);
             $clinic->image = $name;
         }
             //-- END Image upload process-- //

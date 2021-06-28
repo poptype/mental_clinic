@@ -78,7 +78,7 @@ class UsersTable extends Table
 
 		$validator
 			->allowEmptyFile('avatar')
-			->add('image', [
+			->add('avatar', [
 				'mimeType' => [
 					'rule' => ['mineType', ['image/jpg', 'image/png', 'image/jpeg']],
 					'message' => 'Please upload only jpg and png.',

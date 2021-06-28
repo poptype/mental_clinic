@@ -58,11 +58,9 @@ class UsersController extends AppController
 	    //-- Image upload process --//
             if (!$user->getErrors) {
                 $image = $this->request->getData('image_file');
-		debug($image);
                 $name = $image->getClientFilename();
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
                 if ($name) $image->moveTo($targetPath);
-                print($name);
                 $user->avatar = $name;
             }
             //-- END Image upload process-- //
@@ -94,11 +92,9 @@ class UsersController extends AppController
 	    //-- Image upload process --//
             if (!$user->getErrors) {
                 $image = $this->request->getData('image_file');
-		debug($image);
                 $name = $image->getClientFilename();
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
                 if ($name) $image->moveTo($targetPath);
-                print($name);
                 $user->avatar = $name;
             }
             //-- END Image upload process-- //

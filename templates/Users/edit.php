@@ -20,7 +20,7 @@ $session_name = $this->getRequest()->getSession()->read('Auth.username');
 	</aside>
 	<div class="column-responsive column-80">
 		<div class="users form content">
-			<?= $this->Form->create($user) ?>
+			<?= $this->Form->create($user, ['type'=>'file']) ?>
 			<fieldset>
 				<legend><?= __('ユーザー情報の編集') ?></legend>
 				<?php
