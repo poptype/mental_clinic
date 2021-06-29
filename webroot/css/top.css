@@ -82,7 +82,7 @@ article>div {
 }
 
 .thumbnail {
-    max-height: 10rem;
+    max-width: 13rem;
     grid-row: span 2;
 }
 

@@ -6,56 +6,73 @@
  */
 // review.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'review']));
+$this->Breadcrumbs->add([
+	['title' => 'Home', 'url' => '/'],
+	['title' => $review->user->username . "さんの口コミ", 'url' => null]
+]);
+/**
+ * voting incriment method
+ *
+ * @param Object|reviewsObject $review reviewのインスタンス
+ * @return int: incrimentした変数$num 投票ボタンを押すとインクリメントしてpostするため（変数に入れ直さないと動かなかった）
+ */
+function voting_incr($review)
+{
+	$num = $review->voting + 1;
+	return $num;
+}
 ?>
-<div class="row">
-	<aside class="column">
-		<div class="side-nav">
-			<h4 class="heading"><?= __('Actions') ?></h4>
-			<?= $this->Html->link(__('Edit Review'), ['action' => 'edit', $review->id, $review->user_id], ['class' => 'side-nav-item']) ?>
-			<?= $this->Form->postLink(__('Delete Review'), ['action' => 'delete', $review->id], ['confirm' => __('Are you sure you want to delete # {0}?', $review->id), 'class' => 'side-nav-item']) ?>
-			<?= $this->Html->link(__('List Reviews'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-			<?= $this->Html->link(__('New Review'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<?= $this->Breadcrumbs->render(
+	['class' => 'breadcrumbs'],
+	['separator' => '>']
+) ?>
+<div class="column-responsive column-80">
+	<div class="grid content">
+		<?php
+		$avatar = $review->user->avatar;
+		echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+		?>
+		<h2 class="title">
+			<?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
+			の
+			<?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
+			さんの口コミ、感想、レビュー
+		</h2>
+		<span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
+		<p>
+			<?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
+			の評価
+		</p>
+		<div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product.">
+			<?= $review->rating ?>
 		</div>
-	</aside>
-	<div class="column-responsive column-80">
-		<div class="reviews view content">
-			<h3><?= h($review->id) ?></h3>
-			<?php
-			$avatar = $review->user->avatar;
-			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+		<?php if (is_null($review->clinic->image)) {
+			echo $this->Html->image("upload/no-image.jpg", ['alt' => 'clinic image', 'class' => 'thumbnail']);
+		} else {
+			$image = $review->clinic->image;
+			echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'thumbnail']);
+		} ?>
+		<div class="text">
+			<blockquote>
+				<?= $this->Text->autoParagraph(h($review->text)); ?>
+			</blockquote>
+		</div>
+		<div class="voting">
+			<p><?php if ($this->Number->format($review->voting) != 0) : ?>
+					<span class="voting_num"><?= $this->Number->format($review->voting) ?></span>
+				<?php endif ?> いいね！
+			</p>
+			<?php #votingの変数個を☆icon表示
+			$num = 0;
+			while ($num < $this->Number->format($review->voting)) : ?>
+				<?php if ($num > 10) {
+					echo '……';
+					break;
+				} ?>
+				<i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
+			<?php $num++;
+			endwhile;
 			?>
-			<table>
-				<tr>
-					<th><?= __('User') ?></th>
-					<td><?= $review->has('user') ? $this->Html->link($review->user->id, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?></td>
-				</tr>
-				<tr>
-					<th><?= __('Clinic') ?></th>
-					<td><?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?></td>
-				</tr>
-				<tr>
-					<th><?= __('Id') ?></th>
-					<td><?= $this->Number->format($review->id) ?></td>
-				</tr>
-				<tr>
-					<th><?= __('Voting') ?></th>
-					<td><?= $this->Number->format($review->voting) ?></td>
-				</tr>
-				<tr>
-					<th><?= __('Created') ?></th>
-					<td><?= h($review->created) ?></td>
-				</tr>
-				<tr>
-					<th><?= __('Modified') ?></th>
-					<td><?= h($review->modified) ?></td>
-				</tr>
-			</table>
-			<div class="text">
-				<strong><?= __('Text') ?></strong>
-				<blockquote>
-					<?= $this->Text->autoParagraph(h($review->text)); ?>
-				</blockquote>
-			</div>
 		</div>
 	</div>
 </div>

@@ -13,8 +13,8 @@ function voting_incr($review)
 }
 // top.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'top']));
-//disease_categoriesテーブルから連想配列で取得
-$query = $disease_categories->find('list')->toArray();
+// getting object
+$query = $disease_categories->find('list')->toArray();//disease_categoriesテーブルから連想配列で取得
 ?>
 <!-- Hero and Guidline  -->
 <section class="hero-wrapper">
@@ -35,12 +35,13 @@ $query = $disease_categories->find('list')->toArray();
                 <?php if (is_null($review->clinic->image)) {
                     echo $this->Html->image("upload/no-image.jpg", ['alt' => 'clinic image', 'class' => 'thumbnail']);
                 } else {
+                    $image = $review->clinic->image;
                     echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'thumbnail']);
                 } ?>
                 <h3 class="clinic-name">
                     <?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
                 </h3>
-                <div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product is 2.3 out of 5.">
+                <div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product.">
                    <?= $review->rating ?>
                 </div>
                 <span class="disease_name">

@@ -1,4 +1,6 @@
-/*============variable================= */
+/* ==================common css part===================== */
+
+/*----------variable----------- */
 :root {
 
         /* --font config for "Noto Sans JP"--*/
@@ -10,6 +12,29 @@
         --Black: 900;
 }
 
+/* ----breadcrumbs---- */
+.breadcrumbs {
+        display: flex;
+        flex-wrap: wrap;
+        padding: .75rem 1rem calc(.75rem/2);
+        margin: 1rem 0 5rem;
+        list-style: none;
+        background-color: #AA8BD6;
+        border-radius: .25rem;
+        box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+        color: #FFF;
+        font-weight: var(--Light);
+}
+
+.breadcrumbs>li {
+        margin-right: 1rem;
+}
+
+.breadcrumbs>li>a {
+        color: #FFF;
+}
+
+/* ================================================== */
 
 /* ------------Miligram overrides-------------- */
 body {
