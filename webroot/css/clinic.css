@@ -1,0 +1,111 @@
+/* --variable-- */
+:root {
+        --star-size: 3rem;
+        --star-color: #e9e9e9;
+        --star-background: #fc0;
+}
+
+.grid {
+        display: grid;
+        grid-template-columns: auto;
+        gap: 1rem;
+}
+
+.reviews {
+        position: relative;
+}
+
+.reviews>span {
+        margin-left: 2rem;
+}
+
+.reviews_icon {
+        color: blueviolet;
+        position: absolute;
+        margin-left: .2rem;
+        margin-top: .8rem;
+        width: 1.5rem;
+        height: 1rem;
+        border: solid .1rem currentColor;
+        background-color: currentColor;
+        border-radius: .2rem;
+}
+
+.reviews_icon::before {
+        content: '';
+        position: absolute;
+        left: .3rem;
+        top: .8rem;
+        width: .4rem;
+        height: .4rem;
+        background-color: currentColor;
+        border-bottom: solid .1rem currentColor;
+        border-right: solid .1rem currentColor;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+}
+
+b {
+        /*@override*/
+        font-size: 1.8rem;
+        color: blueviolet;
+        font-weight: var(--Black);
+}
+
+.Stars {
+        display: inline-block;
+        font-size: var(--star-size);
+        font-family: Times;
+        /* make sure ★ appears correctly*/
+        line-height: 1;
+        align-self: center;
+}
+
+.Stars::before {
+        content: '★★★★★';
+        background: linear-gradient(90deg, var(--star-background) calc(var(--rating) / 5 * 100%), var(--star-color) calc(var(--rating) / 5 * 100%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+.station {
+        margin: -1rem 0 -1.5rem;
+}
+
+.station>img:nth-child(1) {
+        max-height: 60%;
+        transform: translateY(.7rem);
+}
+
+.label {
+        border-radius: 1rem;
+        background-color: #9b59b6;
+        padding: .3rem;
+        color: #FFF;
+}
+
+.address {
+        margin: -1rem 0 -1.5rem;
+}
+
+.address>img:nth-child(1) {
+        max-height: 60%;
+        transform: translateY(.7rem);
+}
+
+.phone_number {
+        margin: -1rem 0 1rem;
+}
+
+.phone_number>img:nth-child(1) {
+        height: 110%;
+        transform: translateY(.7rem);
+}
+
+.article_grid {
+        border-style: solid;
+        border-width: .2rem;
+        border-color: #9b59b6;
+        border-radius: 1rem;
+        padding: 1rem;
+}

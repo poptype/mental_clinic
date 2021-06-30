@@ -32,11 +32,13 @@ class ClinicsController extends AppController
      */
     public function view($id = null)
     {
+	$this->loadModel('Users');
         $clinic = $this->Clinics->get($id, [
             'contain' => ['Reviews'],
         ]);
 
         $this->set(compact('clinic'));
+	$this->set('users', $this->Users->find('all'));
     }
 
     /**
