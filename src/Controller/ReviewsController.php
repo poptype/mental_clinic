@@ -87,6 +87,34 @@ class ReviewsController extends AppController
 		$this->set(compact('review', 'user_id', 'suggestWordJson'));
 	}
 
+	public function addFromClinic($clinic_id = null){
+		$user_id = $this->Authentication->getResult()->getData()->id;
+		$review = $this->Reviews->newEmptyEntity();
+		$this->loadModel('Clinics');
+		if ($this->request->is('post')) {
+			$review = $this->Reviews->patchEntity($review, $this->request->getData()); //patchEntity
+			if ($this->Reviews->save($review)) {
+				// --update to average of clinic rating-- //
+				# debug(array_keys($clinic));
+				$clinic = $this->Clinics->get(($clinic_id), [#連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+					'contain' => [],
+				]);
+				$rating = $this->request->getData('rating');
+				$datas = array($clinic->rating, $rating);
+				$sum = array_sum($datas);
+				$average_rating = $sum / count($datas);
+				$clinic->rating = $rating;
+				$this->Clinics->save($clinic);
+				// --END clinic update-- //
+				$this->Flash->success(__('The review has been saved.'));
+
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The review could not be saved. Please, try again.'));
+		}
+
+		$this->set(compact('review', 'user_id', 'clinic_id'));
+	}
 	/**
 	 * Edit method
 	 *

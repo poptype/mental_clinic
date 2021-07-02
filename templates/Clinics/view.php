@@ -13,6 +13,9 @@ $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => $clinic->name, 'url' => null]
 ]);
+$this->start("script");
+echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxX8T-0SmlrtYVg1FO3Laj612Ev9RiRaM&callback=initMapWithAddress" async defer></script>';
+$this->end();
 ?>
 <?= $this->Breadcrumbs->render(
 	['class' => 'breadcrumbs'],
@@ -21,9 +24,21 @@ $this->Breadcrumbs->add([
 ?>
 
 <div class="column-responsive column-80">
-	<div class="grid content">
+	<div class="flex content">
 		<h3><?= h($clinic->name) ?></h3>
-		<p class="reviews"><i class="reviews_icon"></i><span>口コミ<b><?= count($clinic->reviews) ?></b>件</span></p>
+		<div class="post_wrapper">
+			<p class="reviews"><i class="reviews_icon"></i><span>口コミ<b><?= count($clinic->reviews) ?></b>件</span></p>
+			<div class="giza">
+				<span class="giza_a"><?= $this->Html->link(
+					__('口コミ投稿'),
+					[
+						'controller' => 'Reviews',
+						'action' => 'addFromClinic', $clinic->id
+					],
+					['class' => 'post']
+				) ?>
+			</span></div>
+		</div>
 		<div class="Stars" style="--rating: <?= $clinic->rating ?>;" aria-label="Rating of this product.">
 			<?= $clinic->rating ?>
 		</div>
@@ -49,17 +64,19 @@ $this->Breadcrumbs->add([
 				<?= h($clinic->phone_number) ?>
 			<?php endif; ?>
 		</p>
+		<div id="my_map" style="width: 600px; height: 600px"></div>
 		<div class="related">
 			<h4><?= h($clinic->name) ?>の<?= __('口コミ') ?></h4>
 			<?php if (!empty($clinic->reviews)) : ?>
 				<div class="table-responsive">
-					<article class="article_grid">
-						<?php foreach ($clinic->reviews as $reviews) : ?>
-
+					<?php foreach ($clinic->reviews as $reviews) : ?>
+						<article class="article_grid">
 							<p class="username">
-								<?= $this->Html->link($query[$reviews->user_id],
-								['controller' => 'Users', 'action' => 'view', $reviews->user_id],
-								['class' => 'label']) ?>さんの口コミ
+								<?= $this->Html->link(
+									$query[$reviews->user_id],
+									['controller' => 'Users', 'action' => 'view', $reviews->user_id],
+									['class' => 'label']
+								) ?>さんの口コミ
 								<?= h($reviews->created->format('Y年m月d日 H時i分s秒')) ?>
 							</p>
 							<?php $content = $reviews->text; ?>
@@ -68,10 +85,44 @@ $this->Breadcrumbs->add([
 								['controller' => 'Reviews', 'action' => 'view', $reviews->id]
 							) ?>
 
-					</article>
-				<?php endforeach; ?>
+						</article>
+					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
 		</div>
 	</div>
 </div>
+
+<script>
+	var _my_address = "<?= $clinic->address ?>";
+
+	function initMapWithAddress() {
+		var opts = {
+			zoom: 15,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+		};
+		var my_google_map = new google.maps.Map(document.getElementById('my_map'), opts);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+				'address': _my_address,
+				'region': 'jp'
+			},
+			function(result, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					var latlng = result[0].geometry.location;
+					my_google_map.setCenter(latlng);
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: my_google_map,
+						title: latlng.toString(),
+						draggable: true
+					});
+					google.maps.event.addListener(marker, 'dragend', function(event) {
+						marker.setTitle(event.latLng.toString());
+					});
+
+				}
+			}
+		);
+	}
+</script>

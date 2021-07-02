@@ -3,11 +3,12 @@
         --star-size: 3rem;
         --star-color: #e9e9e9;
         --star-background: #fc0;
+        --main-paple: #9b59b6;
 }
 
-.grid {
-        display: grid;
-        grid-template-columns: auto;
+.flex {
+        display: flex;
+        flex-flow: column;
         gap: 1rem;
 }
 
@@ -58,7 +59,6 @@ b {
         font-family: Times;
         /* make sure ★ appears correctly*/
         line-height: 1;
-        align-self: center;
 }
 
 .Stars::before {
@@ -68,9 +68,7 @@ b {
         -webkit-text-fill-color: transparent;
 }
 
-.station {
-        margin: -1rem 0 -1.5rem;
-}
+.station {}
 
 .station>img:nth-child(1) {
         max-height: 60%;
@@ -79,14 +77,12 @@ b {
 
 .label {
         border-radius: 1rem;
-        background-color: #9b59b6;
+        background-color: var(--main-paple);
         padding: .3rem;
         color: #FFF;
 }
 
-.address {
-        margin: -1rem 0 -1.5rem;
-}
+.address {}
 
 .address>img:nth-child(1) {
         max-height: 60%;
@@ -94,7 +90,7 @@ b {
 }
 
 .phone_number {
-        margin: -1rem 0 1rem;
+        margin-bottom: 2rem;
 }
 
 .phone_number>img:nth-child(1) {
@@ -105,7 +101,46 @@ b {
 .article_grid {
         border-style: solid;
         border-width: .2rem;
-        border-color: #9b59b6;
+        border-color: var(--main-paple);
         border-radius: 1rem;
         padding: 1rem;
+        margin-bottom: 1rem;
+}
+
+/* ギザギザ吹き出し */
+.giza .giza_a,
+.giza .giza_a:after,
+.giza .giza_a:before,
+.giza .giza_a .post {
+        content: "";
+        width: 10rem;
+        height: 10rem;
+        background: var(--main-paple);
+        position: absolute;
+        top: 0px;
+}
+
+.giza,
+.giza .giza_a,
+.giza .giza_a:after,
+.giza .giza_a:before {
+        -webkit-transform: rotate(22.5deg);
+        -moz-transform: rotate(22.5deg);
+}
+
+.giza .giza_a .post {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        text-align: center;
+        z-index: 999;
+        line-height: 10rem;
+        color: #fff;
+}
+
+.giza {
+        position: relative;
+        width: 10rem;
+        height: 10rem;
+        background: var(--main-paple);
+        margin: 3rem 1rem;
 }
