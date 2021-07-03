@@ -64,7 +64,7 @@ $this->end();
 				<?= h($clinic->phone_number) ?>
 			<?php endif; ?>
 		</p>
-		<div id="my_map" style="width: 600px; height: 600px"></div>
+		<div id="my_map" style="width: 100%; height: 60rem;"></div>
 		<div class="related">
 			<h4><?= h($clinic->name) ?>の<?= __('口コミ') ?></h4>
 			<?php if (!empty($clinic->reviews)) : ?>

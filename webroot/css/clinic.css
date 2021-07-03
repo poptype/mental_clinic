@@ -1,11 +1,3 @@
-/* --variable-- */
-:root {
-        --star-size: 3rem;
-        --star-color: #e9e9e9;
-        --star-background: #fc0;
-        --main-paple: #9b59b6;
-}
-
 .flex {
         display: flex;
         flex-flow: column;
@@ -75,13 +67,6 @@ b {
         transform: translateY(.7rem);
 }
 
-.label {
-        border-radius: 1rem;
-        background-color: var(--main-paple);
-        padding: .3rem;
-        color: #FFF;
-}
-
 .address {}
 
 .address>img:nth-child(1) {
@@ -99,12 +84,11 @@ b {
 }
 
 .article_grid {
-        border-style: solid;
-        border-width: .2rem;
-        border-color: var(--main-paple);
+        border: .1rem solid var(--main-paple);
         border-radius: 1rem;
         padding: 1rem;
         margin-bottom: 1rem;
+        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
 }
 
 /* ギザギザ吹き出し */

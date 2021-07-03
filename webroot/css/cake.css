@@ -10,6 +10,12 @@
         --Medium: 500;
         --Bold: 700;
         --Black: 900;
+        /* font color config */
+        --main-paple: #9b59b6;
+        /* rating star config */
+        --star-size: 3rem;
+        --star-color: #e9e9e9;
+        --star-background: #fc0;
 }
 
 /* ----breadcrumbs---- */
@@ -33,7 +39,71 @@
 .breadcrumbs>li>a {
         color: #FFF;
 }
+/* ------------------- */
 
+.avatar {
+        border-radius: 50%;
+        max-width: 10rem;
+        grid-row: span 2;
+}
+
+.label {
+        border-radius: 1rem;
+        background-color: var(--main-paple);
+        padding: .3rem .5rem;
+        color: #FFF;
+}
+
+/* --tooltip-- */
+.tooltip {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+}
+
+.tooltip p {
+        margin: 0;
+        padding: 0;
+}
+
+.tooltip_txt {
+        display: none;
+        position: absolute;
+        padding: 5%;
+        font-size: 12px;
+        line-height: 1.6em;
+        color: #fff;
+        border-radius: 5px;
+        background: #000000a6;
+}
+
+.tooltip_txt:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        border: 15px solid transparent;
+        border-top: 15px solid #000000a6;
+        margin-left: -15px;
+}
+
+.tooltip:hover .tooltip_txt {
+        display: inline-block;
+        top: -70px;
+        left: -30px;
+}
+/* ----------- */
+
+.link_button {
+        padding: .3rem;
+        margin: 0 1rem;
+        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
+        background-color: rgba(115, 55, 196, 0.1);
+        border-radius: 0.7rem;
+        border: 0.1rem solid rgba(115, 55, 196, 0.1);
+        display: inline-block;
+        color: #6200EE;
+}
 /* ================================================== */
 
 /* ------------Miligram overrides-------------- */

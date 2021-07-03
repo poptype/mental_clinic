@@ -1,0 +1,81 @@
+.grid {
+        display: grid;
+        grid-template-columns: max(10rem) auto auto;
+        gap: 1rem;
+}
+
+.avatar {
+        /*@overlide*/
+        grid-row: span 4;
+}
+
+.username {
+        grid-column: span 2;
+}
+
+.user_config {
+        display: flex;
+        grid-column: span 2;
+        margin-left: -1rem;
+}
+
+.head_wrapper {
+        grid-column: 1/4;
+        justify-self: center;
+        position: relative;
+        z-index: 100;
+}
+
+.review_head {
+        position: relative;
+        color: #FFF;
+}
+
+.review_head::before {
+        content: '';
+        width: 20rem;
+        position: absolute;
+        height: 3rem;
+        transform: translateX(-23%);
+        background: linear-gradient(90deg, rgba(155, 89, 176, 0) 0%, rgba(155, 89, 176, 1) 50%, rgba(155, 89, 176, 0) 100%);
+        z-index: -1;
+}
+
+/* ----reviews container---- */
+.reviews-gridcontainer {
+        grid-column: span 3;
+        display: grid;
+        grid-auto-rows: 24rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, 25rem);
+        justify-content: center;
+}
+
+.artcle_area {
+        border: 1px solid #9b59b62b;
+        border-radius: 1rem;
+        box-shadow: 0 .7rem 1.4rem 0 rgba(60, 66, 87, 0.1), 0 .3rem .6rem 0 rgba(0, 0, 0, 0.07);
+}
+
+.clinic_name {
+        font-size: 2rem;
+        margin: 1.2rem;
+        height: 5rem;
+}
+
+.tooltip>a {
+        margin: 0;
+        padding: 0;
+}
+
+.text {
+        margin: 1.2rem;
+}
+
+.text>a {
+        font-weight: var(--Light);
+}
+
+.review_created {
+        margin: 1.2rem;
+}
