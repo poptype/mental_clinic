@@ -12,6 +12,7 @@
         --Black: 900;
         /* font color config */
         --main-paple: #9b59b6;
+        --button-color: rgba(115, 55, 196, 0.1);
         /* rating star config */
         --star-size: 3rem;
         --star-color: #e9e9e9;
@@ -39,6 +40,7 @@
 .breadcrumbs>li>a {
         color: #FFF;
 }
+
 /* ------------------- */
 
 .avatar {
@@ -92,7 +94,73 @@
         top: -70px;
         left: -30px;
 }
-/* ----------- */
+
+/* --------drop_list-------- */
+/* 表示文字の装飾 */
+.list_wrapper {
+        color: #555;
+        display: inline-block;
+        /* インライン要素化 */
+        border-bottom: dashed 1px #555;
+        /* 下線を引く */
+}
+
+/* ツールチップ部分を隠す */
+.list_wrapper span {
+        display: none;
+}
+
+/* マウスオーバー */
+.list_wrapper:hover {
+        position: relative;
+        color: #333;
+        transition: all 0.2s ease-out;
+}
+
+/* マウスオーバー時にツールチップを表示 */
+.list_wrapper:hover span {
+        display: block;
+        /* ボックス要素にする */
+        position: absolute;
+        /* relativeからの絶対位置 */
+        top: 3rem;
+        left: -4.2rem;
+        font-size: 90%;
+        color: #fff;
+        background-color: rgba(115, 55, 196, 0.38);
+        width: 12rem;
+        padding: .5rem;
+        border-radius: .3rem;
+        z-index: 100;
+        transition: all 0.2s ease-out;
+}
+
+/* フキダシ部分を作成 */
+.list_wrapper span:before {
+        content: '';
+        display: block;
+        position: absolute;
+        /* relativeからの絶対位置 */
+        height: 0;
+        width: 0;
+        top: -1.3rem;
+        left: 5rem;
+        border: 1.3rem transparent solid;
+        border-right-width: 0;
+        border-left-color: rgba(115, 55, 196, 0.38);
+        transform: rotate(270deg);
+        /* 傾きをつける */
+        -webkit-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        z-index: 100;
+}
+
+.list_anchor {
+        color: #e9e9e9;
+        font-weight: var(--Bold);
+}
+
+/* ---------------------- */
 
 .link_button {
         padding: .3rem;
@@ -104,6 +172,20 @@
         display: inline-block;
         color: #6200EE;
 }
+
+/* ---------SVG--------- */
+#path_4 {
+        fill: #e9e9e9;
+}
+
+#_Caption {
+        fill: #e9e9e9;
+}
+
+#_Color {
+        fill: #e9e9e9;
+}
+
 /* ================================================== */
 
 /* ------------Miligram overrides-------------- */
