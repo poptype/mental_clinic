@@ -1,0 +1,59 @@
+.content {
+        margin-bottom: 5rem;
+}
+
+.grid_container {
+        display: grid;
+        grid-auto-rows: 20.5rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, 30rem);
+        justify-content: center;
+}
+
+.heading {
+        margin-bottom: 5rem;
+        font-weight: var(--Medium);
+}
+
+.sort-wrapper {
+        margin-bottom: 5rem;
+}
+
+.user_list {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: 6rem 3rem 3rem 3rem;
+        gap: 1rem;
+        border: 1px solid #9b59b62b;
+        border-radius: 1rem;
+        box-shadow: 0 .7rem 1.4rem 0 rgba(60, 66, 87, 0.1), 0 .3rem .6rem 0 rgba(0, 0, 0, 0.07);
+        padding: 1rem;
+}
+
+.avatar {
+        /*@overlide*/
+        grid-row: span 2;
+}
+
+.created {
+        grid-column: span 2;
+}
+
+.username {
+        grid-column: span 2;
+        font-size: 2rem;
+        font-weight: var(--Medium);
+        overflow: hidden;
+}
+
+.disease {
+        grid-column: span 2;
+}
+
+.label {
+        /*@overlide*/
+        padding: .1rem .1rem;
+        text-align: center;
+        width: 50%;
+        justify-self: end;
+}
