@@ -91,14 +91,11 @@ $this->Breadcrumbs->add([
 		</div>
 
 		<?php if (!empty($user->reviews)) : ?>
-			<div class="reviews-gridcontainer">
+			<div class="flex_container">
 				<?php foreach ($user->reviews as $reviews) : ?>
 					<article class="artcle_area">
-						<h3 class="clinic_name tooltip">
+						<h3 class="clinic_name">
 							<?= $this->Html->link($query[$reviews->clinic_id], ['controller' => 'Clinics', 'action' => 'view', $reviews->clinic_id]) ?>
-							<div class="tooltip_txt">
-								<?= $query[$reviews->clinic_id] ?>
-							</div>
 						</h3>
 						<!-- clinicsの配列からidで取得-->
 						<?php $content = $reviews->text; ?>

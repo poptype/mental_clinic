@@ -11,6 +11,6 @@
 	 ['controller' => 'Users', 'action' => 'index'],
 	 ['class' => 'list_anchor']) ?><br>
 	<?= $this->Html->link(__('病院リスト'),
-	['controller' => 'Clinics', 'action' => 'index'],
+	['controller' => 'Clinics', 'action' => 'list'],
 	 ['class' => 'list_anchor']) ?> </span>
 </div>

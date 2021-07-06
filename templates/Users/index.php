@@ -20,10 +20,12 @@ $this->Breadcrumbs->add([
 <div class="column-responsive column-80">
 	<div class="users index content">
 		<h3 class="heading"><?= __('ユーザーリスト') ?></h3>
+
+		<h4 class='sort'>並び替え</h4>
 		<div class="sort-wrapper">
 			<?= $this->Paginator->sort('username', 'アカウント名') ?>
 			<?= $this->Paginator->sort('gender', '性別') ?>
-			<?= $this->Paginator->sort('age','年齢') ?>
+			<?= $this->Paginator->sort('age', '年齢') ?>
 			<?= $this->Paginator->sort('created', '登録日') ?>
 			<!-- <!?= $this->Paginator->sort('編集日') ?> -->
 			<?= $this->Paginator->sort('disease_categorie_id', '病名') ?>

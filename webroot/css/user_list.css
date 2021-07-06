@@ -15,6 +15,14 @@
         font-weight: var(--Medium);
 }
 
+.heading::after {
+        content: '';
+        border-bottom: .5rem solid var(--main-paple);
+        width: 18%;
+        display: block;
+        transform: translateY(.5rem);
+}
+
 .sort-wrapper {
         margin-bottom: 5rem;
 }

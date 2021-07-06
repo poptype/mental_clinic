@@ -23,6 +23,13 @@ class ClinicsController extends AppController
         $this->set(compact('clinics'));
     }
 
+     public function list()
+    {
+        $clinics = $this->paginate($this->Clinics);
+
+        $this->set(compact('clinics'));
+    }
+
     /**
      * View method
      *

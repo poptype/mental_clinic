@@ -17,6 +17,7 @@
         display: flex;
         grid-column: span 2;
         margin-left: -1rem;
+        margin-bottom: 3rem;
 }
 
 .head_wrapper {
@@ -42,25 +43,26 @@
 }
 
 /* ----reviews container---- */
-.reviews-gridcontainer {
+.flex_container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: center;
         grid-column: span 3;
-        display: grid;
-        grid-auto-rows: 24rem;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fill, 25rem);
-        justify-content: center;
 }
 
 .artcle_area {
         border: 1px solid #9b59b62b;
         border-radius: 1rem;
         box-shadow: 0 .7rem 1.4rem 0 rgba(60, 66, 87, 0.1), 0 .3rem .6rem 0 rgba(0, 0, 0, 0.07);
+        flex: 0 1 250px;
+        margin-bottom: 1rem;
+        padding: 1rem;
 }
 
 .clinic_name {
         font-size: 2rem;
         margin: 1.2rem;
-        height: 5rem;
 }
 
 .tooltip>a {
@@ -78,4 +80,9 @@
 
 .review_created {
         margin: 1.2rem;
+}
+
+.view.content .text {
+        /*@overlide*/
+        margin-top: unset;
 }
