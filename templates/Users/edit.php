@@ -9,18 +9,25 @@
 $session_id = $this->getRequest()->getSession()->read('Auth.id');
 $session_name = $this->getRequest()->getSession()->read('Auth.username');
 
+// post.cssの適用
+$this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'post']));
+$this->Breadcrumbs->add([
+	['title' => 'Home', 'url' => '/'],
+	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
+	['title' => 'ユーザー情報の編集']
+	]);
+
+echo $this->Breadcrumbs->render(
+	['class' => 'breadcrumbs'],
+	['separator' => '>']
+)
 ?>
+
 <div class="row">
-	<aside class="column">
-		<div class="side-nav">
-			<h4 class="heading"><?= __('Actions') ?></h4>
-			<?= $this->Form->postLink(__('アカウントを削除する'), ['action' => 'delete', $session_id], ['confirm' => __('本当に 『' . "$session_name" . '』さんのアカウントを削除しますか？', $session_id), 'class' => 'side-nav-item']) ?>
-			<?= $this->Html->link(__('ユーザーリスト'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-		</div>
-	</aside>
+
 	<div class="column-responsive column-80">
 		<div class="users form content">
-			<?= $this->Form->create($user, ['type'=>'file']) ?>
+			<?= $this->Form->create($user, ['type' => 'file']) ?>
 			<fieldset>
 				<legend><?= __('ユーザー情報の編集') ?></legend>
 				<?php
