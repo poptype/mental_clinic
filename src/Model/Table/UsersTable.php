@@ -99,12 +99,12 @@ class UsersTable extends Table
 		$validator
 			->scalar('gender')
 			->requirePresence('gender', 'create')
-			->notEmptyString('gender');
+			->allowEmptyString('gender');
 
 		$validator
 			->integer('age')
 			->requirePresence('age', 'create')
-			->notEmptyString('age');
+			->allowEmptyString('age');
 
 		$validator
 			->email('email')

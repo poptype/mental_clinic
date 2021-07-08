@@ -76,26 +76,26 @@ class ClinicsTable extends Table
 			->scalar('address')
 			->maxLength('address', 64)
 			->requirePresence('address', 'create')
-			->notEmptyString('address')
+			->allowEmptyString('address')
 			->add('address', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
 		$validator
 			->scalar('station')
 			->maxLength('station', 32)
 			->requirePresence('station', 'create')
-			->notEmptyString('station');
+			->allowEmptyString('station');
 
 		$validator
 			->scalar('time')
 			->maxLength('time', 32)
 			->requirePresence('time', 'create')
-			->notEmptyString('time');
+			->allowEmptyString('time');
 
 		$validator
 			->scalar('phone_number')
 			->maxLength('phone_number', 32)
 			->requirePresence('phone_number', 'create')
-			->notEmptyString('phone_number')
+			->allowEmptyString('phone_number')
 			->add('phone_number', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
 		$validator

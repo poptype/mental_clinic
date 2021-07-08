@@ -11,6 +11,7 @@ $image = $clinic->image;
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'clinic']));
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
+	['title' => '病院リスト', 'url' => ['controller' => 'Clinics', 'action' => 'list']],
 	['title' => $clinic->name, 'url' => null]
 ]);
 $this->start("script");
@@ -42,7 +43,7 @@ $this->end();
 		<div class="Stars" style="--rating: <?= $clinic->rating ?>;" aria-label="Rating of this product.">
 			<?= $clinic->rating ?>
 		</div>
-		<?php if (is_null($clinic->image)) {
+		<?php if (empty($clinic->image)) {
 			echo $this->Html->image("upload/no-image.jpg", ['alt' => 'clinic image', 'class' => 'clinic_img']);
 		} else {
 			echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'clinic_img']);

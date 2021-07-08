@@ -35,17 +35,23 @@ $this->Breadcrumbs->add([
 		<div class="grid_container">
 			<?php foreach ($users as $user) : ?>
 				<div class="user_list">
-					<?php
-					$avatar = $user->avatar;
-					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
-					?>
+					<?php if (empty($user->avatar)) {
+						echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
+					} else {
+						$avatar = $user->avatar;
+						echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+					} ?>
 					<?= $this->Html->link(
 						$user->username . "さん",
 						['action' => 'view', $user->id],
 						['class' => 'username']
 					) ?>
 					<span class="gender"><?= h($user->gender) ?>性</span>
-					<span class="age"><?= $this->Number->format($user->age) ?>歳</span>
+					<?php if (empty($user->age)) : ?>
+						<span class="age">非公開</span>
+					<?php else: ?>
+						<span class="age"><?= $this->Number->format($user->age) ?>歳</span>
+					<?php endif; ?>
 					<span class="label">登録日</span>
 					<span class="created"><?= h($user->created->format('Y年m月d日')) ?></span>
 					<span class="label">病名</span>

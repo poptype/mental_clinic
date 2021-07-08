@@ -13,6 +13,7 @@ $session_id = $this->getRequest()->getSession()->read('Auth.id');
 $session_name = $this->getRequest()->getSession()->read('Auth.username');
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
+	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
 	['title' => $user->username . "さんのプロフィール", 'url' => null]
 ]);
 ?>
@@ -39,10 +40,16 @@ $this->Breadcrumbs->add([
 
 <div class="column-responsive column-80">
 	<div class="grid view content">
-		<?php
+		<?php if (empty($user->avatar)) {
+			echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
+		} else {
+			$avatar = $user->avatar;
+			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+		} ?>
+		<!-- <!?php
 		$avatar = $user->avatar;
 		echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
-		?>
+		?> -->
 		<h3 class="username"><?= h($user->username) ?>さん</h3>
 		<p class="gender"><span class="label"><?= __('性別') ?></span> <?= h($user->gender) ?></p>
 
@@ -54,7 +61,11 @@ $this->Breadcrumbs->add([
 
 		<p class="age">
 			<span class="label"><?= __('年齢') ?></span>
-			<?= $this->Number->format($user->age) ?>
+			<?php if (empty($user->age)) : ?>
+				非公開
+			<?php else : ?>
+				<?= $this->Number->format($user->age) ?>歳
+			<?php endif; ?>
 		</p>
 
 		<p class="created">

@@ -4,6 +4,18 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Clinic $clinic
  */
+// post.cssの適用
+$this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'post']));
+$this->Breadcrumbs->add([
+	['title' => 'Home', 'url' => '/'],
+	['title' => '病院リスト', 'url' => ['controller' => 'Clinics', 'action' => 'list']],
+	['title' => '病院情報の入力']
+	]);
+
+echo $this->Breadcrumbs->render(
+	['class' => 'breadcrumbs'],
+	['separator' => '>']
+);
 ?>
 <div class="row">
 	<aside class="column">

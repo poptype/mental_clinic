@@ -46,7 +46,7 @@ function voting_incr($review)
 		<div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product.">
 			<?= $review->rating ?>
 		</div>
-		<?php if (is_null($review->clinic->image)) {
+		<?php if (empty($review->clinic->image)) {
 			echo $this->Html->image("upload/no-image.jpg", ['alt' => 'clinic image', 'class' => 'thumbnail']);
 		} else {
 			$image = $review->clinic->image;
