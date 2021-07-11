@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Core\Configure;
 /**
  * Users Controller
  *
@@ -62,17 +63,27 @@ class UsersController extends AppController
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
                 if ($name) $image->moveTo($targetPath);
                 $user->avatar = $name;
+
+                $this->session = $this->getRequest()->getSession();
+                $this->session->write('user_add', $user);
+                return $this->redirect(['action' => 'confirm']);
             }
             //-- END Image upload process-- //
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            // if ($this->Users->save($user)) {
+            //     $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
+            //     return $this->redirect(['action' => 'index']);
+            // }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $diseaseCategories = $this->Users->DiseaseCategories->find('list', ['limit' => 200]);
         $this->set(compact('user', 'diseaseCategories'));
+    }
+
+    public function confirm()
+    {
+        $user = $this->request->getSession()->read('user_add');
+        $this->set(compact('user'));
     }
 
     /**
@@ -99,11 +110,11 @@ class UsersController extends AppController
             }
             //-- END Image upload process-- //
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('ユーザー情報が変更されました。'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('入力内容を確認してください。'));
         }
         $diseaseCategories = $this->Users->DiseaseCategories->find('list', ['limit' => 200]);
         $this->set(compact('user', 'diseaseCategories'));
@@ -136,7 +147,7 @@ class UsersController extends AppController
     //
     // 無限リダイレクトループの問題を防ぐことができます
     //
-        $this->Authentication->addUnauthenticatedActions(['login', 'add']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'confirm']);
     }
 
     public function login()

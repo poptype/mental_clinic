@@ -417,5 +417,8 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
-    ],
+		'ini' => [
+			'session.cookie_secure' => false
+		]
+    ]
 ];

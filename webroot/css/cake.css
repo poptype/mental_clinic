@@ -56,6 +56,13 @@
         color: #FFF;
 }
 
+.form_label {
+        background-color: #d33c43;
+        color: #f9f9f9;
+        padding: .2rem 1rem;
+        border-radius: .5rem;
+}
+
 /* --tooltip-- */
 .tooltip {
         position: relative;
@@ -171,6 +178,28 @@
         border: 0.1rem solid rgba(115, 55, 196, 0.1);
         display: inline-block;
         color: #6200EE;
+}
+
+/* ---image input upload--- */
+#image-file {
+        display: none;
+}
+
+.file>label {
+        background-color: #c4ccd3;
+        color: #f9f9f9;
+        padding: .5rem 1rem;
+        width: 5.5rem;
+        font-size: 1.6rem;
+        font-weight: var(--Regular);
+        border-radius: 1rem;
+        position: relative;
+        bottom: 2rem;
+        left: 2rem;
+}
+
+.file>label:hover {
+        cursor: pointer;
 }
 
 /* ---sort--- */

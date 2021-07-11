@@ -74,7 +74,12 @@ class UsersTable extends Table
 			->scalar('username')
 			->maxLength('username', 255)
 			->requirePresence('username', 'create')
-			->notEmptyString('username');
+			->notEmptyString('username', 'アカウント名を入力して下さい')
+			->add('username', 'unique', [
+				'rule' => 'validateUnique',
+				'provider' => 'table',
+				'message' => '名前がすでに登録されています。'
+		]);
 
 		$validator
 			->allowEmptyFile('avatar')
@@ -91,10 +96,24 @@ class UsersTable extends Table
 
 		$validator
 			->scalar('password')
+			->minLength('password', 8, 'パスワードは半角英数字8文字以上で入力してください。')
 			->maxLength('password', 255)
-			->requirePresence('password', 'create')
-			->notEmptyString('password')
-			->add('password', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+			->requirePresence('password')
+			->notEmptyString('password', 'パスワードを入力して下さい。')
+			// ->allowEmptyString('password', 'update')
+			->add('password', 'unique', [
+				'rule' => 'validateUnique',
+				'provider' => 'table',
+			        'message' => '同じパスワードがすでに使われています。'
+			]);
+
+		$validator
+			->scalar('password_confirm')
+			// ->requirePresence('password_confirm','create')
+			->notEmptyString('password_confirm', '確認用パスワードを入力して下さい。')
+			->minLength('password_confirm', 8, '確認用パスワードは半角英数字8文字以上で入力してください。')
+			->sameAs('password', 'password_confirm', '異なるパスワードが入力されています。');
+			// ->allowEmptyString('password_confirm', '確認用パスワードを入力してください。', 'update');
 
 		$validator
 			->scalar('gender')
@@ -109,8 +128,12 @@ class UsersTable extends Table
 		$validator
 			->email('email')
 			->requirePresence('email', 'create')
-			->notEmptyString('email')
-			->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+			->notEmptyString('email', 'メールアドレスを入力して下さい', 'create')
+			->add('email', 'unique', [
+				'rule' => 'validateUnique',
+				'provider' => 'table',
+				'message' => '同じメールアドレスがすでに使われています。'
+			]);
 
 		return $validator;
 	}

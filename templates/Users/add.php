@@ -9,53 +9,77 @@ $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake',
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
-	['title' => 'ユーザー情報の入力']
-	]);
+	['title' => '新規アカウント作成']
+]);
 
 echo $this->Breadcrumbs->render(
 	['class' => 'breadcrumbs'],
 	['separator' => '>']
 );
 ?>
-<div class="row">
-	<aside class="column">
-		<div class="side-nav">
-			<h4 class="heading"><?= __('Actions') ?></h4>
-			<?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-		</div>
-	</aside>
-	<div class="column-responsive column-80">
-		<div class="users form content">
-			<?= $this->Form->create($user, ['type'=>'file']) ?>
-			<fieldset>
-				<legend><?= __('新規アカウント作成') ?></legend>
-				<?php
-				echo $this->Form->control('username', ['label' => 'アカウント名']);
-				echo $this->Form->control('image_file', ['type' => 'file']);
-				echo $this->Form->control('password', ['label' => 'パスワード']);
-				echo $this->Form->control('age', ['label' => '年齢']);
-				// echo $this->Form->control('gender', [
-				// 	'options' => [
-				// 		['value' => '男', 'text' => '男'],
-				// 		['value' => '女', 'text' => '女']
-				// 	],
-				// 	'label' => ['text' => '性別']
-				// ]);
-				echo $this->Form->select(
-					'gender',
-					['', '男', '女', 'その他'],
-				);
-				// echo $this->Form->control('disease_categorie_id', [
-				// 	'options' => $diseaseCategories,
-				// 	'label' => '病名'
-				// ]);
-				echo var_dump($diseaseCategories);
-				echo $this->Form->select('disease_categorie_id', $diseaseCategories, ['default' => 3 ]);
-				echo $this->Form->control('email');
-				?>
-			</fieldset>
-			<?= $this->Form->button(__('送信')) ?>
-			<?= $this->Form->end() ?>
-		</div>
+
+<div class="column-responsive column-80">
+	<div class=" users form content">
+		<?= $this->Form->create($user, ['type' => 'file']) ?>
+		<fieldset class="grid">
+			<legend><?= __('新規アカウント作成') ?></legend>
+			<div class="avatar_wrapper">
+				<?php if (empty($user->avatar)) {
+					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
+				} else {
+					$avatar = $user->avatar;
+					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+				} ?>
+
+				<?= $this->Form->control('image_file', [
+					'type' => 'file',
+					'onChange' => 'imgPreView(event)',
+					'label' => '変更'
+				]); ?>
+			</div>
+			<!-- <!?= $this->Form->control('username', ['label' => 'アカウント名', 'div' => false]) ?> -->
+			<div class="flex_wrapper"><?= $this->Form->label('アカウント名') ?>
+				<span class="form_label">必須</span>
+			</div>
+			<?= $this->Form->text('username', ['class' => 'username']) ?>
+			<div class="flex_wrapper passBox">
+				<?= $this->Form->label('パスワード') ?>
+				<span class="form_label">必須</span>
+			</div>
+			<?= $this->Form->text('password', ['type' => 'password', 'class' => 'password']) ?>
+			<?= $this->Form->control(
+				'password_confirm',
+				['type' => 'password', 'label' => '確認用パスワード']
+			) ?>
+
+			<?= $this->Form->label('性別'); ?>
+			<?php echo $this->Form->select(
+				'gender',
+				['男', '女', 'その他'],
+				[
+					'empty' => true,
+					'class' => 'gender'
+				]
+			); ?>
+			<?= $this->Form->control('age', ['label' => '年齢']) ?>
+			<?php echo $this->Form->control('disease_categorie_id', [
+				'options' => $diseaseCategories,
+				'label' => '病名',
+			]); ?>
+			<div class="flex_wrapper emailBox">
+				<?= $this->Form->label('Email') ?>
+				<span class="form_label">必須</span>
+			</div>
+			<?= $this->Form->text('email', ['class' => 'email']) ?>
+
+		<?= $this->Form->button(__('送信')) ?>
+
+		</fieldset>
+		<?= $this->Form->end() ?>
 	</div>
-</div>
+
+	<?php
+	$this->start("script");
+	echo $this->Html->script('imgPreView');;
+	$this->end();
+	?>
