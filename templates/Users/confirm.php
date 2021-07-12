@@ -9,12 +9,14 @@
 $session_id = $this->getRequest()->getSession()->read('Auth.id');
 $session_name = $this->getRequest()->getSession()->read('Auth.username');
 
+$query = $diseaseCategories->find('list')->toArray();
+
 // post.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'post']));
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
-	['title' => 'ユーザー情報の編集']
+	['title' => '確認画面']
 ]);
 
 echo $this->Breadcrumbs->render(
@@ -25,9 +27,9 @@ echo $this->Breadcrumbs->render(
 
 <div class="column-responsive column-80">
 	<div class=" users form content">
-		<?= $this->Form->create($user, ['type' => 'file']) ?>
+		<?= $this->Form->create($user, ['type' => 'post', ['controller' => 'Users', 'action' => 'complete']]) ?>
 		<fieldset class="grid">
-			<legend><?= __('ユーザー情報の編集') ?></legend>
+			<legend><?= __('入力情報の確認') ?></legend>
 			<div class="avatar_wrapper">
 				<?php if (empty($user->avatar)) {
 					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
@@ -35,27 +37,12 @@ echo $this->Breadcrumbs->render(
 					$avatar = $user->avatar;
 					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
 				} ?>
-
-				<?= $this->Form->control('image_file', [
-					'type' => 'file',
-					'onChange' => 'imgPreView(event)',
-					'label' => '変更'
-				]); ?>
 			</div>
 			<!-- <!?= $this->Form->control('username', ['label' => 'アカウント名', 'div' => false]) ?> -->
-			<div class="flex_wrapper"><?= $this->Form->label('アカウント名') ?>
-				<span class="form_label">必須</span>
-			</div>
-			<?= $this->Form->text('username', ['class' => 'username']) ?>
-			<div class="flex_wrapper passBox">
-				<?= $this->Form->label('パスワード') ?>
-				<span class="form_label">必須</span>
-			</div>
-			<?= $this->Form->text('password', ['type' => 'password', 'class' => 'password']) ?>
-			<?= $this->Form->control(
-				'password_confirm',
-				['type' => 'password', 'label' => '確認用パスワード', 'value' => $user->password]
-			) ?>
+			<?= $this->Form->label('アカウント名') ?>
+			<?= $user->username ?>
+			<?= $this->Form->label('パスワード') ?>
+			<?= h($user->password) ?>
 
 
 			<!-- echo $this->Form->control('gender', [
@@ -67,34 +54,16 @@ echo $this->Breadcrumbs->render(
 ]); -->
 
 			<?= $this->Form->label('性別'); ?>
-			<?php echo $this->Form->select(
-				'gender',
-				['男', '女', 'その他'],
-				[
-					'empty' => true,
-					'class' => 'gender'
-				]
-			); ?>
-			<?= $this->Form->control('age', ['label' => '年齢']) ?>
-			<?php echo $this->Form->control('disease_categorie_id', [
-				'options' => $diseaseCategories,
-				'label' => '病名',
-			]); ?>
-			<div class="flex_wrapper emailBox">
-				<?= $this->Form->label('Email') ?>
-				<span class="form_label">必須</span>
-			</div>
-			<?= $this->Form->text('email', ['class' => 'email']) ?>
-
-			<?= $this->Form->button(__('決定')) ?>
+			<?= $user->gender ?>
+			<?= $this->Form->label('年齢') ?>
+			<?= $user->age ?>
+			<?= $this->Form->label('病名') ?>
+			<?= $query[$user->disease_categorie_id] ?>
+			<?= $this->Form->label('Email') ?>
+			<?= $user->email ?>
+			<?= $this->Form->button(__('登録完了'), ['type' => 'submit']) ?>
 
 		</fieldset>
 		<?= $this->Form->end() ?>
 	</div>
 </div>
-
-<?php
-$this->start("script");
-echo $this->Html->script('imgPreView');;
-$this->end();
-?>

@@ -41,26 +41,25 @@ echo $this->Breadcrumbs->render(
 			<div class="flex_wrapper"><?= $this->Form->label('アカウント名') ?>
 				<span class="form_label">必須</span>
 			</div>
-			<?= $this->Form->text('username', ['class' => 'username']) ?>
+			<?= $this->Form->control('username', ['class' => 'username', 'label' => false]) ?>
 			<div class="flex_wrapper passBox">
 				<?= $this->Form->label('パスワード') ?>
 				<span class="form_label">必須</span>
 			</div>
-			<?= $this->Form->text('password', ['type' => 'password', 'class' => 'password']) ?>
+			<?= $this->Form->control('password', ['type' => 'password', 'class' => 'password', 'label' => false]) ?>
 			<?= $this->Form->control(
 				'password_confirm',
 				['type' => 'password', 'label' => '確認用パスワード']
 			) ?>
 
-			<?= $this->Form->label('性別'); ?>
-			<?php echo $this->Form->select(
-				'gender',
-				['男', '女', 'その他'],
-				[
-					'empty' => true,
-					'class' => 'gender'
-				]
-			); ?>
+			<?= $this->Form->control('gender', [
+				'options' => [
+					['value' => '男', 'text' => '男'],
+					['value' => '女', 'text' => '女'],
+					['value' => 'その他', 'text' => 'その他']
+				],
+				'label' => ['text' => '性別'],
+			]); ?>
 			<?= $this->Form->control('age', ['label' => '年齢']) ?>
 			<?php echo $this->Form->control('disease_categorie_id', [
 				'options' => $diseaseCategories,
@@ -70,9 +69,9 @@ echo $this->Breadcrumbs->render(
 				<?= $this->Form->label('Email') ?>
 				<span class="form_label">必須</span>
 			</div>
-			<?= $this->Form->text('email', ['class' => 'email']) ?>
+			<?= $this->Form->control('email', ['class' => 'email', 'label' => false]) ?>
 
-		<?= $this->Form->button(__('送信')) ?>
+			<?= $this->Form->button(__('送信')) ?>
 
 		</fieldset>
 		<?= $this->Form->end() ?>

@@ -58,23 +58,15 @@ echo $this->Breadcrumbs->render(
 			) ?>
 
 
-			<!-- echo $this->Form->control('gender', [
-'options' => [
-['value' => '男', 'text' => '男'],
-['value' => '女', 'text' => '女']
-],
-'label' => ['text' => '性別']
-]); -->
+			<?= $this->Form->control('gender', [
+				'options' => [
+					['value' => '男', 'text' => '男'],
+					['value' => '女', 'text' => '女'],
+					['value' => 'その他', 'text' => 'その他']
+				],
+				'label' => ['text' => '性別'],
+			]); ?>
 
-			<?= $this->Form->label('性別'); ?>
-			<?php echo $this->Form->select(
-				'gender',
-				['男', '女', 'その他'],
-				[
-					'empty' => true,
-					'class' => 'gender'
-				]
-			); ?>
 			<?= $this->Form->control('age', ['label' => '年齢']) ?>
 			<?php echo $this->Form->control('disease_categorie_id', [
 				'options' => $diseaseCategories,

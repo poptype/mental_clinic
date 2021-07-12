@@ -73,7 +73,7 @@ class UsersTable extends Table
 		$validator
 			->scalar('username')
 			->maxLength('username', 255)
-			->requirePresence('username', 'create')
+			->requirePresence('username')
 			->notEmptyString('username', 'アカウント名を入力して下さい')
 			->add('username', 'unique', [
 				'rule' => 'validateUnique',
@@ -109,7 +109,7 @@ class UsersTable extends Table
 
 		$validator
 			->scalar('password_confirm')
-			// ->requirePresence('password_confirm','create')
+			->requirePresence('password_confirm')
 			->notEmptyString('password_confirm', '確認用パスワードを入力して下さい。')
 			->minLength('password_confirm', 8, '確認用パスワードは半角英数字8文字以上で入力してください。')
 			->sameAs('password', 'password_confirm', '異なるパスワードが入力されています。');
@@ -127,8 +127,8 @@ class UsersTable extends Table
 
 		$validator
 			->email('email')
-			->requirePresence('email', 'create')
-			->notEmptyString('email', 'メールアドレスを入力して下さい', 'create')
+			->requirePresence('email')
+			->notEmptyString('email', 'メールアドレスを入力して下さい')
 			->add('email', 'unique', [
 				'rule' => 'validateUnique',
 				'provider' => 'table',

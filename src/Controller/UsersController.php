@@ -57,7 +57,7 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 	    //-- Image upload process --//
-            if (!$user->getErrors) {
+            if (!$user->getErrors()) {
                 $image = $this->request->getData('image_file');
                 $name = $image->getClientFilename();
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
@@ -83,9 +83,31 @@ class UsersController extends AppController
     public function confirm()
     {
         $user = $this->request->getSession()->read('user_add');
+
+        if ($this->request->is('post')) {
+            return $this->redirect(['action' => 'complete']);
+        }
+        $this->set('clinics', $this->Clinics->find('all'));
+        $this->loadModel('DiseaseCategories');
+
+        $this->set('diseaseCategories', $this->DiseaseCategories->find('all'));
         $this->set(compact('user'));
     }
 
+    public function complete()
+    {
+        $user = $this->request->getSession()->read('user_add');
+        if (!empty($user)) {
+
+            $result = $this->Users->save($user);
+
+            if (!$result) {
+                $this->Flash->error('保存できませんでした。');
+                $this->request->session()->write('errors', $user);
+                // return $this->redirect($this->referer());
+            }
+        }
+    }
     /**
      * Edit method
      *
@@ -147,7 +169,7 @@ class UsersController extends AppController
     //
     // 無限リダイレクトループの問題を防ぐことができます
     //
-        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'confirm']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'confirm', 'complete']);
     }
 
     public function login()
