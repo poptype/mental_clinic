@@ -54,6 +54,7 @@
         background-color: var(--main-paple);
         padding: .3rem .5rem;
         color: #FFF;
+        transition: 0.5s ease-out;
 }
 
 .form_label {
@@ -324,6 +325,13 @@ th a,
 .actions a:hover,
 .actions a:focus {
         color: #2f85ae;
+}
+
+button:hover {
+        background-color: var(--main-paple);
+        border-color: unset;
+        cursor: pointer;
+        filter: brightness(90%)
 }
 
 /* --------------Utility---------------------- */

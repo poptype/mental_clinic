@@ -63,9 +63,9 @@ class UsersController extends AppController
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
                 if ($name) $image->moveTo($targetPath);
                 $user->avatar = $name;
-
                 $this->session = $this->getRequest()->getSession();
                 $this->session->write('user_add', $user);
+                $this->session->write('user_request', $this->request->getData());
                 return $this->redirect(['action' => 'confirm']);
             }
             //-- END Image upload process-- //
@@ -83,14 +83,15 @@ class UsersController extends AppController
     public function confirm()
     {
         $user = $this->request->getSession()->read('user_add');
-
+        $user_request = $this->request->getSession()->read('user_request');
         if ($this->request->is('post')) {
             return $this->redirect(['action' => 'complete']);
         }
-        $this->set('clinics', $this->Clinics->find('all'));
         $this->loadModel('DiseaseCategories');
 
         $this->set('diseaseCategories', $this->DiseaseCategories->find('all'));
+        //＊＊暗号化する前のpasswordを表示したい処理(patchentityする前のpostdataを渡す)
+        $this->set('password', $user_request['password']); //requestは連想配列なのでkeyからvalueを渡す
         $this->set(compact('user'));
     }
 
@@ -98,7 +99,7 @@ class UsersController extends AppController
     {
         $user = $this->request->getSession()->read('user_add');
         if (!empty($user)) {
-
+debug($user);exit;
             $result = $this->Users->save($user);
 
             if (!$result) {
@@ -123,7 +124,7 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 	    //-- Image upload process --//
-            if (!$user->getErrors) {
+            if (!$user->getErrors()) {
                 $image = $this->request->getData('image_file');
                 $name = $image->getClientFilename();
                 $targetPath = WWW_ROOT . 'img/upload' . DS . $name;
