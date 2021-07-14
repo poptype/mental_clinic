@@ -99,9 +99,7 @@ class UsersController extends AppController
     {
         $user = $this->request->getSession()->read('user_add');
         if (!empty($user)) {
-debug($user);exit;
             $result = $this->Users->save($user);
-
             if (!$result) {
                 $this->Flash->error('保存できませんでした。');
                 $this->request->session()->write('errors', $user);

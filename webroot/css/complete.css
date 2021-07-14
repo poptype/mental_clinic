@@ -1,0 +1,30 @@
+main {
+        height: 77.2vh;
+}
+
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+        all: unset;
+}
+
+.label {
+        font-size: 2rem;
+        margin: 0 auto;
+        display: block;
+}
+
+h2 {
+        text-align: center;
+}
+
+h2::before {
+        content: "";
+        border-left: 10px solid var(--main-paple);
+        left: 290px;
+        position: absolute;
+        height: 7rem;
+        top: 105px;
+}

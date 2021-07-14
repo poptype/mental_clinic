@@ -29,4 +29,5 @@ input[type="submit"] {
 .label {
         grid-column: span 2;
         justify-self: center;
+        font-size: 2rem;
 }

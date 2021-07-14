@@ -1,3 +1,5 @@
+/* =======users========= */
+
 /* ---overlide--- */
 
 legend {
@@ -64,4 +66,83 @@ legend {
 
 .form_label {
         margin-left: 1rem;
+}
+
+/* ======review====== */
+
+textarea {
+        min-height: 24.5vh;
+}
+
+h2 {
+        text-align: center;
+        background: var(--main-paple);
+        color: #f9f9f9;
+        margin: unset;
+        padding: 1rem;
+        font-family: 'Meiryo';
+        font-weight: 600;
+}
+
+/* .input.range {
+        background-color: #404040;
+        position: relative;
+        z-index: 0;
+} */
+
+#filter input[type=range] {
+        appearance: none;
+        width: 300px;
+        outline: none;
+        width: 100%;
+        background-color: #000;
+}
+
+/* Chrome */
+#filter input[type=range]::-webkit-slider-runnable-track {
+        height: 5px;
+        background: gray;
+        width: 100%;
+}
+
+#filter input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 48px;
+        height: 48px;
+        margin-top: -24px;
+        background: url("star_rate__24dp.svg") no-repeat 0 0 #FFF;
+        border-radius: 50%;
+        cursor: grab;
+}
+
+/* Firefox */
+#filter input[type=range]::-moz-range-track {
+        height: 5px;
+        background: gray;
+}
+
+#filter input[type="range"]::-moz-range-thumb {
+        width: 48px;
+        height: 48px;
+        margin-top: -24px;
+        background: url("star_rate__24dp.svg") no-repeat 0 0 #FFF;
+        border-radius: 50%;
+        cursor: grab;
+}
+
+#filter {
+        background-color: #404040;
+        color: #f9f9f9f9;
+}
+
+#value {
+        font-size: 2rem;
+        margin-left: 50%;
+}
+
+.review_add {
+        flex: 0 0 80%;
+        max-width: 80%;
+        flex: 0 0 100%;
+        max-width: 100%;
 }
