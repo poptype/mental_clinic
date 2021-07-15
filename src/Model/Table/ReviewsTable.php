@@ -73,7 +73,7 @@ class ReviewsTable extends Table
         $validator
             ->scalar('text')
             ->requirePresence('text', 'create')
-            ->notEmptyString('text');
+            ->notEmptyString('text', '感想が未記入です。');
 
         $validator
             ->integer('voting')
@@ -82,6 +82,11 @@ class ReviewsTable extends Table
 	$validator
             ->decimal('rating')
             ->allowEmptyString('rating');
+
+	$validator
+		->integer('clinic_id')
+		->requirePresence('clinic_id', 'create')
+		->notEmptyString('clinic_id', '病院名を入力して下さい');
 
         return $validator;
     }

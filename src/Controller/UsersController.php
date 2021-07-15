@@ -192,7 +192,8 @@ class UsersController extends AppController
     // ユーザーの送信と認証に失敗した場合にエラーを表示します
     //
         if ($this->request->is('post') && !$result->isValid()) {
-        }        $this->Flash->error(__('Invalid email or password'));
+                $this->Flash->error(__('ユーザーネームかパスワードが正しくありません。'));
+	}
     }
 
     public function logout()

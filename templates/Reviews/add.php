@@ -52,9 +52,14 @@ echo $this->Breadcrumbs->render(
 			</div>
 			<?= $this->Form->control('text', ['label' => '', 'placeholder' => 'あなたの受診したクリニックの感想を書いて下さい（枠の右下斜めをドラッグすると広がります)']); ?>
 			<?= $this->Form->hidden("user_id", ['value' => $user_id]); ?>
-			<?= $this->Form->control('病院名', ['id' => 'autocomplete', 'name' => 'clinic_id', 'placeholder' => '文字を入力すると病院名を自動補完します']); ?>
+			<?= $this->Form->control('clinic_id', [
+				'type' => 'text', //typeを指定しないとselectになってしまってautocompleteが機能しなくなる。
+				'id' => 'autocomplete',
+				'label' => '病院名',
+				'placeholder' => '文字を入力すると病院名を自動補完します'
+			]); ?>
 		</fieldset>
-		<?= $this->Form->button(__('投稿', ['class' => 'label'])) ?>
+		<?= $this->Form->button(__('投稿'), ['class' => 'label']) ?>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

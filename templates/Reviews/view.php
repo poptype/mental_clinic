@@ -28,10 +28,13 @@ function voting_incr($review)
 ) ?>
 <div class="column-responsive column-80">
 	<div class="grid content">
-		<?php
-		$avatar = $review->user->avatar;
-		echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
-		?>
+		<?php if (empty($user->avatar)) {
+			echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
+		} else {
+			$avatar = $user->avatar;
+			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
+		} ?>
+
 		<h2 class="title">
 			<?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
 			の

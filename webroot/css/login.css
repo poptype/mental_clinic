@@ -1,0 +1,15 @@
+h2 {
+        text-align: center;
+        background: var(--main-paple);
+        color: #f9f9f9;
+        margin: unset;
+        padding: 1rem;
+        font-family: 'Meiryo';
+        font-weight: 600;
+}
+
+legend {
+        font-size: 2.5rem;
+        border-left: 5px solid var(--main-paple);
+        padding-left: 1rem;
+}

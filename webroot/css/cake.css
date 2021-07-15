@@ -349,6 +349,7 @@ body {
 
 main {
         margin-bottom: 8rem;
+        min-height: 77.5vh;
 }
 
 .content {

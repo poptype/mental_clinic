@@ -72,11 +72,11 @@ class ReviewsController extends AppController
 				$clinic->rating = $rating;
 				$this->Clinics->save($clinic);
 				// --END clinic update-- //
-				$this->Flash->success(__('The review has been saved.'));
+				$this->Flash->success(__('レビューを投稿しました。'));
 
-				return $this->redirect(['action' => 'index']);
+				return $this->redirect(['controler' => 'Reviews', 'action' => 'top']);
 			}
-			$this->Flash->error(__('The review could not be saved. Please, try again.'));
+			$this->Flash->error(__('投稿に失敗しました。お手数ですが、入力内容を確認して下さい。'));
 		}
 		//$users = $this->Reviews->Users->find('list', ['limit' => 200]);
 
@@ -106,11 +106,11 @@ class ReviewsController extends AppController
 				$clinic->rating = $rating;
 				$this->Clinics->save($clinic);
 				// --END clinic update-- //
-				$this->Flash->success(__('The review has been saved.'));
+				$this->Flash->success(__('レビューを投稿しました。'));
 
-				return $this->redirect(['action' => 'index']);
+				return $this->redirect(['controler' => 'Reviews', 'action' => 'top']);
 			}
-			$this->Flash->error(__('The review could not be saved. Please, try again.'));
+			$this->Flash->error(__('投稿に失敗しました。お手数ですが、入力内容を確認して下さい。'));
 		}
 
 		$this->set(compact('review', 'user_id', 'clinic_id'));
