@@ -19,6 +19,8 @@ class ReviewsController extends AppController
 	 */
 	public function index()
 	{
+		$key = $this->request->getQuery('key');
+		exit($key);
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],
 		];
@@ -190,6 +192,8 @@ class ReviewsController extends AppController
 
 	public function top($id = null)
 	{
+		$key = $this->request->getQuery('key');
+		if($key) exit($key);
 		$this->loadModel('DiseaseCategories');
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],

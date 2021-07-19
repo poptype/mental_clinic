@@ -270,6 +270,95 @@
         fill: #e9e9e9;
 }
 
+/*========= 検索窓を開くためのボタン設定 ===========*/
+
+.open-btn {
+        cursor: pointer;
+        /*カーソルを指マークに*/
+}
+
+/*クリック後、JSでボタンに btnactive クラスが付与された後の見た目*/
+.btnactive {
+        filter: blur(0.5px);
+        background-color: #FFFFFF70;
+        border-radius: 20%;
+}
+
+/*========= 検索窓の設定 ===============*/
+
+/*==検索窓背景のエリア*/
+
+#search-wrap {
+        position: absolute;
+        /*絶対配置にして*/
+        top: 150px;
+        left: 50%;
+        z-index: -1;
+        /*最背面に設定*/
+        opacity: 0;
+        /*透過を0に*/
+        width: 0;
+        /*横幅は0に*/
+        transition: cubic-bezier(.6, -0.28, .74, .05) 0.6s;
+        /*transitionを使ってスムースに現れる*/
+        border-radius: 5px;
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+#search-wrap.panelactive {
+        opacity: 1;
+        /*不透明に変更*/
+        z-index: 3;
+        /*全面に出現*/
+        width: 280px;
+        padding: 20px;
+        top: 60px;
+        background: #fff;
+        left: 50%;
+}
+
+/*==検索窓*/
+#search-wrap #searchform {
+        display: none;
+        /*検索窓は、はじめ非表示*/
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+#search-wrap.panelactive #searchform {
+        display: block;
+        /*検索窓を表示*/
+}
+
+/*==検索フォームの設定*/
+
+/*==テキスト入力とボタンinput共通設定*/
+#search-wrap input {
+        -webkit-appearance: none;
+        /*SafariやChromeのデフォルトの設定を無効*/
+        outline: none;
+        cursor: pointer;
+        /*カーソルを指マークに*/
+        color: #666;
+}
+
+/*テキスト入力input設定*/
+#search-wrap input[type="text"] {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        transition: all 0.5s;
+        letter-spacing: 0.05em;
+        height: 46px;
+        padding: 10px;
+}
+
+/*テキスト入力inputにフォーカスされたら*/
+#search-wrap input[type="text"]:focus {
+        background: #eee;
+        /*背景色を付ける*/
+}
+
+
 /* ================================================== */
 
 /* ------------Miligram overrides-------------- */
