@@ -12,7 +12,7 @@
 		</svg>
 
 		<div id="search-wrap">
-			<?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Reviews', 'action' => 'index']]) ?>
+			<?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Reviews', 'action' => 'top']]) ?>
 			<?= $this->Form->control('key', ['label'=>'検索', 'value' => $this->request->getQuery('key')]) ?>
 			<?= $this->Form->submit() ?>
 			<?= $this->Form->end() ?>

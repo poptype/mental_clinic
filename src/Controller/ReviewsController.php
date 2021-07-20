@@ -19,8 +19,6 @@ class ReviewsController extends AppController
 	 */
 	public function index()
 	{
-		$key = $this->request->getQuery('key');
-		exit($key);
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],
 		];
@@ -64,7 +62,7 @@ class ReviewsController extends AppController
 			if ($this->Reviews->save($review)) {
 				// --update to average of clinic rating-- //
 				# debug(array_keys($clinic));
-				$clinic = $this->Clinics->get(array_keys($clinic), [#連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+				$clinic = $this->Clinics->get(array_keys($clinic), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
 					'contain' => [],
 				]);
 				$rating = $this->request->getData('rating');
@@ -89,7 +87,8 @@ class ReviewsController extends AppController
 		$this->set(compact('review', 'user_id', 'suggestWordJson'));
 	}
 
-	public function addFromClinic($clinic_id = null){
+	public function addFromClinic($clinic_id = null)
+	{
 		$user_id = $this->Authentication->getResult()->getData()->id;
 		$review = $this->Reviews->newEmptyEntity();
 		$this->loadModel('Clinics');
@@ -98,7 +97,7 @@ class ReviewsController extends AppController
 			if ($this->Reviews->save($review)) {
 				// --update to average of clinic rating-- //
 				# debug(array_keys($clinic));
-				$clinic = $this->Clinics->get(($clinic_id), [#連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+				$clinic = $this->Clinics->get(($clinic_id), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
 					'contain' => [],
 				]);
 				$rating = $this->request->getData('rating');
@@ -192,8 +191,8 @@ class ReviewsController extends AppController
 
 	public function top($id = null)
 	{
-		$key = $this->request->getQuery('key');
-		if($key) exit($key);
+		$this->search();
+
 		$this->loadModel('DiseaseCategories');
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],
@@ -216,5 +215,27 @@ class ReviewsController extends AppController
 
 		$this->set(compact('reviews'));
 		$this->set('disease_categories', $this->DiseaseCategories->find('all'));
+	}
+
+	private function search()
+	{
+		$key = $this->request->getQuery('key');
+		if ($key) {
+			$clinic = $this->loadModel('Clinics')->find('all')->where(['name =' => $key])->toList();
+			$user = $this->loadModel('Users')->find('all')->where(['username =' => $key])->toList();
+			$this->session = $this->getRequest()->getSession();
+			$this->session->write('clinic', $clinic);
+			$this->session->write('user', $user);
+			return $this->redirect(['action' => 'searchResult']);
+		}
+	}
+
+	public function searchResult()
+	{
+		$clinic = $this->request->getSession()->read('clinic');
+		$user = $this->request->getSession()->read('user');
+
+		if($clinic) $this->set('clinic', $clinic);
+		if($user) $this->set('user', $user);
 	}
 }
