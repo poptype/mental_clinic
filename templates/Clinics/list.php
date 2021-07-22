@@ -23,7 +23,7 @@ $this->Breadcrumbs->add([
 		<!-- <!?= $this->Html->link(__('New Clinic'), ['action' => 'add'], ['class' => 'button float-right']) ?> -->
 		<h3 class="heading"><?= __('病院リスト') ?></h3>
 
-		<h4 class='sort'>並び替え</h4>
+		<h4 class='sort'>並び替え<sub>(各並び替え要素で検索可能)</sub></h4>
 		<div class="sort-wrapper">
 			<!-- <!?= $this->Paginator->sort('id') ?> -->
 			<?= $this->Paginator->sort('病院名') ?>
@@ -33,6 +33,17 @@ $this->Breadcrumbs->add([
 			<?= $this->Paginator->sort('最寄り駅') ?>
 			<!-- <!?= $this->Paginator->sort('time') ?> -->
 			<?= $this->Paginator->sort('電話番号') ?>
+
+			<div class="refined_search">
+				<?= $this->Form->create(null, ['type' => 'get']) ?>
+				<?= $this->Form->control('key', [
+					'label' => false,
+					'value' => $this->request->getQuery('key'),
+					'placeholder' => '絞り込み検索'
+				]) ?>
+				<?= $this->Form->submit('', ["class" => 'submit_img']) ?>
+				<?= $this->Form->end() ?>
+			</div>
 		</div>
 
 

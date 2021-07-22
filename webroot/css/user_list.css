@@ -4,7 +4,7 @@
 
 .grid_container {
         display: grid;
-        grid-auto-rows: 20.5rem;
+        grid-auto-rows: auto;
         gap: 1rem;
         grid-template-columns: repeat(auto-fill, 30rem);
         justify-content: center;
@@ -30,7 +30,7 @@
 .user_list {
         display: grid;
         grid-template-columns: auto auto auto;
-        grid-template-rows: 6rem 3rem 3rem 3rem;
+        grid-template-rows: 6rem 3rem 3rem auto;
         gap: 1rem;
         border: 1px solid #9b59b62b;
         border-radius: 1rem;
@@ -64,4 +64,5 @@
         text-align: center;
         width: 50%;
         justify-self: end;
+        height: 3rem;
 }

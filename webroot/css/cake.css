@@ -310,12 +310,14 @@
         /*不透明に変更*/
         z-index: 3;
         /*全面に出現*/
-        width: 280px;
-        padding: 20px;
-        top: 60px;
+        width: 31rem;
+        padding: 2rem;
+        top: 6rem;
         background: #fff;
         left: 50%;
 }
+
+/*================search===============  */
 
 /*==検索窓*/
 #search-wrap #searchform {
@@ -336,16 +338,13 @@
         -webkit-appearance: none;
         /*SafariやChromeのデフォルトの設定を無効*/
         outline: none;
-        cursor: pointer;
-        /*カーソルを指マークに*/
         color: #666;
 }
 
 /*テキスト入力input設定*/
 #search-wrap input[type="text"] {
         width: 100%;
-        border: none;
-        border-bottom: 2px solid #ccc;
+        border: 1px solid #ccc;
         transition: all 0.5s;
         letter-spacing: 0.05em;
         height: 46px;
@@ -353,11 +352,51 @@
 }
 
 /*テキスト入力inputにフォーカスされたら*/
-#search-wrap input[type="text"]:focus {
+/* #search-wrap input[type="text"]:focus {
         background: #eee;
         /*背景色を付ける*/
+/* } */
+
+.submit_img {
+        position: absolute;
+        background: url('./search_black_24dp.svg');
+        left: 26rem;
+        top: 8.4rem;
+        background-repeat: no-repeat;
+        background-color: unset !important;
+        border: unset !important;
+        transition: 1s ease-in;
 }
 
+/* .submit_img:hover{
+        background-color: rgb(255, 255, 255);
+} */
+
+/* --refined_search-- */
+.refined_search {
+        display: inline-block;
+        position: relative;
+        margin-top: 5rem;
+}
+
+.refined_search>form {
+        max-width: 50rem;
+        width: 100%;
+}
+
+
+
+.refined_search>form>.input>#key {
+        box-shadow: 0.5rem 0.2rem 0.8rem rgba(0, 0, 0, 0.2), 0 0.8rem 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+.refined_search>form>.submit>.submit_img {
+        left: unset;
+        top: unset;
+        right: 0;
+        bottom: 0;
+        transform: translate(50%, 20%);
+}
 
 /* ================================================== */
 
@@ -421,6 +460,11 @@ button:hover {
         border-color: unset;
         cursor: pointer;
         filter: brightness(90%)
+}
+
+sub {
+        bottom: unset;
+        color: #979797;
 }
 
 /* --------------Utility---------------------- */

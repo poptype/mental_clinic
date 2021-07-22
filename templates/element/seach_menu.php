@@ -13,13 +13,11 @@
 
 		<div id="search-wrap">
 			<?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Reviews', 'action' => 'top']]) ?>
-			<?= $this->Form->control('key', ['label'=>'検索', 'value' => $this->request->getQuery('key')]) ?>
-			<?= $this->Form->submit() ?>
+			<?= $this->Form->control('key', [
+				'label' => '検索',
+				'value' => $this->request->getQuery('key'),
+				'placeholder' => '病院またはユーザーを検索'
+			]) ?>
+			<?= $this->Form->submit('', ["class" => 'submit_img']) ?>
 			<?= $this->Form->end() ?>
-<!--
-			<form role="search" method="get" id="searchform" action="">
-				<input type="text" value="" name="" id="search-text" placeholder="search">
-				<input type="submit" id="searchsubmit" value="">
-			</form> -->
 		</div>
-		<!--/search-wrap-->

@@ -21,7 +21,7 @@ $this->Breadcrumbs->add([
 	<div class="users index content">
 		<h3 class="heading"><?= __('ユーザーリスト') ?></h3>
 
-		<h4 class='sort'>並び替え</h4>
+		<h4 class='sort'>並び替え<sub>(各並び替え要素で検索可能)</sub></h4>
 		<div class="sort-wrapper">
 			<?= $this->Paginator->sort('username', 'アカウント名') ?>
 			<?= $this->Paginator->sort('gender', '性別') ?>
@@ -29,6 +29,17 @@ $this->Breadcrumbs->add([
 			<?= $this->Paginator->sort('created', '登録日') ?>
 			<!-- <!?= $this->Paginator->sort('編集日') ?> -->
 			<?= $this->Paginator->sort('disease_categorie_id', '病名') ?>
+
+			<div class="refined_search">
+				<?= $this->Form->create(null, ['type' => 'get']) ?>
+				<?= $this->Form->control('key', [
+					'label' => false,
+					'value' => $this->request->getQuery('key'),
+					'placeholder' => '絞り込み検索'
+				]) ?>
+				<?= $this->Form->submit('', ["class" => 'submit_img']) ?>
+				<?= $this->Form->end() ?>
+			</div>
 			<!-- <!?= $this->Paginator->sort('email') ?> -->
 		</div>
 
@@ -49,7 +60,7 @@ $this->Breadcrumbs->add([
 					<span class="gender"><?= h($user->gender) ?>性</span>
 					<?php if (empty($user->age)) : ?>
 						<span class="age">非公開</span>
-					<?php else: ?>
+					<?php else : ?>
 						<span class="age"><?= $this->Number->format($user->age) ?>歳</span>
 					<?php endif; ?>
 					<span class="label">登録日</span>
