@@ -93,21 +93,28 @@ class ReviewsController extends AppController
 		$review = $this->Reviews->newEmptyEntity();
 		$this->loadModel('Clinics');
 		if ($this->request->is('post')) {
-			$review = $this->Reviews->patchEntity($review, $this->request->getData()); //patchEntity
+			$review = $this->Reviews->patchEntity($review, $this->request->getData()); #patchEntity
 			if ($this->Reviews->save($review)) {
-				// --update to average of clinic rating-- //
-				# debug(array_keys($clinic));
+				// ========update to average of clinic rating=============== //
 				$clinic = $this->Clinics->get(($clinic_id), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
 					'contain' => [],
 				]);
-				$rating = $this->request->getData('rating');
-				$datas = array($clinic->rating, $rating);
-				$sum = array_sum($datas);
-				$average_rating = $sum / count($datas);
+				//reviewsのpostされてきたclinic_idに一致するレコード抽出
+				$query = $this->Reviews->find()
+					->where(['clinic_id' => $review->clinic_id]);
+				//clinic_idに一致するレコード全てのratingをselect()で指定する。avg()でratingの平均を出し、
+				//round()で0.1以下を切り捨てて、平均値を出す。
+				$rating = $query->select([
+					'rating' => $query->func()->round([$query->func()->avg('rating'), 1]),
+				]);
+
 				$clinic->rating = $rating;
-				$this->Clinics->save($clinic);
-				// --END clinic update-- //
-				$this->Flash->success(__('レビューを投稿しました。'));
+
+				if ($this->Clinics->save($clinic)) {
+					// --END clinic update-- //
+					$this->Flash->success(__('レビューを投稿しました。'));
+				}
+				//======END======//
 
 				return $this->redirect(['controler' => 'Reviews', 'action' => 'top']);
 			}
@@ -147,6 +154,7 @@ class ReviewsController extends AppController
 				$datas = array($clinic->rating, $rating);
 				$sum = array_sum($datas);
 				$average_rating = $sum / count($datas);
+
 				$clinic->rating = $rating;
 				$this->Clinics->save($clinic);
 				// --END clinic update-- //
@@ -235,7 +243,7 @@ class ReviewsController extends AppController
 		$clinic = $this->request->getSession()->read('clinic');
 		$user = $this->request->getSession()->read('user');
 
-		if($clinic) $this->set('clinic', $clinic);
-		if($user) $this->set('user', $user);
+		if ($clinic) $this->set('clinic', $clinic);
+		if ($user) $this->set('user', $user);
 	}
 }

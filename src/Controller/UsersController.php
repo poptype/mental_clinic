@@ -62,7 +62,7 @@ class UsersController extends AppController
 		]);
 
 		$this->set(compact('user'));
-		$this->set('users', $this->Clinics->find('all'));
+		$this->set('clinics', $this->Clinics->find('all'));
 	}
 
 	/**

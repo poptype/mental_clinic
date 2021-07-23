@@ -110,7 +110,7 @@ $this->Breadcrumbs->add([
 						</h3>
 						<!-- clinicsの配列からidで取得-->
 						<?php $content = $reviews->text; ?>
-						<p class="text"><?= $this->Html->link(mb_strimwidth($content, 0, 40, '…', 'UTF-8'), ['controller' => 'Reviews', 'action' => 'view', $reviews->id]) ?></p>
+						<p class="review_text"><?= $this->Html->link(mb_strimwidth($content, 0, 40, '…', 'UTF-8'), ['controller' => 'Reviews', 'action' => 'view', $reviews->id]) ?></p>
 						<p class="review_created"><?= h($reviews->created->format('Y年m月d日 H時i分')) ?></p>
 						<?= $this->Html->link(
 							__('編集'),
