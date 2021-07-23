@@ -48,31 +48,41 @@ class ReviewsController extends AppController
 	 *
 	 * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
 	 */
-	public function add($clinic_id = null)
+	public function add($user_id = null)
 	{
 		$user_id = $this->Authentication->getResult()->getData()->id;
 		$review = $this->Reviews->newEmptyEntity();
 		$this->loadModel('Clinics');
 		if ($this->request->is('post')) {
-			//-- postされた病院名とidを照合してDataBaseにinsertする配列を文字列からidに入れ替える --//
-			$post_record = $this->request->getData(); //postRecordの配列取得
-			$clinic = $this->Reviews->Clinics->find('list')->select(['id'])->where(['name ' => $post_record['clinic_id']])->toArray(); //postされた病院名からその行のidとの連想配列を取得
-			$post_record["clinic_id"] = array_search($post_record['clinic_id'], $clinic); //postされた配列をさっきの連想配列のidと入れ替える
-			$review = $this->Reviews->patchEntity($review, $post_record); //patchEntity
+			//-- postされた病院名(文字列で送られてくるため）とidを照合してDataBaseにinsertする、そして
+			//-- 配列を文字列からidに入れ替える（入れ替えないとinsertできない） --//
+			$post_record = $this->request->getData(); #postRecordの配列取得
+			$clinic = $this->Reviews->Clinics->find('list')->select(['id'])->where(['name ' => $post_record['clinic_id']])->toArray(); #postされた病院名からその行のidとの連想配列を取得
+			$post_record["clinic_id"] = array_search($post_record['clinic_id'], $clinic); #postされた配列をさっきの連想配列のidと入れ替える
+			// debug($post_record);
+			// exit();
+			$review = $this->Reviews->patchEntity($review, $post_record); #patchEntity
 			if ($this->Reviews->save($review)) {
-				// --update to average of clinic rating-- //
-				# debug(array_keys($clinic));
-				$clinic = $this->Clinics->get(array_keys($clinic), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+				// ========update to average of clinic rating=============== //
+				$clinic = $this->Clinics->get(($post_record['clinic_id']), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
 					'contain' => [],
 				]);
-				$rating = $this->request->getData('rating');
-				$datas = array($clinic->rating, $rating);
-				$sum = array_sum($datas);
-				$average_rating = $sum / count($datas);
+				//reviewsのpostされてきたclinic_idに一致するレコード抽出
+				$query = $this->Reviews->find()
+				->where(['clinic_id' => $review->clinic_id]);
+				//clinic_idに一致するレコード全てのratingをselect()で指定する。avg()でratingの平均を出し、
+				//round()で0.1以下を切り捨てて、平均値を出す。
+				$rating = $query->select([
+					'rating' => $query->func()->round([$query->func()->avg('rating'), 1]),
+				]);
+
 				$clinic->rating = $rating;
-				$this->Clinics->save($clinic);
-				// --END clinic update-- //
-				$this->Flash->success(__('レビューを投稿しました。'));
+
+				if ($this->Clinics->save($clinic)) {
+					// --END clinic update-- //
+					$this->Flash->success(__('レビューを投稿しました。'));
+				}
+				//======END======//
 
 				return $this->redirect(['controler' => 'Reviews', 'action' => 'top']);
 			}
@@ -142,25 +152,32 @@ class ReviewsController extends AppController
 			'contain' => [],
 		]);
 		$this->loadModel('Clinics');
-		$clinic = $this->Clinics->get($review->clinic_id, [
-			'contain' => [],
-		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$review = $this->Reviews->patchEntity($review, $this->request->getData());
 			if ($this->Reviews->save($review)) {
-				$this->Flash->success(__('The review has been saved.'));
-				// --update to average of clinic rating-- //
-				$rating = $this->request->getData('rating');
-				$datas = array($clinic->rating, $rating);
-				$sum = array_sum($datas);
-				$average_rating = $sum / count($datas);
+				// ========update to average of clinic rating=============== //
+				$clinic = $this->Clinics->get(($review->clinic_id), [ #連想配列からKEYを取得する。それはpostされてきたclinic_idを取得することと、同じ。
+					'contain' => [],
+				]);
+				//reviewsのpostされてきたclinic_idに一致するレコード抽出
+				$query = $this->Reviews->find()
+					->where(['clinic_id' => $review->clinic_id]);
+				//clinic_idに一致するレコード全てのratingをselect()で指定する。avg()でratingの平均を出し、
+				//round()で0.1以下を切り捨てて、平均値を出す。
+				$rating = $query->select([
+					'rating' => $query->func()->round([$query->func()->avg('rating'), 1]),
+				]);
 
 				$clinic->rating = $rating;
-				$this->Clinics->save($clinic);
-				// --END clinic update-- //
-				return $this->redirect(['action' => 'index']);
+
+				if ($this->Clinics->save($clinic)) {
+					// --END clinic update-- //
+					$this->Flash->success(__('レビューを編集しました。'));
+				}
+				//======END======//
+				return $this->redirect(['controler' => 'Reviews', 'action' => 'top']);
 			}
-			$this->Flash->error(__('The review could not be saved. Please, try again.'));
+			$this->Flash->error(__('レビューの編集に失敗しました。もう一度お試し下さい。'));
 			//中身を見たい変数などがあれば確認できます。
 			// debug($average_rating);
 			//処理をここで止めます。
@@ -178,11 +195,11 @@ class ReviewsController extends AppController
 	 * @return \Cake\Http\Response|null|void Redirects to index.
 	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
 	 */
-	public function delete($id = null)
+	public function delete($id = null,  $username_id = null)
 	{
 		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
 		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != $id) {
+		if ($user_id != $username_id) {
 			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
 		} //-- END --//
 

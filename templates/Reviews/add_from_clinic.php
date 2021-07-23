@@ -44,7 +44,6 @@ echo $this->Breadcrumbs->render(
             <?= $this->Form->end() ?>
         </div>
     </div>
-</div>
 <script>
 	void function input_range(undefined) {
 		let elem = document.getElementById('range');

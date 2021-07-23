@@ -11,6 +11,7 @@ $query = $clinics->find('list')->toArray();
 // --sessionからログイン情報取得 -- //
 $session_id = $this->getRequest()->getSession()->read('Auth.id');
 $session_name = $this->getRequest()->getSession()->read('Auth.username');
+
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
@@ -46,12 +47,16 @@ $this->Breadcrumbs->add([
 			$avatar = $user->avatar;
 			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
 		} ?>
-		<!-- <!?php
-		$avatar = $user->avatar;
-		echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
-		?> -->
+
 		<h3 class="username"><?= h($user->username) ?>さん</h3>
-		<p class="gender"><span class="label"><?= __('性別') ?></span> <?= h($user->gender) ?></p>
+		<p class="gender"><span class="label"><?= __('性別') ?></span>
+			<?php if (empty($user->gender)) : ?>
+				非公開
+			<?php else : ?>
+				<?= h($user->gender) ?>
+			<?php endif; ?>
+		</p>
+
 
 
 		<p class="disease">
@@ -92,8 +97,7 @@ $this->Breadcrumbs->add([
 			<?= $this->Form->postLink(
 				__('アカウントを削除する'),
 				['action' => 'delete', $session_id],
-				['class' => 'link_button'],
-				['confirm' => __('本当に 『' . "$session_name" . '』さんのアカウントを削除しますか？', $session_id), 'class' => 'side-nav-item']
+				['confirm' => __('本当に 『' . $session_name . '』さんのアカウントを削除しますか？', $session_id), 'class' => 'link_button']
 			) ?>
 		</div>
 
@@ -114,14 +118,13 @@ $this->Breadcrumbs->add([
 						<p class="review_created"><?= h($reviews->created->format('Y年m月d日 H時i分')) ?></p>
 						<?= $this->Html->link(
 							__('編集'),
-							['controller' => 'Reviews', 'action' => 'edit', $reviews->id],
+							['controller' => 'Reviews', 'action' => 'edit', $reviews->id, $session_id],
 							['class' => 'link_button']
 						) ?>
 						<?= $this->Form->postLink(
 							__('削除'),
-							['controller' => 'Reviews', 'action' => 'delete', $reviews->id],
-							['class' => 'link_button'],
-							['confirm' => __('本当にこの口コミを削除しますか?', $reviews->id)]
+							['controller' => 'Reviews', 'action' => 'delete', $reviews->id, $session_id],
+							['confirm' => __('本当にこの口コミを削除しますか？'), 'class' => 'link_button']
 						) ?>
 					</article>
 

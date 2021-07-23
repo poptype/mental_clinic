@@ -26,13 +26,13 @@ $this->Breadcrumbs->add([
 		<h4 class='sort'>並び替え<sub>(各並び替え要素で検索可能)</sub></h4>
 		<div class="sort-wrapper">
 			<!-- <!?= $this->Paginator->sort('id') ?> -->
-			<?= $this->Paginator->sort('病院名') ?>
+			<?= $this->Paginator->sort('name', '病院名') ?>
 			<!-- <!?= $this->Paginator->sort('created') ?> -->
 			<!-- <!?= $this->Paginator->sort('modified') ?> -->
-			<?= $this->Paginator->sort('住所') ?>
-			<?= $this->Paginator->sort('最寄り駅') ?>
+			<?= $this->Paginator->sort('address', '住所') ?>
+			<?= $this->Paginator->sort('station', '最寄り駅') ?>
 			<!-- <!?= $this->Paginator->sort('time') ?> -->
-			<?= $this->Paginator->sort('電話番号') ?>
+			<?= $this->Paginator->sort('phone_number', '電話番号') ?>
 
 			<div class="refined_search">
 				<?= $this->Form->create(null, ['type' => 'get']) ?>

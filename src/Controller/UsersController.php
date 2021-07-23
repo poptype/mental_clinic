@@ -135,6 +135,13 @@ class UsersController extends AppController
 	 */
 	public function edit($id = null)
 	{
+
+		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
+		$session_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+		if ($id != $session_id) {
+			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+		} //-- END --//
+
 		$user = $this->Users->get($id, [
 			'contain' => [],
 		]);
@@ -169,6 +176,12 @@ class UsersController extends AppController
 	 */
 	public function delete($id = null)
 	{
+		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
+		$session_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+		if ($id != $session_id) {
+			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+		} //-- END --//
+
 		$this->request->allowMethod(['post', 'delete']);
 		$user = $this->Users->get($id);
 		if ($this->Users->delete($user)) {
