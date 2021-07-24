@@ -11,6 +11,7 @@ function voting_incr($review)
 	$num = $review->voting + 1;
 	return $num;
 }
+
 // top.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'top']));
 // getting object
@@ -27,6 +28,9 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 	<div class="sort-wrapper">
 		<?= $this->Paginator->sort('created', '日付順') ?>
 		<?= $this->Paginator->sort('voting', '投稿順') ?>
+		<?= $this->Paginator->sort('rating', '評点順') ?>
+		<?= $this->Paginator->sort('Users.username', 'ユーザーネーム') ?>
+		<?= $this->Paginator->sort('Clinics.name', '病院名') ?>
 	</div>
 	<!--END sort -->
 	<article>

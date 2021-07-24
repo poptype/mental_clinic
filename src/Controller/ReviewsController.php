@@ -69,7 +69,7 @@ class ReviewsController extends AppController
 				]);
 				//reviewsのpostされてきたclinic_idに一致するレコード抽出
 				$query = $this->Reviews->find()
-				->where(['clinic_id' => $review->clinic_id]);
+					->where(['clinic_id' => $review->clinic_id]);
 				//clinic_idに一致するレコード全てのratingをselect()で指定する。avg()でratingの平均を出し、
 				//round()で0.1以下を切り捨てて、平均値を出す。
 				$rating = $query->select([
@@ -221,8 +221,13 @@ class ReviewsController extends AppController
 		$this->loadModel('DiseaseCategories');
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],
+			'order' => ["created" => "DESC"],
+			'sortableFields' => [
+				'voting', 'created', 'Users.username', 'rating', 'Clinics.name'
+			]
 		];
-		$reviews = $this->paginate($this->Reviews);
+		$reviews = $this->paginate($this->Reviews->find());
+
 
 		// --form post されてきた value of voting のみpatchEntityする-- //
 		if ($this->request->is(['patch', 'post', 'put'])) {
