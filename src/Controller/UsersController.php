@@ -14,6 +14,12 @@ use Cake\Core\Configure;
  */
 class UsersController extends AppController
 {
+	public function initialize(): void
+	{
+		parent::initialize();
+		$this->loadComponent('My');
+	}
+
 	/**
 	 * Index method
 	 *
@@ -77,11 +83,7 @@ class UsersController extends AppController
 			$user = $this->Users->patchEntity($user, $this->request->getData());
 			//-- Image upload process --//
 			if (!$user->getErrors()) {
-				$image = $this->request->getData('image_file');
-				$name = $image->getClientFilename();
-				$targetPath = WWW_ROOT . 'img/upload' . DS . $name;
-				if ($name) $image->moveTo($targetPath);
-				$user->avatar = $name;
+				$this->My->image_upload($user, $this->request);
 				$this->session = $this->getRequest()->getSession();
 				$this->session->write('user_add', $user);
 				$this->session->write('user_request', $this->request->getData());
@@ -135,27 +137,16 @@ class UsersController extends AppController
 	 */
 	public function edit($id = null)
 	{
-
-		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
-		$session_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($id != $session_id) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+		$this->is_sessionUser($id);
 
 		$user = $this->Users->get($id, [
 			'contain' => [],
 		]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$user = $this->Users->patchEntity($user, $this->request->getData());
-			//-- Image upload process --//
-			if (!$user->getErrors()) {
-				$image = $this->request->getData('image_file');
-				$name = $image->getClientFilename();
-				$targetPath = WWW_ROOT . 'img/upload' . DS . $name;
-				if ($name) $image->moveTo($targetPath);
-				$user->avatar = $name;
-			}
-			//-- END Image upload process-- //
+
+			$this->My->image_upload($user, $this->request);
+
 			if ($this->Users->save($user)) {
 				$this->Flash->success(__('ユーザー情報が変更されました。'));
 
@@ -176,18 +167,13 @@ class UsersController extends AppController
 	 */
 	public function delete($id = null)
 	{
-		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
-		$session_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($id != $session_id) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
-
+		$this->is_sessionUser($id);
 		$this->request->allowMethod(['post', 'delete']);
 		$user = $this->Users->get($id);
 		if ($this->Users->delete($user)) {
-			$this->Flash->success(__('The user has been deleted.'));
+			$this->Flash->success(__('アカウントを削除しました。'));
 		} else {
-			$this->Flash->error(__('The user could not be deleted. Please, try again.'));
+			$this->Flash->error(__('アカウントの削除に失敗しました。もう一度お試し下さい。'));
 		}
 
 		return $this->redirect(['action' => 'index']);
@@ -238,6 +224,19 @@ class UsersController extends AppController
 			$this->Authentication->logout();
 
 			return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+		}
+	}
+
+	/**
+	 * ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動
+	 *
+	 * @return \Cake\Http\Response|null|void Renders view
+	 */
+	private function is_sessionUser($id)
+	{
+		$session_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+		if ($id != $session_id) {
+			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
 		}
 	}
 }

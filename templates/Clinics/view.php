@@ -12,7 +12,7 @@ $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake',
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => '病院リスト', 'url' => ['controller' => 'Clinics', 'action' => 'list']],
-	['title' => $clinic->name, 'url' => null]
+	['title' => $clinic->name, 'url' => ['action' => 'view', $clinic->id]]
 ]);
 $this->start("script");
 echo '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxX8T-0SmlrtYVg1FO3Laj612Ev9RiRaM&callback=initMapWithAddress" async defer></script>';

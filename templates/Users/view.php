@@ -15,7 +15,7 @@ $session_name = $this->getRequest()->getSession()->read('Auth.username');
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']],
-	['title' => $user->username . "さんのプロフィール", 'url' => null]
+	['title' => $user->username . "さんのプロフィール", 'url' => ['action' => 'view', $user->id]]
 ]);
 ?>
 <!-- <aside class="column">
@@ -61,16 +61,12 @@ $this->Breadcrumbs->add([
 
 		<p class="disease">
 			<span class="label"><?= __('病名') ?></span>
-			<?= $user->has('disease_category') ? $this->Html->link($user->disease_category->name, ['controller' => 'DiseaseCategories', 'action' => 'view', $user->disease_category->id]) : '' ?>
+			<?= $user->has('disease_category') ? $user->disease_category->name : '' ?>
 		</p>
 
 		<p class="age">
 			<span class="label"><?= __('年齢') ?></span>
-			<?php if (empty($user->age)) : ?>
-				非公開
-			<?php else : ?>
-				<?= $this->Number->format($user->age) ?>歳
-			<?php endif; ?>
+			<?= $user->has('age') ? $user->age."歳" : '非公開' ?>
 		</p>
 
 		<p class="created">
@@ -97,7 +93,7 @@ $this->Breadcrumbs->add([
 			<?= $this->Form->postLink(
 				__('アカウントを削除する'),
 				['action' => 'delete', $session_id],
-				['confirm' => __('本当に 『' . $session_name . '』さんのアカウントを削除しますか？', $session_id), 'class' => 'link_button']
+				['confirm' => __('本当にこのアカウントを削除しますか？', $session_id), 'class' => 'link_button']
 			) ?>
 		</div>
 

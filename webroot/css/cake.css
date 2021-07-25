@@ -64,6 +64,17 @@
         border-radius: .5rem;
 }
 
+.label_2 {
+        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
+        background-color: rgba(115, 55, 196, 0.1);
+        border-radius: 0.7rem;
+        border: 0.1rem solid rgba(115, 55, 196, 0.1);
+        display: inline-block;
+        color: #6200EE;
+        padding: 0.4rem 1.5rem;
+        text-decoration: none;
+}
+
 /* --tooltip-- */
 .tooltip {
         position: relative;

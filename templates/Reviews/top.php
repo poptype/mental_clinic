@@ -48,9 +48,10 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 				<div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product.">
 					<?= $review->rating ?>
 				</div>
-				<span class="disease_name">
-					<?= $review->has('user') ? $this->Html->link($query[$review->user->disease_categorie_id], ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' #連想配列にidをkeyとして病名を表示
-					?>
+				<span class="disease_name ">
+					<p class="label_2">
+						<?= $review->has('user') ? $query[$review->user->disease_categorie_id] : '' #連想配列にidをkeyとして病名を表示
+						?></p>
 				</span>
 				<p class="body">
 					<?php $content = $review->text;
@@ -103,16 +104,6 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 			</div>
 		<?php endforeach; ?>
 	</article>
-	<div class="paginator">
-		<ul class="pagination">
-			<?= $this->Paginator->first('<< ') ?>
-			<?= $this->Paginator->prev(__('前へ')) ?>
-			<?= $this->Paginator->numbers(['modulus' => 4, 'after' => '…']) ?>
-			<?= $this->Paginator->next(__('次へ')) ?>
-			<?= $this->Paginator->last(' >>') ?>
-			<li class="page_count"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}')) ?></li>
-		</ul>
-		<!--<p><!?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>-->
-	</div>
+	<?= $this->element('paginator') ?>
 </section>
 <!--END reviews-->

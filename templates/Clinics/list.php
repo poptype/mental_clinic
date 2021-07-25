@@ -8,7 +8,7 @@
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'clinic_list']));
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
-	['title' => '病院リスト', 'url' => null]
+	['title' => '病院リスト', 'url' => ['controller' => 'Clinics', 'action' => 'list']]
 ]);
 
 ?>
@@ -75,15 +75,7 @@ $this->Breadcrumbs->add([
 
 
 		</div>
-		<div class="paginator">
-			<ul class="pagination">
-				<?= $this->Paginator->first('<< ') ?>
-				<?= $this->Paginator->prev(__('前へ')) ?>
-				<?= $this->Paginator->numbers(['modulus' => 4, 'after' => '…']) ?>
-				<?= $this->Paginator->next(__('次へ')) ?>
-				<?= $this->Paginator->last(' >>') ?>
-				<li class="page_count"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}')) ?></li>
-			</ul>
-			<!--<p><!?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>-->
-		</div>
+
+	<?= $this->element('paginator') ?>
+
 	</div>

@@ -38,6 +38,7 @@ class MyComponent extends Component
 			if ($name) $image->moveTo($targetPath);
 			print($name);
 			$entity->image = $name;
+			$entity->avatar = $name;
 		}
 		//-- END Image upload process-- //
 	}

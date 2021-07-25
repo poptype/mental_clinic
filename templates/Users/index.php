@@ -8,7 +8,7 @@
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'user_list']));
 $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
-	['title' => 'ユーザーリスト', 'url' => null]
+	['title' => 'ユーザーリスト', 'url' => ['controller' => 'Users', 'action' => 'index']]
 ]);
 
 ?>
@@ -66,11 +66,9 @@ $this->Breadcrumbs->add([
 					<span class="label">登録日</span>
 					<span class="created"><?= h($user->created->format('Y年m月d日')) ?></span>
 					<span class="label">病名</span>
-					<?= $user->has('disease_category') ? $this->Html->link(
-						$user->disease_category->name,
-						['controller' => 'DiseaseCategories', 'action' => 'view', $user->disease_category->id],
-						['class' => 'disease']
-					) : '' ?>
+					<?= $user->has('disease_category') ?
+						$user->disease_category->name
+						: '' ?>
 					<!-- <!?= h($user->email) ?> -->
 				</div>
 			<?php endforeach; ?>
@@ -78,15 +76,7 @@ $this->Breadcrumbs->add([
 
 
 	</div>
-	<div class="paginator">
-		<ul class="pagination">
-			<?= $this->Paginator->first('<< ') ?>
-			<?= $this->Paginator->prev(__('前へ')) ?>
-			<?= $this->Paginator->numbers(['modulus' => 4, 'after' => '…']) ?>
-			<?= $this->Paginator->next(__('次へ')) ?>
-			<?= $this->Paginator->last(' >>') ?>
-			<li class="page_count"><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}')) ?></li>
-		</ul>
-		<!--<p><!?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>-->
-	</div>
+
+	<?= $this->element('paginator') ?>
+
 </div>

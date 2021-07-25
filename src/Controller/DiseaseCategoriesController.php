@@ -15,7 +15,7 @@ class DiseaseCategoriesController extends AppController
 	public function initialize(): void
 	{
 		parent::initialize();
-		$this->loadComponent('Admin');
+		$this->loadComponent('My');
 	}
 	/**
 	 * Index method
@@ -24,7 +24,7 @@ class DiseaseCategoriesController extends AppController
 	 */
 	public function index()
 	{
-		$this->Admin->is_admin();
+		$this->My->is_admin();
 		$diseaseCategories = $this->paginate($this->DiseaseCategories);
 
 		$this->set(compact('diseaseCategories'));
@@ -53,11 +53,8 @@ class DiseaseCategoriesController extends AppController
 	 */
 	public function add()
 	{
-		// --管理者ID（１）で一致しなければ強制ページ移動-- //
-		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != 1) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+
+		$this->My->is_admin();
 
 		$diseaseCategory = $this->DiseaseCategories->newEmptyEntity();
 		if ($this->request->is('post')) {
@@ -81,11 +78,7 @@ class DiseaseCategoriesController extends AppController
 	 */
 	public function edit($id = null)
 	{
-		// --管理者ID（１）で一致しなければ強制ページ移動-- //
-		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != 1) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+		$this->My->is_admin();
 
 		$diseaseCategory = $this->DiseaseCategories->get($id, [
 			'contain' => [],
@@ -111,11 +104,7 @@ class DiseaseCategoriesController extends AppController
 	 */
 	public function delete($id = null)
 	{
-		// --管理者ID（１）で一致しなければ強制ページ移動-- //
-		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != 1) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+		$this->My->is_admin();
 
 		$this->request->allowMethod(['post', 'delete']);
 		$diseaseCategory = $this->DiseaseCategories->get($id);

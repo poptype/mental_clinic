@@ -12,6 +12,13 @@ namespace App\Controller;
  */
 class ReviewsController extends AppController
 {
+
+	public function initialize(): void
+	{
+		parent::initialize();
+		$this->loadComponent('My');
+	}
+
 	/**
 	 * Index method
 	 *
@@ -19,6 +26,7 @@ class ReviewsController extends AppController
 	 */
 	public function index()
 	{
+		$this->My->is_admin();
 		$this->paginate = [
 			'contain' => ['Users', 'Clinics'],
 		];
@@ -142,11 +150,7 @@ class ReviewsController extends AppController
 	 */
 	public function edit($id = null, $username_id = null)
 	{
-		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
-		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != $username_id) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+		$this->is_sessionUser($username_id);
 
 		$review = $this->Reviews->get($id, [
 			'contain' => [],
@@ -197,11 +201,7 @@ class ReviewsController extends AppController
 	 */
 	public function delete($id = null,  $username_id = null)
 	{
-		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
-		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != $username_id) {
-			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
-		} //-- END --//
+		$this->is_sessionUser($username_id);
 
 		$this->request->allowMethod(['post', 'delete']);
 		$review = $this->Reviews->get($id);
@@ -267,5 +267,13 @@ class ReviewsController extends AppController
 
 		if ($clinic) $this->set('clinic', $clinic);
 		if ($user) $this->set('user', $user);
+	}
+
+	private function is_sessionUser($username_id){
+	// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
+		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
+		if ($user_id != $username_id) {
+			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+		} //-- END --//
 	}
 }
