@@ -137,7 +137,8 @@ class UsersController extends AppController
 	 */
 	public function edit($id = null)
 	{
-		$this->is_sessionUser($id);
+		if (isset($this->Authentication->getResult()->getData()->id) && $this->Authentication->getResult()->getData()->id != 1)
+			$this->is_sessionUser($id);
 
 		$user = $this->Users->get($id, [
 			'contain' => [],
@@ -167,7 +168,9 @@ class UsersController extends AppController
 	 */
 	public function delete($id = null)
 	{
-		$this->is_sessionUser($id);
+		if (isset($this->Authentication->getResult()->getData()->id) && $this->Authentication->getResult()->getData()->id != 1)
+			$this->is_sessionUser($id);
+
 		$this->request->allowMethod(['post', 'delete']);
 		$user = $this->Users->get($id);
 		if ($this->Users->delete($user)) {
@@ -200,12 +203,22 @@ class UsersController extends AppController
 			// ログイン成功後に /article にリダイレクトします
 			$result = $this->Authentication->getResult();
 			$user = $result->getData();
-			$redirect = $this->request->getQuery('redirect', [
-				'controller' => 'Users',
-				'action' => 'view', //ログインUserのviewにリンク
-				$user->id,
-			]);
-			return $this->redirect($redirect);
+			// 管理者でログインしたら管理者用ページへリダイレクト
+			if ($user->id == 1) {
+				$redirect = $this->request->getQuery('redirect', [
+					'controller' => 'Users',
+					'action' => 'admin',
+					$user->id,
+				]);
+				return $this->redirect($redirect);
+			} else {
+				$redirect = $this->request->getQuery('redirect', [
+					'controller' => 'Users',
+					'action' => 'view', //ログインUserのviewにリンク
+					$user->id,
+				]);
+				return $this->redirect($redirect);
+			}
 		}
 		// ユーザーの送信と認証に失敗した場合にエラーを表示します
 		//
@@ -238,5 +251,25 @@ class UsersController extends AppController
 		if ($id != $session_id) {
 			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
 		}
+	}
+
+	public function admin($id = null)
+	{
+		$this->loadModel('Clinics');
+		$result = $this->Authentication->getResult();
+		$user = $this->Users->get($id, [
+			'contain' => ['DiseaseCategories', 'Reviews'],
+		]);
+
+		$this->set(compact('user'));
+		$this->set('clinics', $this->Clinics->find('all'));
+	}
+
+	public function list($id = null)
+	{
+		$this->My->is_admin();
+		$users = $this->paginate($this->Users);
+
+		$this->set(compact('users'));
 	}
 }
