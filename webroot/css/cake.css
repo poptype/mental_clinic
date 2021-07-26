@@ -17,6 +17,12 @@
         --star-size: 3rem;
         --star-color: #e9e9e9;
         --star-background: #fc0;
+	/* base Color */
+	--primary-color: #72A603;
+	--dark-weak-color: #467302;
+	--dark--strong-color: #365902;
+	--light--weak-color: #84BF04;
+	--secondary-color: #59551C;
 }
 
 /* ----breadcrumbs---- */
