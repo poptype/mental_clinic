@@ -80,7 +80,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
 		<?php endif ?>
 	</nav>
-	<main class="main">
+	<main class="main" style="background: url(<?php echo $this->Url->build("/webroot/img") ?>/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 		<div class="container">
 			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
@@ -93,9 +93,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	<script>
 		//開閉ボタンを押した時には
 		$(".open-btn").click(function() {
-		$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
-		$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
-		$('#search-text').focus(); //テキスト入力のinputにフォーカス
+			$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
+			$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
+			$('#search-text').focus(); //テキスト入力のinputにフォーカス
 		});
 	</script>
 </body>
