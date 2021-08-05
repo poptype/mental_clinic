@@ -17,21 +17,12 @@
         --star-size: 3rem;
         --star-color: #e9e9e9;
         --star-background: #fc0;
-<<<<<<< HEAD
         /* color */
         --primary-color: #F7E5E4;
         --background-color: #F0F5ED;
         --secondary-color: #E0EDFA;
         /* text shadow */
-        --box-shadow-weak: 0 7px 14px 0 rgba(60, 66, 87, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-=======
-	/* base Color */
-	--primary-color: #72A603;
-	--dark-weak-color: #467302;
-	--dark--strong-color: #365902;
-	--light--weak-color: #84BF04;
-	--secondary-color: #59551C;
->>>>>>> fde761f21d13d37211d747e7607a73ca08893f16
+        --box-shadow-weak: 0 7px 14px 0 rgba(60, 66, 87, 0.5), 0 3px 6px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* ----breadcrumbs---- */
@@ -80,12 +71,8 @@
 }
 
 .label_2 {
-        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
-        background-color: rgba(115, 55, 196, 0.1);
-        border-radius: 0.7rem;
-        border: 0.1rem solid rgba(115, 55, 196, 0.1);
         display: inline-block;
-        color: #6200EE;
+        color: #324594;
         padding: 0.4rem 1.5rem;
         text-decoration: none;
 }
@@ -134,9 +121,6 @@
 .list_wrapper {
         color: #555;
         display: inline-block;
-        /* インライン要素化 */
-        border-bottom: dashed 1px #555;
-        /* 下線を引く */
 }
 
 /* ツールチップ部分を隠す */
@@ -246,13 +230,17 @@
         padding: 1rem;
         margin-right: 1rem;
         box-shadow: 0.5rem 0.2rem 0.8rem rgba(0, 0, 0, 0.2), 0 0.8rem 0.8rem rgba(0, 0, 0, 0.2);
+        background-color: var(--primary-color);
+        border: 1px solid #E1564E40;
+        border-radius: 10%;
+        color: #001217;
 }
 
 /* --pagenation-- */
 
 .active {
         border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-        background-color: #6300ee;
+        background-color: #324594;
 }
 
 .active>a {
@@ -267,15 +255,16 @@
 .paginator>.pagination>li>a {
         color: #606c76;
         pointer-events: auto;
+        transition: all 0.5s ease-out;
 }
 
 .paginator>.pagination>li>a:hover {
-        color: #f5f5f5;
+        color: #121212;
 }
 
 .paginator>.pagination>li:not(.page_count):hover {
         border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-        background-color: #9c67e7;
+        background-color: #8BBAE9;
 }
 
 .paginator>.pagination>li:not(.page_count):active {
@@ -293,7 +282,7 @@
 }
 
 #_Color {
-        fill: #e9e9e9;
+        fill: #001217;
 }
 
 /*========= 検索窓を開くためのボタン設定 ===========*/
@@ -508,7 +497,7 @@ body {
 
 main {
         min-height: 77.5vh;
-	background-blend-mode: overlay;
+        background-blend-mode: overlay;
 }
 
 .content {
@@ -536,7 +525,7 @@ th {
         justify-content: center;
         background-color: #FFF;
         height: 5.6rem;
-        box-shadow: var(--box-shadow-weak);
+        box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.5rem 0.3rem rgba(0, 0, 0, 0.1), 0 0.3rem 1rem rgba(0, 0, 0, 0.1)
 }
 
 .top-nav-link {
@@ -575,8 +564,19 @@ th {
         margin-right: 2rem;
 }
 
+.logo_title {
+        width: 10%;
+}
+
 .nav-serach {
         margin-right: 2rem;
+}
+
+.nav-login {
+        padding: 0.25rem 1rem;
+        background-color: #e0edfa;
+        border: 1px solid #aaadb1;
+        color: #57595c;
 }
 
 .nav-logout {
@@ -590,6 +590,16 @@ th {
 .side-nav-item {
         display: block;
         padding: 0.5rem 0;
+}
+
+.open-btn {
+        margin-right: 1rem;
+}
+
+.list_wrapper {
+        width: 36px;
+        height: 36px;
+        margin-right: 1rem;
 }
 
 /* ---------------View action---------------- */
@@ -681,8 +691,23 @@ th {
         color: #606c76;
 }
 
+.asc {
+        background-color: var(--primary-color);
+        border: 1px solid #E1564E40;
+        border-radius: 10%;
+        color: #001217;
+}
+
 .asc:after {
         content: " \2193";
+}
+
+
+.desc {
+        background-color: var(--primary-color);
+        border: 1px solid #E1564E40;
+        border-radius: 10%;
+        color: #001217;
 }
 
 .desc:after {

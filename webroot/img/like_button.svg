@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102" height="43.5" viewBox="0 0 102 43.5">
+  <defs>
+    <filter id="Rectangle" x="0" y="0.5" width="102" height="43" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.141"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="1.5" y="0" width="99" height="40" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <rect id="長方形_16" data-name="長方形 16" width="29" height="24" transform="translate(794 177.539)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="いいね" transform="translate(-785.5 -173)">
+    <rect id="長方形_15" data-name="長方形 15" width="87" height="28" rx="14" transform="translate(793 177)" fill="#cbe2f7"/>
+    <g id="Shadow" transform="translate(793 177)" style="mix-blend-mode: multiply;isolation: isolate">
+      <g transform="matrix(1, 0, 0, 1, -7.5, -4)" filter="url(#Rectangle)">
+        <rect id="Rectangle-3" data-name="Rectangle" width="87" height="28" rx="14" transform="translate(7.5 4)" fill="#fff"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -7.5, -4)" filter="url(#Rectangle-2)">
+        <rect id="Rectangle-4" data-name="Rectangle" width="87" height="28" rx="14" transform="translate(7.5 4)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="マスクグループ_7" data-name="マスクグループ 7" transform="translate(2 1.461)" clip-path="url(#clip-path)">
+      <g id="いいねの手のアイコン" transform="translate(795.414 176.841)">
+        <path id="パス_51" data-name="パス 51" d="M21.625,9.345H17.444c-1.784,0-2.127-.31-2.127-.805,0-.566.892-1.556,1.1-1.91A7.418,7.418,0,0,0,18.2,3.306c.275-1.769-1.784-3.042-2.47-1.839a12.727,12.727,0,0,1-2.676,3.749c-2.291,1.706-4.186,5.42-6.573,5.42v9.279c1.967,0,6.423,2.254,8,2.58,1.788.369,4.124,1.183,5.364-.553.764-1.07,1.962-5.225,2.861-8.172C24.987,11.511,23.413,9.345,21.625,9.345Z" transform="translate(0 -0.011)" fill="#324594"/>
+        <path id="パス_52" data-name="パス 52" d="M0,13.088v7.077a1.584,1.584,0,0,0,1.583,1.584h.9A1.056,1.056,0,0,0,3.54,20.693V11.5H1.583A1.584,1.584,0,0,0,0,13.088Z" transform="translate(1 -1.512)" fill="#324594"/>
+      </g>
+    </g>
+    <text id="いいね_" data-name="いいね！" transform="translate(827 197)" fill="#324594" font-size="12" font-family="Meiryo" letter-spacing="0.089em"><tspan x="0" y="0">いいね！</tspan></text>
+  </g>
+</svg>

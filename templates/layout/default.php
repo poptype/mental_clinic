@@ -41,19 +41,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <body>
 	<nav class="top-nav">
-		<a href="<?= $this->Url->build('/') ?>">
-			<svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" width="132" height="42" viewBox="0 0 132 42">
-				<g id="logo" transform="translate(0 -2)">
-					<g id="長方形_2" data-name="長方形 2" transform="translate(0 4)" fill="#fff" stroke="#707070" stroke-width="1">
-						<rect width="132" height="32" stroke="none" />
-						<rect x="0.5" y="0.5" width="131" height="31" fill="none" />
-					</g>
-					<text id="LOGO-2" data-name="LOGO" transform="translate(20 32)" fill="#707070" font-size="28" font-family="Meiryo">
-						<tspan x="0" y="0">LOGO</tspan>
-					</text>
-				</g>
-			</svg>
-			<svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
+		<?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?>
+			<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
 				<g id="titleLogo" transform="translate(-181 2)">
 					<g id="長方形_3" data-name="長方形 3" transform="translate(181)" fill="#fff" stroke="#707070" stroke-width="1">
 						<rect width="186" height="37" stroke="none" />
@@ -63,8 +52,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						<tspan x="0" y="0">TitleLogo</tspan>
 					</text>
 				</g>
-			</svg>
-		</a>
+			</svg> -->
+
 
 		<?= $this->element('seach_menu') ?>
 		<?= $this->element('drop_list') ?>
@@ -74,7 +63,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		$auth_id = $session->read('Auth.id'); //Auth.id取得
 		$auth_username = $session->read('Auth.username'); //Auth.username取得
 		if (is_null($auth_id)) : ?>
-			<a target="_self" rel="noopener" href="/mental_clinic/users/login">login</a>
+			<a class="nav-login" target="_self" rel="noopener" href="/mental_clinic/users/login">Login</a>
 		<?php else : ?>
 			<a class="nav-userName" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>> <?= $auth_username ?></a> <!-- login username to view.php -->
 			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>

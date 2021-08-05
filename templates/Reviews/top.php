@@ -26,11 +26,11 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 <section class="reviews">
 	<!-- sort -->
 	<div class="sort-wrapper">
-		<?= $this->Paginator->sort('created', '日付順') ?>
-		<?= $this->Paginator->sort('voting', '投稿順') ?>
-		<?= $this->Paginator->sort('rating', '評点順') ?>
-		<?= $this->Paginator->sort('Users.username', 'ユーザーネーム') ?>
-		<?= $this->Paginator->sort('Clinics.name', '病院名') ?>
+		<?= $this->Paginator->sort('created', '日付順', ["class" => "sort-label"]) ?>
+		<?= $this->Paginator->sort('voting', '投稿順', ["class" => "sort-label"]) ?>
+		<?= $this->Paginator->sort('rating', '評点順', ["class" => "sort-label"]) ?>
+		<?= $this->Paginator->sort('Users.username', 'ユーザーネーム', ["class" => "sort-label"]) ?>
+		<?= $this->Paginator->sort('Clinics.name', '病院名', ["class" => "sort-label"]) ?>
 	</div>
 	<!--END sort -->
 	<article>
@@ -83,23 +83,18 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 					);
 					?>
 					<?= $this->Form->end() ?>
-					<div>
-						<p><?php if ($this->Number->format($review->voting) != 0) : ?>
-								<span class="voting_num"><?= $this->Number->format($review->voting) ?></span>
-							<?php endif ?> いいね！
-						</p>
-						<?php #votingの変数個を☆icon表示
+					<span class="voting_num"><?= $this->Number->format($review->voting) ?></span>
+					<!-- <!?php #votingの変数個を☆icon表示
 						$num = 0;
 						while ($num < $this->Number->format($review->voting)) : ?>
-							<?php if ($num > 10) {
+							<!?php if ($num > 10) {
 								echo '……';
 								break;
 							} ?>
-							<i class="star"><?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
-						<?php $num++;
+							<i class="star"><!?= $this->Html->image("Icon_awesome-heart.svg") ?></i>
+						<!?php $num++;
 						endwhile;
-						?>
-					</div>
+						?> -->
 				</span>
 			</div>
 		<?php endforeach; ?>

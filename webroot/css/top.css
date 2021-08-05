@@ -1,234 +1,232 @@
 /* --- @override --- */
 .container {
-    margin: 0 auto;
-    max-width: 152.2rem;
-    padding: 0 2.0rem;
-    position: relative;
-    width: 100%;
-    display: grid;
+        margin: 0 auto;
+        max-width: 152.2rem;
+        padding: 0 2.0rem;
+        position: relative;
+        width: 100%;
+        display: grid;
 }
 
 button:hover {
-    background-color: unset;
-    border-color: unset;
-    color: unset;
-    outline: 0;
+        background-color: unset;
+        border-color: unset;
+        color: unset;
+        outline: 0;
 }
 
 fieldset {
-    margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
 }
 
 /* -----Hero and Guideline------ */
 .hero-wrapper {
-    height: 84.6rem;
-    background: #e5e5e5;
-    border: 0.1rem solid #707070;
-    margin: 8rem 0 10rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        height: 84.6rem;
+        background: #e5e5e5;
+        border: 0.1rem solid #707070;
+        margin: 8rem 0 10rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .hero-wrapper>p:nth-child(1) {
-    font-size: 10rem;
+        font-size: 10rem;
 }
 
 /* ===============reviews================= */
 .reviews {
-    width: 90rem;
-    margin: 0 auto;
+        width: 90rem;
+        margin: 0 auto;
 }
+
 /* ~~~~~~article~~~~~~ */
 .review-container {
-    display: grid;
-    grid-template-columns: 15rem auto auto;
-    grid-template-rows: auto auto auto auto 5rem;
-    grid-row-gap: 1rem;
+        display: grid;
+        grid-template-columns: 15rem auto auto;
+        grid-template-rows: auto auto auto auto 5rem;
+        grid-row-gap: 1rem;
 }
 
 article {
-    margin-bottom: 8rem;
+        margin-bottom: 8rem;
 }
 
 article>div {
-    min-height: 25.3rem;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    margin-bottom: 4.5rem;
-    padding: 1rem;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-color: #c4c4c4;
-    box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.5rem 0.3rem rgba(0, 0, 0, 0.1), 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
+        min-height: 25.3rem;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        margin-bottom: 4.5rem;
+        padding: 1rem;
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-color: #c4c4c4;
+        box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.5rem 0.3rem rgba(0, 0, 0, 0.1), 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .thumbnail {
-    max-width: 13rem;
-    grid-row: span 2;
+        max-width: 13rem;
+        grid-row: span 2;
 }
 
 .clinic-name {
-    grid-column: span 2;
-    font-size: 2rem;
-    font-weight: var(--Medium);
-    margin-top: 1rem;
+        grid-column: span 2;
+        font-size: 2rem;
+        font-weight: var(--Medium);
+        margin-top: 1rem;
 }
 
 .clinic-name>a {
-    box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
-    background-color: #6300ee;
-    border-radius: 2.8rem;
-    border: 0.1rem solid #6300ee;
-    cursor: pointer;
-    color: #ffffff;
-    padding: 0.8rem 3.1rem;
-    text-decoration: none;
-    text-shadow: 0px 0.1rem 0px #999999;
+        box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
+        background-color: var(--primary-color);
+        border-radius: 2.8rem;
+        cursor: pointer;
+        color: #121212;
+        padding: 0.8rem 3.1rem;
+        text-decoration: none;
+        text-shadow: 0px 0.1rem 0px #999999;
 }
 
 .clinic-name>a:hover {
-    background-color: #8654d1;
+        background-color: #f5bcb9;
 }
 
 .clinic-name>a:active {
-    position: relative;
-    top: 0.1rem;
-    box-shadow: unset;
+        position: relative;
+        top: 0.1rem;
+        box-shadow: unset;
 }
 
 .Stars {
-    display: inline-block;
-    font-size: var(--star-size);
-    font-family: Times;
-    /* make sure ★ appears correctly*/
-    line-height: 1;
+        display: inline-block;
+        font-size: var(--star-size);
+        font-family: Times;
+        /* make sure ★ appears correctly*/
+        line-height: 1;
 }
 
 .Stars::before {
-    content: '★★★★★';
-    background: linear-gradient(90deg, var(--star-background) calc(var(--rating) / 5 * 100%), var(--star-color) calc(var(--rating) / 5 * 100%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.disease_name {
-    margin-left: 2rem;
+        content: '★★★★★';
+        background: linear-gradient(90deg, var(--star-background) calc(var(--rating) / 5 * 100%), var(--star-color) calc(var(--rating) / 5 * 100%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }
 
 .disease_name>a {
-    box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
-    background-color: rgba(115, 55, 196, 0.1);
-    border-radius: 0.7rem;
-    border: 0.1rem solid rgba(115, 55, 196, 0.1);
-    display: inline-block;
-    cursor: pointer;
-    color: #6200EE;
-    padding: 0.4rem 1.5rem;
-    text-decoration: none;
+        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
+        background-color: rgba(115, 55, 196, 0.1);
+        border-radius: 0.7rem;
+        border: 0.1rem solid rgba(115, 55, 196, 0.1);
+        display: inline-block;
+        cursor: pointer;
+        color: #6200EE;
+        padding: 0.4rem 1.5rem;
+        text-decoration: none;
 }
 
 .disease_name>a:hover {
-    background-color: #bca3e26e;
+        background-color: #bca3e26e;
 }
 
 .disease_name>a:active {
-    position: relative;
-    top: 0.1rem;
-    box-shadow: unset;
+        position: relative;
+        top: 0.1rem;
+        box-shadow: unset;
 }
 
 .body {
-    grid-column: span 3;
+        grid-column: span 3;
 }
 
 .view_link {
-    box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
-    background-color: #6300ee;
-    border-radius: 2.8rem;
-    border: 0.1rem solid #6300ee;
-    cursor: pointer;
-    color: #ffffff;
-    padding: 0 1rem;
-    text-decoration: none;
-    text-shadow: 0px 0.1rem 0px #999999;
-    position: relative;
-    grid-column: span 3;
-    width: 11rem;
-    margin-left: 2rem;
+        box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
+        background-color: var(--primary-color);
+        border-radius: 2.8rem;
+        cursor: pointer;
+        color: #a35151;
+        padding: 0 1rem;
+        text-decoration: none;
+        text-shadow: 0px 0.1rem 0px #999999;
+        position: relative;
+        grid-column: span 3;
+        width: 11rem;
+        margin-left: 2rem;
 }
 
 .view_link::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 12.5px 15px 12.5px;
-    border-color: transparent transparent #6300ee transparent;
-    left: 4rem;
-    top: -1rem;
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 12.5px 15px 12.5px;
+        border-color: transparent transparent var(--primary-color) transparent;
+        left: 4rem;
+        top: -1rem;
 }
 
 .view_link>a {
-    color: #ffffff;
+        color: #424445;
 }
 
 .view_link:hover::before {
-    opacity: 0.8;
-    transition: all 0.2s ease-out;
+        opacity: 0.8;
+        transition: all 0.2s ease-out;
 }
 
 .view_link:hover {
-    opacity: 0.8;
-    transition: all 0.2s ease-out;
+        opacity: 0.8;
+        transition: all 0.2s ease-out;
 }
 
 .view_link:active {
-    position: relative;
-    top: 0.1rem;
-    box-shadow: unset;
+        position: relative;
+        top: 0.1rem;
+        box-shadow: unset;
 }
 
 
 .username {
-    justify-self: end;
-    align-self: end;
-    margin-right: 1rem;
+        justify-self: end;
+        align-self: end;
+        margin-right: 1rem;
 }
 
 .created {
-    align-self: end;
+        align-self: end;
+        justify-self: center;
 }
 
 .voting {
-    display: flex;
+        display: flex;
 }
 
 .voting>div>p {
-    font-weight: var(--Bold);
+        font-weight: var(--Bold);
 }
 
 .voting_num {
-    color: #6300ee;
-    font-family: 'Comic Sans MS';
-    font-size: 2rem;
-    text-shadow: rgb(210, 183, 84) 3px 0px 0px, rgb(210, 183, 84) 2.83487px 0.981584px 0px, rgb(210, 183, 84) 2.35766px 1.85511px 0px, rgb(210, 183, 84) 1.62091px 2.52441px 0px, rgb(210, 183, 84) 0.705713px 2.91581px 0px, rgb(210, 183, 84) -0.287171px 2.98622px 0px, rgb(210, 183, 84) -1.24844px 2.72789px 0px, rgb(210, 183, 84) -2.07227px 2.16926px 0px, rgb(210, 183, 84) -2.66798px 1.37182px 0px, rgb(210, 183, 84) -2.96998px 0.42336px 0px, rgb(210, 183, 84) -2.94502px -0.571704px 0px, rgb(210, 183, 84) -2.59586px -1.50383px 0px, rgb(210, 183, 84) -1.96093px -2.27041px 0px, rgb(210, 183, 84) -1.11013px -2.78704px 0px, rgb(210, 183, 84) -0.137119px -2.99686px 0px, rgb(210, 183, 84) 0.850987px -2.87677px 0px, rgb(210, 183, 84) 1.74541px -2.43999px 0px, rgb(210, 183, 84) 2.44769px -1.73459px 0px, rgb(210, 183, 84) 2.88051px -0.838247px 0px;
+        color: #E1564E;
+        font-family: '源ノ明朝';
+        font-size: 2.6rem;
+        align-self: end;
+        margin-left: 2rem;
 }
 
 .voting_image {
-    background-image: url('../img/Voting+.svg');
-    background-position: center center;
-    height: 4.5rem;
-    background-color: rgb(255, 255, 255, 1);
-    border-width: 0;
+        background-image: url('../img/like_button.svg');
+        background-position: center center;
+        height: 4.4rem;
+        background-color: rgb(255, 255, 255, 1);
+        border-width: 0;
+        width: 10.2rem;
 }
 
 .voting_image:hover {
-    opacity: 0.8;
-    transition: all 0.2s ease-out;
+        opacity: 0.8;
+        transition: all 0.2s ease-out;
 }
 
 .voting_image:active {
-    position: relative;
-    top: 0.1rem;
+        position: relative;
+        top: 0.1rem;
 }
