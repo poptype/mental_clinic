@@ -39,7 +39,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	<?= $this->fetch('script') ?>
 </head>
 
-<body>
+<body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 	<nav class="top-nav">
 		<?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?>
 			<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
@@ -69,7 +69,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
 		<?php endif ?>
 	</nav>
-	<main class="main" style="background: url(<?php echo $this->Url->build("/webroot/img") ?>/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
+	<main class="main">
 		<div class="container">
 			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>

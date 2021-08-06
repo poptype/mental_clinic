@@ -1,6 +1,6 @@
 h2 {
         text-align: center;
-        background: var(--main-paple);
+        background: var(--primary-strong-color);
         color: #f9f9f9;
         margin: unset;
         padding: 1rem;
@@ -10,6 +10,6 @@ h2 {
 
 legend {
         font-size: 2.5rem;
-        border-left: 5px solid var(--main-paple);
+        border-left: 5px solid var(--secondary-strong-color);
         padding-left: 1rem;
 }

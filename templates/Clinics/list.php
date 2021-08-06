@@ -76,6 +76,6 @@ $this->Breadcrumbs->add([
 
 		</div>
 
-	<?= $this->element('paginator') ?>
 
 	</div>
+	<?= $this->element('paginator') ?>

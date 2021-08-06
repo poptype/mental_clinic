@@ -15,12 +15,10 @@
         font-weight: var(--Medium);
 }
 
-.heading::after {
+.heading::before {
         content: '';
-        border-bottom: .5rem solid var(--main-paple);
-        width: 18%;
-        display: block;
-        transform: translateY(.5rem);
+        border-left: 0.5rem solid var(--secondary-strong-color);
+        margin-right: 1rem;
 }
 
 .sort-wrapper {
@@ -60,9 +58,7 @@
 
 .label {
         /*@overlide*/
-        padding: .1rem .1rem;
         text-align: center;
-        width: 50%;
         justify-self: end;
         height: 3rem;
 }
