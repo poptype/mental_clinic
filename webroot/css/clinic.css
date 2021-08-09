@@ -13,7 +13,7 @@
 }
 
 .reviews_icon {
-        color: blueviolet;
+        color: var(--primary-strong-color);
         position: absolute;
         margin-left: .2rem;
         margin-top: .8rem;
@@ -41,7 +41,7 @@
 b {
         /*@override*/
         font-size: 1.8rem;
-        color: blueviolet;
+        color: #E1564E;
         font-weight: var(--Black);
 }
 
@@ -84,11 +84,11 @@ b {
 }
 
 .article_grid {
-        border: .1rem solid var(--main-paple);
         border-radius: 1rem;
         padding: 1rem;
         margin-bottom: 1rem;
-        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
+        border: .1rem solid var(--primary-color);
+        box-shadow: var(--box-shadow-weak);
 }
 
 /* ギザギザ吹き出し */
@@ -127,4 +127,11 @@ b {
         height: 10rem;
         background: var(--main-paple);
         margin: 3rem 1rem;
+}
+
+.guid {
+        padding: .3rem .5rem;
+        color: #121212;
+        display: inline-block;
+        font-weight: var(--Medium);
 }

@@ -96,6 +96,10 @@ article>div {
         box-shadow: unset;
 }
 
+h3::before {
+        content: unset;
+}
+
 .Stars {
         display: inline-block;
         font-size: var(--star-size);
@@ -209,6 +213,7 @@ article>div {
         font-family: '源ノ明朝';
         font-size: 2.6rem;
         align-self: end;
+        margin-top: 1rem;
         margin-left: 2rem;
 }
 

@@ -50,15 +50,15 @@ $this->end();
 		} ?>
 		<p class="station">
 			<?= $this->Html->image('icon_station.svg', ['alt' => 'icon of station']) ?>
-			<span class="label">最寄り駅</span>　<?= h($clinic->station) ?>　<?= h($clinic->time) ?>
+			<span class="guid">最寄り駅</span>　<?= h($clinic->station) ?>　<?= h($clinic->time) ?>
 		</p>
 		<p class="address">
 			<?= $this->Html->image('icon_address.svg', ['alt' => 'icon of address']) ?>
-			<span class="label">住所</span>　<?= h($clinic->address) ?>
+			<span class="guid">住所</span>　<?= h($clinic->address) ?>
 		</p>
 		<p class="phone_number">
 			<?= $this->Html->image('icon_phoneNumber.svg', ['alt' => 'icon of phone number']) ?>
-			<span class="label">電話番号</span>　
+			<span class="guid">電話番号</span>　
 			<?php if (empty($clinic->phone_number)) : ?>
 				なし
 			<?php else : ?>

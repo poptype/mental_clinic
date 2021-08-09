@@ -42,10 +42,10 @@ function voting_incr($review)
 			さんの口コミ、感想、レビュー
 		</h2>
 		<span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
-		<p>
-			<?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
+		<!-- <p>
+			<!?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
 			の評価
-		</p>
+		</p> -->
 		<div class="Stars" style="--rating: <?= $review->rating ?>;" aria-label="Rating of this product.">
 			<?= $review->rating ?>
 		</div>
