@@ -31,14 +31,15 @@ $this->end();
 			<p class="reviews"><i class="reviews_icon"></i><span>口コミ<b><?= count($clinic->reviews) ?></b>件</span></p>
 			<div class="giza">
 				<span class="giza_a"><?= $this->Html->link(
-					__('口コミ投稿'),
-					[
-						'controller' => 'Reviews',
-						'action' => 'addFromClinic', $clinic->id
-					],
-					['class' => 'post']
-				) ?>
-			</span></div>
+								__('口コミ投稿'),
+								[
+									'controller' => 'Reviews',
+									'action' => 'addFromClinic', $clinic->id
+								],
+								['class' => 'post']
+							) ?>
+				</span>
+			</div>
 		</div>
 		<div class="Stars" style="--rating: <?= $clinic->rating ?>;" aria-label="Rating of this product.">
 			<?= $clinic->rating ?>
@@ -49,15 +50,24 @@ $this->end();
 			echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'clinic_img']);
 		} ?>
 		<p class="station">
-			<?= $this->Html->image('icon_station.svg', ['alt' => 'icon of station']) ?>
+			<svg class="station_icon" width="50" height="50">
+				<use xlink:href="/mental_clinic/img/icon_station.svg#station"></use>
+			</svg>
 			<span class="guid">最寄り駅</span>　<?= h($clinic->station) ?>　<?= h($clinic->time) ?>
 		</p>
 		<p class="address">
-			<?= $this->Html->image('icon_address.svg', ['alt' => 'icon of address']) ?>
+			<!-- <!?= $this->Html->image('icon_address.svg', ['alt' => 'icon of address']) ?> -->
+			<svg class="address_icon" width="50" height="50">
+				<use xlink:href="/mental_clinic/img/icon_address.svg#icon_address"></use>
+			</svg>
 			<span class="guid">住所</span>　<?= h($clinic->address) ?>
 		</p>
 		<p class="phone_number">
-			<?= $this->Html->image('icon_phoneNumber.svg', ['alt' => 'icon of phone number']) ?>
+			<!-- <!?= $this->Html->image('icon_phoneNumber.svg', ['alt' => 'icon of phone number']) ?> -->
+			<svg class="phone_icon" viewBox="0 0 25 25" width="50" height="50">
+				<use xlink:href="/mental_clinic/img/icon_phoneNumber.svg#icon_phone"></use>
+			</svg>
+
 			<span class="guid">電話番号</span>　
 			<?php if (empty($clinic->phone_number)) : ?>
 				なし

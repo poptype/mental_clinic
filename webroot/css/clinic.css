@@ -88,6 +88,10 @@ b {
         padding: 1rem;
         margin-bottom: 1rem;
         border: .1rem solid var(--primary-color);
+        transition: 1s all;
+}
+
+.article_grid:hover{
         box-shadow: var(--box-shadow-weak);
 }
 
@@ -134,4 +138,22 @@ b {
         color: #121212;
         display: inline-block;
         font-weight: var(--Medium);
+}
+
+/* --SVG-- */
+
+#original-icon {
+        fill: var(--primary-color);
+}
+
+#icon_address_g {
+        fill: var(--primary-color);
+}
+
+.phone_icon {
+        transform: translateY(20%);
+}
+
+#icon_phone_g {
+        fill: var(--primary-color);
 }

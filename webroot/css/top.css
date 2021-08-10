@@ -16,7 +16,7 @@ button:hover {
 }
 
 fieldset {
-        margin-bottom: 1.5rem;
+        margin-bottom: unset;
 }
 
 /* -----Hero and Guideline------ */
@@ -76,7 +76,7 @@ article>div {
 }
 
 .clinic-name>a {
-        box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
+        /* box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080; */
         background-color: var(--primary-color);
         border-radius: 2.8rem;
         cursor: pointer;
@@ -142,7 +142,7 @@ h3::before {
 }
 
 .view_link {
-        box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080;
+        /* box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080; */
         background-color: var(--primary-color);
         border-radius: 2.8rem;
         cursor: pointer;
@@ -154,6 +154,7 @@ h3::before {
         grid-column: span 3;
         width: 11rem;
         margin-left: 2rem;
+        transition: all 0.2s ease-out;
 }
 
 .view_link::before {
@@ -166,6 +167,7 @@ h3::before {
         border-color: transparent transparent var(--primary-color) transparent;
         left: 4rem;
         top: -1rem;
+        transition: all 0.2s ease-out;
 }
 
 .view_link>a {
@@ -173,13 +175,11 @@ h3::before {
 }
 
 .view_link:hover::before {
-        opacity: 0.8;
-        transition: all 0.2s ease-out;
+        border-color: transparent transparent #f5bcb9 transparent;
 }
 
 .view_link:hover {
-        opacity: 0.8;
-        transition: all 0.2s ease-out;
+        background-color: #f5bcb9;
 }
 
 .view_link:active {
@@ -202,6 +202,7 @@ h3::before {
 
 .voting {
         display: flex;
+        transform: translateY(30%);
 }
 
 .voting>div>p {
@@ -212,8 +213,6 @@ h3::before {
         color: #E1564E;
         font-family: '源ノ明朝';
         font-size: 2.6rem;
-        align-self: end;
-        margin-top: 1rem;
         margin-left: 2rem;
 }
 

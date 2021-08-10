@@ -65,7 +65,7 @@ $query = $disease_categories->find('list')->toArray(); //disease_categoriesテ�
 				<span class="username">
 					<?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
 				</span>
-				<span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
+				<span class="created"><?= h($review->created->format('Y年m月d日 H時i分')) ?></span>
 				<span class="voting">
 					<?= $this->Form->create($review) ?>
 					<fieldset>
