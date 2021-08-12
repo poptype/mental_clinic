@@ -89,10 +89,16 @@ b {
         margin-bottom: 1rem;
         border: .1rem solid var(--primary-color);
         transition: 1s all;
+        display: grid;
+        grid-row-gap: 1rem;
 }
 
-.article_grid:hover{
+.article_grid:hover {
         box-shadow: var(--box-shadow-weak);
+}
+
+.username>span {
+        margin-left: 2rem;
 }
 
 /* ギザギザ吹き出し */

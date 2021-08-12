@@ -39,6 +39,7 @@
 .avatar {
         /*@overlide*/
         grid-row: span 2;
+	transform: translateY(-15%);
 }
 
 .created {

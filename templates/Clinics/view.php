@@ -26,7 +26,7 @@ $this->end();
 
 <div class="column-responsive column-80">
 	<div class="flex content">
-		<h3><?= h($clinic->name) ?></h3>
+		<h3 class="heading_line"><?= h($clinic->name) ?></h3>
 		<div class="post_wrapper">
 			<p class="reviews"><i class="reviews_icon"></i><span>口コミ<b><?= count($clinic->reviews) ?></b>件</span></p>
 			<div class="giza">
@@ -88,11 +88,11 @@ $this->end();
 									['controller' => 'Users', 'action' => 'view', $reviews->user_id],
 									['class' => 'label']
 								) ?>さんの口コミ
-								<?= h($reviews->created->format('Y年m月d日 H時i分s秒')) ?>
+								<span><?= h($reviews->created->format('Y年m月d日 H時i分')) ?></span>
 							</p>
 							<?php $content = $reviews->text; ?>
 							<?= $this->Html->link(
-								mb_strimwidth($content, 0, 50, '…', 'UTF-8'),
+								mb_strimwidth($content, 0, 50, '…（続きを読む）', 'UTF-8'),
 								['controller' => 'Reviews', 'action' => 'view', $reviews->id]
 							) ?>
 

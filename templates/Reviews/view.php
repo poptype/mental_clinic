@@ -35,13 +35,13 @@ function voting_incr($review)
 			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
 		} ?>
 
-		<h2 class="title">
+		<h2 class="title heading_line">
 			<?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
 			の
 			<?= $review->has('user') ? $this->Html->link($review->user->username, ['controller' => 'Users', 'action' => 'view', $review->user->id]) : '' ?>
 			さんの口コミ、感想、レビュー
 		</h2>
-		<span class="created"><?= h($review->created->format('Y年m月d日 H時i分s秒')) ?></span>
+		<span class="created"><?= h($review->created->format('Y年m月d日 H時i分')) ?></span>
 		<!-- <p>
 			<!?= $review->has('clinic') ? $this->Html->link($review->clinic->name, ['controller' => 'Clinics', 'action' => 'view', $review->clinic->id]) : '' ?>
 			の評価
@@ -60,11 +60,26 @@ function voting_incr($review)
 				<?= $this->Text->autoParagraph(h($review->text)); ?>
 			</blockquote>
 		</div>
+		<?= $this->Form->create($review) ?>
+			<fieldset>
+				<?php
+				echo $this->Form->hidden('voting', ['value' => voting_incr($review)]);
+				echo $this->Form->hidden('id'); #review_idもpost
+				?>
+			</fieldset>
+			<?= $this->Form->button(
+				'',
+				array(
+					'class' => 'voting_image',
+					'div' => false
+				)
+			);
+			?>
+		<?= $this->Form->end() ?>
+					<span class="voting_num img-balloon"><b><?= $this->Number->format($review->voting) ?></b>いいね！</span>
+
 		<div class="voting">
-			<p><?php if ($this->Number->format($review->voting) != 0) : ?>
-					<span class="voting_num"><?= $this->Number->format($review->voting) ?></span>
-				<?php endif ?> いいね！
-			</p>
+
 			<?php #votingの変数個を☆icon表示
 			$num = 0;
 			while ($num < $this->Number->format($review->voting)) : ?>

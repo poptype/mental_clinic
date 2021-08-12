@@ -47,6 +47,20 @@ class ReviewsController extends AppController
 		$review = $this->Reviews->get($id, [
 			'contain' => ['Users', 'Clinics'],
 		]);
+		// --form post されてきた value of voting のみpatchEntityする-- //
+		if ($this->request->is(['patch', 'post', 'put'])) {
+			$review = $this->Reviews->get($this->request->getData('id'), [ #get reviews_id from requestObject
+				'contain' => [],
+			]);
+			$review = $this->Reviews->patchEntity($review, $this->request->getData());
+			if ($this->Reviews->save($review)) {
+				$this->Flash->success(__('口コミに投稿されました'));
+
+				return $this->redirect(['action' => 'top']);
+			}
+			$this->Flash->error(__('The review could not be saved. Please, try again.'));
+		}
+
 
 		$this->set(compact('review'));
 	}
