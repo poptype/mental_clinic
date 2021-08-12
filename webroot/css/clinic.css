@@ -101,7 +101,28 @@ b {
         margin-left: 2rem;
 }
 
-/* ギザギザ吹き出し */
+.post\,.label {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: var(--Bold);
+        width: 25%;
+        padding: 1rem 5rem;
+        background: var(--secondary-strong-color);
+        align-self: center;
+        box-shadow: 6px 5px 0px 1px #9fb0c0;
+        position: relative;
+}
+
+.post\,.label:active {
+        top: .1rem;
+        box-shadow: unset;
+}
+
+#my_map {
+        margin-bottom: 10rem;
+}
+
+/* ギザギザ吹き出し
 .giza .giza_a,
 .giza .giza_a:after,
 .giza .giza_a:before,
@@ -137,7 +158,7 @@ b {
         height: 10rem;
         background: var(--main-paple);
         margin: 3rem 1rem;
-}
+} */
 
 .guid {
         padding: .3rem .5rem;

@@ -54,7 +54,7 @@
 .avatar {
         /* border-radius: 50%; */
         width: 10rem;
-	height: 10rem;
+        height: 10rem;
         grid-row: span 2;
         clip-path: circle(35.06% at 50% center);
 }
@@ -202,20 +202,22 @@
 }
 
 .file>label {
-        background-color: #c4ccd3;
+        background-color: var(--secondary-strong-color);
         color: #f9f9f9;
         padding: .5rem 1rem;
         width: 5.5rem;
         font-size: 1.6rem;
-        font-weight: var(--Regular);
+        font-weight: var(--Bold);
         border-radius: 1rem;
         position: relative;
         bottom: 2rem;
         left: 2rem;
+        transition: 0.1s ease-in;
 }
 
 .file>label:hover {
         cursor: pointer;
+        filter: brightness(90%);
 }
 
 /* ---sort--- */
@@ -454,6 +456,18 @@ h6 {
         color: #363637;
 }
 
+h1 {
+        text-align: center;
+        background: var(--primary-strong-color);
+        color: #f9f9f9;
+        margin: unset;
+        padding: 1rem;
+        font-family: 'Meiryo';
+        font-weight: 600;
+        font-size: 3.8rem;
+}
+
+
 a {
         color: #2f85ae;
         -webkit-transition: all 0.2s linear;
@@ -483,8 +497,6 @@ th a,
 }
 
 button:hover {
-        background-color: var(--main-paple);
-        border-color: unset;
         cursor: pointer;
         filter: brightness(90%)
 }
@@ -511,6 +523,8 @@ input[type="submit"] {
         line-height: unset;
         /* box-shadow: var(--box-shadow-weak); */
         border: unset;
+        font-size: 1.6rem;
+        transition: .1s ease-in;
 }
 
 blockquote {

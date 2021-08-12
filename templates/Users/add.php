@@ -19,10 +19,10 @@ echo $this->Breadcrumbs->render(
 ?>
 
 <div class="column-responsive column-80">
+	<h1><?= __('新規アカウント作成') ?></h1>
 	<div class=" users form content">
 		<?= $this->Form->create($user, ['type' => 'file']) ?>
 		<fieldset class="grid">
-			<legend><?= __('新規アカウント作成') ?></legend>
 			<div class="avatar_wrapper">
 				<?php if (empty($user->avatar)) {
 					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);

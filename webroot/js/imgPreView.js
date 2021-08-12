@@ -7,9 +7,9 @@ function imgPreView(event) {
 	const reader = new FileReader();
 	const previewImage = document.getElementById("previewImage");
 
-	if (previewImage != null) {
-		preview.removeChild(previewImage);
-	}
+	// if (previewImage != null) {
+	// 	preview.removeChild(previewImage);
+	// }
 	reader.onload = (event) => {
 		const img = document.querySelector(".avatar");
 		img.setAttribute("src", reader.result);

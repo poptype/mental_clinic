@@ -29,8 +29,8 @@ $this->end();
 		<h3 class="heading_line"><?= h($clinic->name) ?></h3>
 		<div class="post_wrapper">
 			<p class="reviews"><i class="reviews_icon"></i><span>口コミ<b><?= count($clinic->reviews) ?></b>件</span></p>
-			<div class="giza">
-				<span class="giza_a"><?= $this->Html->link(
+			<!-- <div class="giza">
+				<span class="giza_a"><!?= $this->Html->link(
 								__('口コミ投稿'),
 								[
 									'controller' => 'Reviews',
@@ -39,7 +39,7 @@ $this->end();
 								['class' => 'post']
 							) ?>
 				</span>
-			</div>
+			</div> -->
 		</div>
 		<div class="Stars" style="--rating: <?= $clinic->rating ?>;" aria-label="Rating of this product.">
 			<?= $clinic->rating ?>
@@ -76,8 +76,18 @@ $this->end();
 			<?php endif; ?>
 		</p>
 		<div id="my_map" style="width: 100%; height: 60rem;"></div>
+
+		<?= $this->Html->link(
+			__('口コミ投稿'),
+			[
+				'controller' => 'Reviews',
+				'action' => 'addFromClinic', $clinic->id
+			],
+			['class' => 'post, label']
+		) ?>
+
 		<div class="related">
-			<h4><?= h($clinic->name) ?>の<?= __('口コミ') ?></h4>
+			<h4 class="heading_line"><?= h($clinic->name) ?>の<?= __('口コミ') ?></h4>
 			<?php if (!empty($clinic->reviews)) : ?>
 				<div class="table-responsive">
 					<?php foreach ($clinic->reviews as $reviews) : ?>
@@ -108,21 +118,21 @@ $this->end();
 	var _my_address = "<?= $clinic->address ?>";
 
 	function initMapWithAddress() {
-		var opts = {
+		const opts = {
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 		};
-		var my_google_map = new google.maps.Map(document.getElementById('my_map'), opts);
-		var geocoder = new google.maps.Geocoder();
+		const my_google_map = new google.maps.Map(document.getElementById('my_map'), opts);
+		const geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 				'address': _my_address,
 				'region': 'jp'
 			},
 			function(result, status) {
 				if (status == google.maps.GeocoderStatus.OK) {
-					var latlng = result[0].geometry.location;
+					const latlng = result[0].geometry.location;
 					my_google_map.setCenter(latlng);
-					var marker = new google.maps.Marker({
+					const marker = new google.maps.Marker({
 						position: latlng,
 						map: my_google_map,
 						title: latlng.toString(),

@@ -14,7 +14,7 @@ echo $this->Breadcrumbs->render(
 );
 ?>
 
-<h2>アカウントログイン</h2>
+<h1>アカウントログイン</h1>
 <div class="column-responsive column-80">
 	<div class="grid users form content">
 		<!-- <!?= $this->Flash->render() ?> -->
