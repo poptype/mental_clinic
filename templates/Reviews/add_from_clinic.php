@@ -21,7 +21,7 @@ echo $this->Breadcrumbs->render(
 
 
 <div class="review_add column-responsive column-80">
-	<h2><?= __('口コミ投稿') ?></h2>
+	<h1><?= __('口コミ投稿') ?></h1>
 	<div class="reviews form content">
 		<?= $this->Form->create($review) ?>
 		<fieldset>
@@ -40,7 +40,7 @@ echo $this->Breadcrumbs->render(
 	                   <?= $this->Form->hidden("user_id", ['value' => $user_id ]); ?>
                     <?= $this->Form->hidden('clinic_id', ['value' => $clinic_id]); ?>
             </fieldset>
-            <?= $this->Form->button(__('投稿'), ['class' => 'label']) ?>
+            <?= $this->Form->button(__('投稿')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

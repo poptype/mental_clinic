@@ -27,7 +27,7 @@ echo $this->Breadcrumbs->render(
 	<div class=" users form content">
 		<?= $this->Form->create($user, ['type' => 'file']) ?>
 		<fieldset class="grid">
-			<legend><?= __('ユーザー情報の編集') ?></legend>
+			<legend class="heading_line"><?= __('ユーザー情報の編集') ?></legend>
 			<div class="avatar_wrapper">
 				<?php if (empty($user->avatar)) {
 					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);

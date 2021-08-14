@@ -15,7 +15,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'メンタルクリニック　コメントサイト';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 	<nav class="top-nav">
 		<?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?>
-			<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
+		<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
 				<g id="titleLogo" transform="translate(-181 2)">
 					<g id="長方形_3" data-name="長方形 3" transform="translate(181)" fill="#fff" stroke="#707070" stroke-width="1">
 						<rect width="186" height="37" stroke="none" />
@@ -80,11 +80,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	</footer>
 
 	<script>
+		document.addEventListener('click', (e) => {
+			if (!e.target.closest('.open-btn')) {
+				//ここに外側をクリックしたときの処理
+				$(this).removeClass('btnactive');
+				console.log("ggggggggg")
+			} else {
+				//ここに内側をクリックしたときの処理
+				$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
+				$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
+				$('#search-text').focus(); //テキスト入力のinputにフォーカス
+			}
+		})
 		//開閉ボタンを押した時には
-		$(".open-btn").click(function() {
-			$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
-			$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
-			$('#search-text').focus(); //テキスト入力のinputにフォーカス
-		});
+		// $(".open-btn").click(function() {
+		// 	$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
+		// 	$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
+		// 	$('#search-text').focus(); //テキスト入力のinputにフォーカス
+		// });
 	</script>
 </body>

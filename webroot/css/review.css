@@ -124,3 +124,7 @@ b {
 fieldset {
         margin-bottom: unset;
 }
+
+button[type="submit"]{
+	background-color: unset;
+}

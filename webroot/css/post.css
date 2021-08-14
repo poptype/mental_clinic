@@ -95,13 +95,13 @@ h2 {
         width: 300px;
         outline: none;
         width: 100%;
-        background-color: #000;
+        background-color: #9ccdf9;
 }
 
 /* Chrome */
 #filter input[type=range]::-webkit-slider-runnable-track {
         height: 5px;
-        background: gray;
+        background: #9ccdf9;
         width: 100%;
 }
 
@@ -113,12 +113,13 @@ h2 {
         background: url("star_rate__24dp.svg") no-repeat 0 0 #FFF;
         border-radius: 50%;
         cursor: grab;
+        border: 1px solid #000000;
 }
 
 /* Firefox */
 #filter input[type=range]::-moz-range-track {
         height: 5px;
-        background: gray;
+        background: var(--background-color);
 }
 
 #filter input[type="range"]::-moz-range-thumb {
@@ -131,8 +132,7 @@ h2 {
 }
 
 #filter {
-        background-color: #404040;
-        color: #f9f9f9f9;
+        background-color: var(--secondary-color);
 }
 
 #value {

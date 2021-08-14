@@ -22,11 +22,15 @@ echo $this->Breadcrumbs->render(
 	['separator' => '>']
 )
 ?>
+<div class="column-responsive column-80">
+<div class=" users form content">
+	<h2 class="complete heading_line">登録が完了いたしました。
+		<br> ご入力ありがとうございます。
+	</h2>
 
-<h2 class="complete">登録が完了いたしました。
-<br>	ご入力ありがとうございます。</h2>
-
-<button class="label" onclick="location.href='<?=$this->Url->build('/', [
-							'escape' => false,
-							'fullBase' => true,
-						]) ?>'">戻る</button>
+	<button class="label" onclick="location.href='<?= $this->Url->build('/', [
+								'escape' => false,
+								'fullBase' => true,
+							]) ?>'">戻る</button>
+</div>
+</div>

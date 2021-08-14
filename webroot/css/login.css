@@ -13,3 +13,8 @@ legend {
         border-left: 5px solid var(--secondary-strong-color);
         padding-left: 1rem;
 }
+
+input[type="submit"]:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+}

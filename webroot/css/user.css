@@ -17,7 +17,7 @@
         display: flex;
         grid-column: span 2;
         margin-left: -1rem;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
         flex-wrap: wrap;
 }
 
@@ -29,18 +29,23 @@
 }
 
 .review_head {
-        position: relative;
-        color: #FFF;
+        /* position: relative;
+        color: #FFF; */
 }
 
 .review_head::before {
         content: '';
         width: 20rem;
         position: absolute;
-        height: 3rem;
-        transform: translateX(-23%);
-        background: linear-gradient(90deg, rgba(155, 89, 176, 0) 0%, rgba(155, 89, 176, 1) 50%, rgba(155, 89, 176, 0) 100%);
+        height: 4rem;
+        transform: translate(-23%, -5%);
+        background: linear-gradient(90deg, rgba(155, 89, 176, 0) 0%, rgb(160, 207, 255) 50%, rgba(155, 89, 176, 0) 100%);
         z-index: -1;
+}
+
+.user_config>a {
+        padding: 0.8rem 2rem;
+        margin-right: 1rem;
 }
 
 /* ----reviews container---- */
@@ -58,12 +63,15 @@
         box-shadow: 0 .7rem 1.4rem 0 rgba(60, 66, 87, 0.1), 0 .3rem .6rem 0 rgba(0, 0, 0, 0.07);
         flex: 0 1 250px;
         margin-bottom: 1rem;
-        padding: 1rem;
+        padding: 2rem;
+}
+
+.artcle_area>a {
+        padding: .5rem 2rem;
 }
 
 .clinic_name {
         font-size: 2rem;
-        margin: 1.2rem;
 }
 
 .tooltip>a {

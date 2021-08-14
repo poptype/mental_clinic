@@ -289,7 +289,7 @@ class ReviewsController extends AppController
 	{
 		// --ログインユーザーのIDとpostされたIDが一致しなければ強制ページ移動-- //
 		$user_id = $this->Authentication->getResult()->getData()->id; //認証ID取得
-		if ($user_id != $username_id || $user_id != 1) {
+		if ($user_id != $username_id) {
 			return $this->redirect(['controller' => 'Users', 'action' => 'index']);
 		} //-- END --//
 	}

@@ -48,7 +48,7 @@ $this->Breadcrumbs->add([
 			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
 		} ?>
 
-		<h3 class="username"><?= h($user->username) ?>さん</h3>
+		<h3 class="username heading_line"><?= h($user->username) ?>さん</h3>
 		<p class="gender"><span class="label"><?= __('性別') ?></span>
 			<?php if (empty($user->gender)) : ?>
 				非公開

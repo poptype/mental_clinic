@@ -39,6 +39,7 @@ blockquote *:last-child {
 
 .button,
 button,
+button[type='submit'],
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {

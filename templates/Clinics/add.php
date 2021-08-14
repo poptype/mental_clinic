@@ -10,7 +10,7 @@ $this->Breadcrumbs->add([
 	['title' => 'Home', 'url' => '/'],
 	['title' => '病院リスト', 'url' => ['controller' => 'Clinics', 'action' => 'list']],
 	['title' => '病院情報の入力']
-	]);
+]);
 
 echo $this->Breadcrumbs->render(
 	['class' => 'breadcrumbs'],
@@ -26,20 +26,42 @@ echo $this->Breadcrumbs->render(
 	</aside>
 	<div class="column-responsive column-80">
 		<div class="clinics form content">
-			<?= $this->Form->create($clinic, ['type'=>'file']) ?>
+			<?= $this->Form->create($clinic, ['type' => 'file']) ?>
 			<fieldset>
 				<legend><?= __('Add Clinic') ?></legend>
+				<div class="avatar_wrapper">
+					<?php if (empty($clinic->image)) {
+						echo $this->Html->image("upload/no-image.jpg", ['alt' => 'avatar image', 'class' => 'clinic_img']);
+					} else {
+						$image = $clinic->image;
+						echo $this->Html->image("upload/${image}", ['alt' => 'clinic image', 'class' => 'clinic_img']);
+					} ?>
+
+					<?= $this->Form->control('image_file', [
+						'type' => 'file',
+						'onChange' => 'imgPreView(event)',
+						'label' => '変更'
+					]); ?>
+				</div>
 				<?php
 				echo $this->Form->control('name');
 				echo $this->Form->control('address');
 				echo $this->Form->control('station');
 				echo $this->Form->control('time');
 				echo $this->Form->control('phone_number');
-				echo $this->Form->control('image_file', ['type'=>'file']);
 				?>
+
+
+
 			</fieldset>
 			<?= $this->Form->button(__('Submit')) ?>
 			<?= $this->Form->end() ?>
 		</div>
 	</div>
 </div>
+
+<?php
+$this->start("script");
+echo $this->Html->script('imgPreView');;
+$this->end();
+?>

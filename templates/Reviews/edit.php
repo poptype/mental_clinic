@@ -20,7 +20,7 @@ echo $this->Breadcrumbs->render(
 ?>
 
 <div class="review_add column-responsive column-80">
-	<h2><?= __('口コミ編集') ?></h2>
+	<h1><?= __('口コミ編集') ?></h1>
 	<div class="reviews form content">
 		<?= $this->Form->create($review) ?>
 		<fieldset>
@@ -36,7 +36,7 @@ echo $this->Breadcrumbs->render(
 				<span id="value">0点</span>
 			</div>
 			<?= $this->Form->control('text', ['label' => '', 'placeholder' => 'あなたの受診したクリニックの感想を書いて下さい（枠の右下斜めをドラッグすると広がります)']); ?>
-			<?= $this->Form->button(__('送信'), ['class' => 'label']) ?>
+			<?= $this->Form->button(__('送信')) ?>
 			<?= $this->Form->end() ?>
 	</div>
 </div>
@@ -45,11 +45,11 @@ echo $this->Breadcrumbs->render(
 	void function input_range(undefined) {
 		let elem = document.getElementById('range');
 		let target = document.getElementById('value');
-		let rangeValue = function(elem, target) {
-			return function(evt) {
+		let rangeValue = (elem, target) => {
+			return (evt) => {
 				target.innerHTML = elem.value + "点";
-			}
-		}
+			};
+		};
 		elem.addEventListener('input', rangeValue(elem, target));
 	}(undefined);
 </script>

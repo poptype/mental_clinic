@@ -68,6 +68,11 @@
         transition: 0.5s ease-out;
 }
 
+.label:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+}
+
 .form_label {
         background-color: #d33c43;
         color: #f9f9f9;
@@ -186,14 +191,19 @@
 /* ---------------------- */
 
 .link_button {
-        padding: .3rem;
-        margin: 1rem 1rem;
-        box-shadow: 0.1rem 0.4rem 0.6rem 0.1rem #c4c4c4;
-        background-color: rgba(115, 55, 196, 0.1);
-        border-radius: 0.7rem;
-        border: 0.1rem solid rgba(115, 55, 196, 0.1);
-        display: inline-block;
-        color: #6200EE;
+        /* box-shadow: 0.1rem 0.2rem 0.8rem 0.1rem #808080; */
+        background-color: var(--primary-color);
+        border-radius: 2.8rem;
+        cursor: pointer;
+        color: #121212;
+        padding: 0.8rem 3.1rem;
+        text-decoration: none;
+        text-shadow: 0px 0.1rem 0px #999999;
+	margin-bottom: 1rem;
+}
+
+.link_button:hover {
+        background-color: #f5bcb9;
 }
 
 /* ---image input upload--- */
@@ -477,7 +487,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-        color: #2a6496;
+        color: #2a6496 !important;
         -webkit-transition: all 0.2s easeout;
         transition: all 0.2s ease-out;
 }
@@ -506,6 +516,11 @@ sub {
         color: #979797;
 }
 
+aside {
+        background: #FFF;
+        margin: 10rem 0 !important;
+}
+
 /* --------------Utility---------------------- */
 .table-responsive {
         display: block;
@@ -516,6 +531,7 @@ sub {
 
 .button,
 button,
+button[type="submit"],
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -525,6 +541,15 @@ input[type="submit"] {
         border: unset;
         font-size: 1.6rem;
         transition: .1s ease-in;
+}
+
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"]:hover {
+        /* cursor: pointer;
+        filter: brightness(90%); */
 }
 
 blockquote {
@@ -539,6 +564,7 @@ body {
 main {
         min-height: 100vh;
         background-blend-mode: overlay;
+	margin-bottom: 10rem;
 }
 
 .content {
@@ -548,7 +574,10 @@ main {
         /* Thanks Stripe */
         box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1),
                 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-        margin-bottom: 10rem;
+}
+
+.diseaseCategories, .clinics, .users, .reviews{
+        margin: 10rem 0;
 }
 
 .actions a {

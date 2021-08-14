@@ -35,7 +35,7 @@ echo $this->Breadcrumbs->render(
 		</div>
 	</aside> -->
 <div class="review_add column-responsive column-80">
-	<h2><?= __('口コミ投稿') ?></h2>
+	<h1><?= __('口コミ投稿') ?></h1>
 	<div class="reviews form content">
 		<?= $this->Form->create($review) ?>
 		<fieldset>
@@ -59,7 +59,7 @@ echo $this->Breadcrumbs->render(
 				'placeholder' => '文字を入力すると病院名を自動補完します'
 			]); ?>
 		</fieldset>
-		<?= $this->Form->button(__('投稿'), ['class' => 'label']) ?>
+		<?= $this->Form->button(__('投稿')) ?>
 		<?= $this->Form->end() ?>
 	</div>
 </div>

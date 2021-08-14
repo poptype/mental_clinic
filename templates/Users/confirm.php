@@ -29,7 +29,7 @@ echo $this->Breadcrumbs->render(
 	<div class=" users form content">
 		<?= $this->Form->create($user, ['type' => 'post', ['controller' => 'Users', 'action' => 'complete']]) ?>
 		<fieldset class="grid">
-			<h3 class='heading'><?= __('入力情報の確認') ?></h3>
+			<h3 class='heading heading_line'><?= __('入力情報の確認') ?></h3>
 			<div class="avatar_wrapper">
 				<?php if (empty($user->avatar)) {
 					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
@@ -61,7 +61,7 @@ echo $this->Breadcrumbs->render(
 			<span class="diseage_name"><?= $query[$user->disease_categorie_id] ?></span>
 			<label class ='label_email'>Email</label>
 			<span class="email"><?= $user->email ?></span>
-			<?= $this->Form->button(__('登録完了'), ['type' => 'submit', 'class' => 'label']) ?>
+			<?= $this->Form->button(__('登録完了'), ['type' => 'submit']) ?>
 
 		</fieldset>
 		<?= $this->Form->end() ?>
