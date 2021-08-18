@@ -10,7 +10,7 @@
 				</g>
 			</g>
 		</svg> -->
-		<svg class="open-btn" xmlns="http://www.w3.org/2000/svg" width="36" height="37" viewBox="0 0 36 37">
+		<svg class="open-btn" tabindex="0" mlns="http://www.w3.org/2000/svg" width="36" height="37" viewBox="0 0 36 37">
 			<g id="icon_action_search_24px" data-name="icon/action/search_24px" transform="translate(5 0.102)" opacity="0.601">
 				<g id="楕円形_2" data-name="楕円形 2" transform="translate(-5 0.898)" fill="#cbe2f7" stroke="#707070" stroke-width="1">
 					<circle cx="18" cy="18" r="18" stroke="none" />
@@ -23,6 +23,7 @@
 
 
 		<div id="search-wrap">
+			<span class="batsu"></span>
 			<?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Reviews', 'action' => 'top']]) ?>
 			<?= $this->Form->control('key', [
 				'label' => '検索',

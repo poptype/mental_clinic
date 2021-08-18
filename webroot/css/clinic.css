@@ -6,6 +6,7 @@
 
 .reviews {
         position: relative;
+	margin: unset;
 }
 
 .reviews>span {

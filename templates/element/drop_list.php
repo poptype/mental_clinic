@@ -1,4 +1,4 @@
-<div class="list_wrapper" tabindex="0">
+<div class="list_wrapper" tabindex="1">
 	<!-- <svg class="nav-list" id="format_list_bulleted_black_24dp" xmlns="http://www.w3.org/2000/svg" width="28" height="43" viewBox="0 0 28 43">
 		<text id="_Caption" data-name="✏️ Caption" transform="translate(13 40)" fill="rgba(0,0,0,1)" font-size="12" font-family="Roboto-Regular, Roboto" letter-spacing="0.033em">
 			<tspan x="-10.338" y="0">List</tspan>
@@ -17,14 +17,19 @@
 		</g>
 	</svg>
 
-	<span><?= $this->Html->link(
-			__('ユーザーリスト'),
-			['controller' => 'Users', 'action' => 'index'],
-			['class' => 'list_anchor']
-		) ?><br>
-		<?= $this->Html->link(
-			__('病院リスト'),
-			['controller' => 'Clinics', 'action' => 'list'],
-			['class' => 'list_anchor']
-		) ?> </span>
+	<div id="list-wrap">
+		<span class="batsu"></span>
+		<span>
+			<?= $this->Html->link(
+				__('ユーザーリスト'),
+				['controller' => 'Users', 'action' => 'index'],
+				['class' => 'list_anchor']
+			) ?><br>
+			<?= $this->Html->link(
+				__('病院リスト'),
+				['controller' => 'Clinics', 'action' => 'list'],
+				['class' => 'list_anchor']
+			) ?>
+		</span>
+	</div>
 </div>
