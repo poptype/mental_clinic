@@ -220,6 +220,8 @@
 }
 
 .sort-wrapper {
+        display: flex;
+        flex-wrap: wrap;
         margin-bottom: 10rem;
 }
 
@@ -231,6 +233,7 @@
         border: 1px solid #E1564E40;
         border-radius: 10%;
         color: #001217;
+        margin-top: 1rem;
 }
 
 /* --pagenation-- */
@@ -531,6 +534,16 @@ aside {
         margin: 10rem 0 !important;
 }
 
+@media screen and (max-width: 450px) {
+
+        p,
+        a,
+        span {
+                font-size: 1.4rem;
+        }
+}
+
+
 /* --------------Utility---------------------- */
 .table-responsive {
         display: block;
@@ -608,8 +621,9 @@ th {
         align-items: center;
         justify-content: center;
         background-color: #FFF;
-        height: 5.6rem;
         box-shadow: var(--box-shadow-weak);
+        padding: 1rem;
+        flex-wrap: wrap;
 }
 
 .top-nav-link {
@@ -649,7 +663,8 @@ th {
 }
 
 .logo_title {
-        width: 10%;
+        width: 20rem;
+        margin-right: 1rem;
 }
 
 .nav-serach {
@@ -657,6 +672,7 @@ th {
 }
 
 .nav-login {
+        font-size: 1.6rem;
         padding: 0.25rem 1rem;
         background-color: #e0edfa;
         border: 1px solid #aaadb1;
@@ -773,6 +789,7 @@ th {
         justify-content: center;
         list-style: none;
         padding: 5rem;
+        flex-wrap: wrap;
 }
 
 .pagination li {

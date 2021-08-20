@@ -15,7 +15,7 @@ button:hover {
 }
 
 button[type="submit"] {
-	background-color: unset;
+        background-color: unset;
 }
 
 fieldset {
@@ -221,19 +221,111 @@ h3::before {
 
 .voting_image {
         background-image: url('../img/like_button.svg');
-        background-position: center center;
         height: 4.4rem;
         background-color: rgb(255, 255, 255, 1);
         border-width: 0;
         width: 10.2rem;
+        transition: all 0.2s ease-out;
 }
 
 .voting_image:hover {
         opacity: 0.8;
-        transition: all 0.2s ease-out;
 }
 
 .voting_image:active {
         position: relative;
         top: 0.1rem;
 }
+
+@media screen and (max-width: 700px) {
+        .review-container {
+                grid-template-columns: 15rem auto auto;
+                grid-template-rows: auto auto auto auto auto auto;
+        }
+
+        .thumbnail {
+                grid-column: 1/4;
+                grid-row: 2/3;
+        }
+
+        .clinic-name {
+                grid-column: 1/4;
+        }
+
+        .Stars {
+                grid-column: 2/4;
+                grid-row: 2/3;
+        }
+
+        .body {
+                grid-column: span 3;
+        }
+
+        .disease_name {
+                grid-row: 3/4;
+        }
+
+        .view_link {}
+
+        .username {}
+
+        .created {
+                grid-column: 2/4;
+        }
+
+        .voting {
+                grid-row: 7/8;
+                transform: unset;
+        }
+}
+
+@media screen and (max-width: 450px) {
+        .review-container {
+                grid-template-columns: 15rem auto auto;
+                grid-template-rows: auto auto auto auto auto auto;
+        }
+
+        .thumbnail {
+                grid-column: 1/4;
+                grid-row: 2/3;
+        }
+
+        .clinic-name {
+                font-size: 1.6rem;
+        }
+
+        .Stars {
+                grid-column: 1/4;
+                grid-row: 3/4;
+                font-size: 2.5rem;
+        }
+
+        .body {
+                grid-column: span 3;
+        }
+
+        .disease_name {
+                grid-row: 4/5;
+        }
+
+        .view_link {}
+
+        .username {
+                justify-self: flex-start;
+                margin-left: 1rem;
+        }
+
+        .created {
+                grid-column: 1/4;
+                grid-row: 8/9;
+                justify-self: flex-start;
+                margin-left: 1rem;
+        }
+
+        .voting {
+                grid-row: 9/10;
+        }
+}
+
+
+/* ~~~~~~END article~~~~~~ */
