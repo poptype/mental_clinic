@@ -113,17 +113,21 @@
 .tooltip_txt:before {
         content: "";
         position: absolute;
-        top: 100%;
+        top: -30px;
         left: 50%;
         border: 15px solid transparent;
         border-top: 15px solid #000000a6;
         margin-left: -15px;
+        transform: rotateZ(180deg);
 }
 
 .tooltip:hover .tooltip_txt {
         display: inline-block;
-        top: -70px;
+        top: 50px;
         left: -30px;
+        transform: translateX(20px);
+        padding: 1rem;
+        z-index: 1;
 }
 
 /* --------drop_list-------- */
@@ -361,6 +365,44 @@
         background: #fff;
         left: 50%;
 }
+
+@media (max-width: 640px) {
+        #search-wrap {
+                left: 10%;
+        }
+
+        /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+        #search-wrap.panelactive {
+                left: 10%;
+        }
+
+        #list-wrap {
+                left: 10%;
+        }
+
+        #list-wrap.panelactive {
+                left: 10%;
+        }
+}
+@media (max-width: 400px) {
+        #search-wrap {
+                left: 1%;
+        }
+
+        /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+        #search-wrap.panelactive {
+                left: 1%;
+        }
+
+        #list-wrap {
+                left: 1%;
+        }
+
+        #list-wrap.panelactive {
+                left: 1%;
+        }
+}
+
 
 /*================search===============  */
 
@@ -681,10 +723,24 @@ th {
 
 .nav-logout {
         margin-right: 2rem;
+        font-size: 1.6rem;
+        padding: 0.25rem 1rem;
+        background-color: #e0edfa;
+        border: 1px solid #aaadb1;
+        color: #57595c;
 }
 
 .nav-userName {
-        margin-right: 2rem;
+        margin-right: 1rem;
+        width: 36px;
+        height: 36px;
+}
+
+.nav-avatar {
+        max-width: 140% !important;
+        height: 60px;
+        clip-path: circle(35.06% at 50% center);
+        transform: translate(-15%, -20%);
 }
 
 .side-nav-item {

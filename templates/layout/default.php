@@ -65,8 +65,16 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 		if (is_null($auth_id)) : ?>
 			<a class="nav-login" target="_self" rel="noopener" href="/mental_clinic/users/login">Login</a>
 		<?php else : ?>
-			<a class="nav-userName" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>> <?= $auth_username ?></a> <!-- login username to view.php -->
-			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">logout</a>
+			<a class="nav-userName tooltip" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>>
+				<?php if (empty($user->avatar)) {
+					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'nav-avatar']);
+				} else {
+					$avatar = $user->avatar;
+					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
+				} ?>
+					<span class="tooltip_txt"><?= $auth_username ?>さん</span>
+			</a> <!-- login username to view.php -->
+			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">Logout</a>
 		<?php endif ?>
 	</nav>
 	<main class="main">
