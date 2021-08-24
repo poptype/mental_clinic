@@ -18,8 +18,32 @@ $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake',
 $query = $disease_categories->find('list')->toArray(); //disease_categoriesテーブルから連想配列で取得
 ?>
 <!-- Hero and Guidline  -->
-<section class="hero-wrapper">
-	<p>HERO and GUIDELINE</p>
+<section class="hero-wrapper" style="background: url(/mental_clinic/webroot/img/42629259_3.jpg) bottom center no-repeat;background-size: cover;">
+	<div class="guide">
+		<?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Reviews', 'action' => 'top']]) ?>
+		<?= $this->Form->control('key', [
+			'label' => 'メンタルクリニックを探す',
+			'value' => $this->request->getQuery('key'),
+			'placeholder' => '病院またはユーザーを検索'
+		]) ?>
+		<?= $this->Form->submit('', ["class" => 'submit_img']) ?>
+		<?= $this->Form->end() ?>
+		<p>
+			<?= $this->Html->link(
+				__('ユーザーの一覧から探す'),
+				['controller' => 'Users', 'action' => 'index'],
+				['class' => 'user_list_anchor']
+			) ?>
+		</p>
+
+		<p>
+			<?= $this->Html->link(
+				__('病院の一覧から探す'),
+				['controller' => 'Clinics', 'action' => 'list'],
+				['class' => 'clinic_list_anchor']
+			) ?>
+		</p>
+	</div>
 </section>
 <!--END Hero and Guideline -->
 <!-- reviews -->

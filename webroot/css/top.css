@@ -33,8 +33,74 @@ fieldset {
         justify-content: center;
 }
 
-.hero-wrapper>p:nth-child(1) {
-        font-size: 10rem;
+.guide {
+        display: grid;
+        width: 58rem;
+        height: 37rem;
+        background-color: var(--primary-color);
+        border: 3px solid #fff;
+        border-radius: 3%;
+        margin-top: 30rem;
+        font-family: "源ノ明朝";
+        color: #614A2B;
+}
+
+.guide>form {
+        justify-self: center;
+        height: 150px;
+}
+
+.guide>form>div>label {
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 4rem;
+}
+
+.guide>form>div>input {
+        background-color: #fff;
+        margin: 0 auto;
+        width: 537px;
+        height: 57px;
+}
+
+.submit_img {
+        background-size: 35px;
+}
+
+.submit {
+        position: relative;
+        left: 240px;
+        top: -127px;
+}
+
+.user_list_anchor,
+.clinic_list_anchor {
+        text-indent: 10px;
+        font-size: 2.6rem;
+        background-color: #FFF;
+        width: 350px;
+        height: 52px;
+        display: inline-block;
+        line-height: 2;
+        border-radius: 10px;
+        color: #614A2B;
+        font-family: "源ノ明朝";
+        margin-left: 2rem;
+}
+
+.user_list_anchor {
+        width: 350px;
+        height: 52px;
+}
+
+.user_list_anchor::after,
+.clinic_list_anchor::after {
+        content: " ＞";
+}
+
+.clinic_list_anchor {
+        width: 313px;
+        height: 52px;
 }
 
 /* ===============reviews================= */
