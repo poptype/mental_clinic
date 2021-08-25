@@ -486,6 +486,20 @@
         transform: translate(50%, 10%);
 }
 
+/* password EYE */
+#password_buttonEye {
+        transform: translateY(20%);
+}
+
+#password-confirm_buttonEye {
+        grid-column: 3/4;
+        transform: translateY(60%);
+}
+
+.input.text.required {
+        grid-column: 2/3;
+}
+
 /* ================================================== */
 
 /* ------------Miligram overrides-------------- */

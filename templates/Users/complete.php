@@ -24,7 +24,7 @@ echo $this->Breadcrumbs->render(
 ?>
 <div class="column-responsive column-80">
 <div class=" users form content">
-	<h2 class="complete heading_line">登録が完了いたしました。
+	<h2 class="complete">登録が完了いたしました。
 		<br> ご入力ありがとうございます。
 	</h2>
 

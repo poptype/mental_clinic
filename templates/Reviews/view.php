@@ -28,10 +28,10 @@ function voting_incr($review)
 ) ?>
 <div class="column-responsive column-80">
 	<div class="grid content">
-		<?php if (empty($user->avatar)) {
+		<?php if (empty($review->user->avatar)) {
 			echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'avatar']);
 		} else {
-			$avatar = $user->avatar;
+			$avatar = $review->user->avatar;
 			echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'avatar']);
 		} ?>
 

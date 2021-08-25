@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+ * @const \App\View\AppView $this
+ * @const \App\Model\Entity\User $user
  */
 // post.cssの適用
 $this->assign('css', $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'post']));
@@ -47,10 +47,12 @@ echo $this->Breadcrumbs->render(
 				<span class="form_label">必須</span>
 			</div>
 			<?= $this->Form->control('password', ['type' => 'password', 'class' => 'password', 'label' => false]) ?>
+			<span id="password_buttonEye" class="fa fa-eye" onclick="password_pushHideButton()"></span>
 			<?= $this->Form->control(
 				'password_confirm',
 				['type' => 'password', 'label' => '確認用パスワード']
 			) ?>
+			<span id="password-confirm_buttonEye" class="fa fa-eye" onclick="password_confirm_pushHideButton()"></span>
 
 			<?= $this->Form->control('gender', [
 				'options' => [
@@ -79,6 +81,7 @@ echo $this->Breadcrumbs->render(
 
 	<?php
 	$this->start("script");
-	echo $this->Html->script('imgPreView');;
+	echo $this->Html->script('imgPreView');
+	echo $this->Html->script('password_pushHideButton');
 	$this->end();
 	?>

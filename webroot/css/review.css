@@ -90,7 +90,7 @@
 
 .img-balloon {
         margin-left: 24px;
-        padding: 16px;
+        padding: 8px;
         width: 11rem;
         font-size: 15px;
         color: #333;
@@ -125,6 +125,6 @@ fieldset {
         margin-bottom: unset;
 }
 
-button[type="submit"]{
-	background-color: unset;
+button[type="submit"] {
+        background-color: unset;
 }

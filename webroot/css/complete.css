@@ -19,12 +19,3 @@ input[type="submit"] {
 h2 {
         text-align: center;
 }
-
-h2::before {
-        content: "";
-        border-left: 10px solid var(--main-paple);
-        left: 290px;
-        position: absolute;
-        height: 7rem;
-        top: 105px;
-}

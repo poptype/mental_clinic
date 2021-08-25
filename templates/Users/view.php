@@ -71,7 +71,7 @@ $this->Breadcrumbs->add([
 
 		<p class="created">
 			<span class="label"><?= __('登録日時') ?></span>
-			<?= h($user->created->format('Y年m月d日 H時i分s秒')) ?>
+			<?= h($user->created->format('Y年m月d日 H時i分')) ?>
 		</p>
 
 		<div class="user_config">
@@ -98,7 +98,7 @@ $this->Breadcrumbs->add([
 		</div>
 
 		<div class="head_wrapper">
-			<h4 class="review_head"><?= __('口コミ履歴') ?></h4>
+			<h4 class="heading_line"><?= __('口コミ履歴') ?></h4>
 		</div>
 
 		<?php if (!empty($user->reviews)) : ?>

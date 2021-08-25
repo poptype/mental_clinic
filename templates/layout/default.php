@@ -30,7 +30,7 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 	<?= $this->Html->meta('icon') ?>
 
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	<?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
 
 	<?= $this->fetch('meta') ?>
@@ -72,7 +72,7 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 					$avatar = $user->avatar;
 					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
 				} ?>
-					<span class="tooltip_txt"><?= $auth_username ?>さん</span>
+				<span class="tooltip_txt"><?= $auth_username ?>さん</span>
 			</a> <!-- login username to view.php -->
 			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">Logout</a>
 		<?php endif ?>
