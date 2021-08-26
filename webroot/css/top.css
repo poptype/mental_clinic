@@ -31,6 +31,7 @@ fieldset {
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
 }
 
 .guide {
@@ -40,9 +41,11 @@ fieldset {
         background-color: var(--primary-color);
         border: 3px solid #fff;
         border-radius: 3%;
-        margin-top: 30rem;
         font-family: "源ノ明朝";
         color: #614A2B;
+        top: 200px;
+        position: relative;
+        left: unset;
 }
 
 .guide>form {
@@ -102,6 +105,65 @@ fieldset {
         width: 313px;
         height: 52px;
 }
+
+
+@media screen and (max-width: 1300px) {
+        .guide {
+        }
+}
+
+@media screen and (max-width: 1200px) {
+        .hero-wrapper {
+                height: 75vw;
+        }
+}
+
+@media screen and (max-width: 900px) {
+        .hero-wrapper {
+                height: 95vw;
+        }
+}
+
+@media screen and (max-width: 700px) {
+        .hero-wrapper {
+                height: 120vw;
+        }
+}
+
+@media screen and (max-width: 600px) {
+        .hero-wrapper {
+                height: 140vw;
+                margin-top: 4rem;
+        }
+}
+
+
+@media screen and (max-width: 500px) {
+        .hero-wrapper {
+                height: 160vw;
+        }
+}
+
+
+@media screen and (max-width: 400px) {
+        .hero-wrapper {
+                height: 180vw;
+        }
+}
+
+
+@media screen and (max-width: 320px) {
+        .hero-wrapper {
+                height: 220vw;
+        }
+}
+
+
+
+
+
+
+
 
 /* ===============reviews================= */
 .reviews {

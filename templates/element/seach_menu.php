@@ -30,6 +30,6 @@
 				'value' => $this->request->getQuery('key'),
 				'placeholder' => '病院またはユーザーを検索'
 			]) ?>
-			<?= $this->Form->submit('', ["class" => 'submit_img']) ?>
+			<?= $this->Form->submit('', ["class" => 'list_submit_img']) ?>
 			<?= $this->Form->end() ?>
 		</div>

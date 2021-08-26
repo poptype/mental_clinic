@@ -445,7 +445,8 @@
         /*背景色を付ける*/
 /* } */
 
-.submit_img {
+.submit_img,
+.list_submit_img {
         position: absolute;
         background: url('./search_black_24dp.svg');
         left: 26rem;
@@ -454,6 +455,12 @@
         background-color: unset !important;
         border: unset !important;
         transition: 1s ease-in;
+}
+
+.list_submit_img {
+        transform: translate(5%, 200%);
+        top: unset;
+        left: unset;
 }
 
 /* .submit_img:hover{
