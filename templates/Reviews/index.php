@@ -6,7 +6,7 @@
 $session_id = $this->getRequest()->getSession()->read('Auth.id');
 ?>
 <div class="reviews index content">
-    <?= $this->Html->link(__('New Review'), ['action' => 'add', $session_id], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('口コミ投稿'), ['action' => 'add', $session_id], ['class' => 'button float-right']) ?>
 
     <h3><?= __('Reviews') ?></h3>
     <div class="table-responsive">

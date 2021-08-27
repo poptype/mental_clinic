@@ -5,7 +5,7 @@
  */
 ?>
 <div class="diseaseCategories index content">
-    <?= $this->Html->link(__('New Disease Category'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('病名入力'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Disease Categories') ?></h3>
     <div class="table-responsive">
         <table>

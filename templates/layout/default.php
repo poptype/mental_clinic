@@ -30,7 +30,7 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 	<?= $this->Html->meta('icon') ?>
 
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 	<?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
 
 	<?= $this->fetch('meta') ?>
@@ -41,7 +41,7 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 
 <body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 	<nav class="top-nav">
-		<?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?>
+		<a href="/mental_clinic/"><?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?></a>
 		<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
 				<g id="titleLogo" transform="translate(-181 2)">
 					<g id="長方形_3" data-name="長方形 3" transform="translate(181)" fill="#fff" stroke="#707070" stroke-width="1">
@@ -82,47 +82,11 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
 		</div>
+		<div id="page_top"><a href="#"></a></div>
 	</main>
 	<footer>
 		<p class="copyright">Copyright © 2021 ○○○○ All Rights Reserved.</p>
 	</footer>
-
-	<script>
-		// document.addEventListener('click', (e) => {
-		// 	if (!e.target.closest('.open-btn')) {
-		// 		//ここに外側をクリックしたときの処理
-		// 		$(this).removeClass('btnactive');
-		// 		console.log("ggggggggg")
-		// 	} else {
-		// 		//ここに内側をクリックしたときの処理
-		// 		$(this).toggleClass('btnactive'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
-		// 		$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
-		// 		$('#search-text').focus(); //テキスト入力のinputにフォーカス
-		// 	}
-		// })
-		//開閉ボタンを押した時には
-		$(".open-btn").click(function() {
-			$(this).toggleClass('btnactive_1'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
-			$("#search-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
-			$('#search-text').focus(); //テキスト入力のinputにフォーカス
-			$("#list-wrap").removeClass('panelactive');
-			$(".nav-list").removeClass('btnactive_2');
-		});
-
-		//開閉ボタンを押した時には
-		$(".nav-list").click(function() {
-			$(this).toggleClass('btnactive_2'); //.open-btnは、クリックごとにbtnactiveクラスを付与＆除去。1回目のクリック時は付与
-			$("#list-wrap").toggleClass('panelactive'); //#search-wrapへpanelactiveクラスを付与
-			$(".open-btn").removeClass('btnactive_1');
-			$("#search-wrap").removeClass('panelactive');
-		});
-
-		//☓を押した時は
-		$(".batsu").click(function() {
-			$(".open-btn").removeClass('btnactive_1');
-			$(".nav-list").removeClass('btnactive_2');
-			$("#search-wrap").removeClass('panelactive');
-			$("#list-wrap").removeClass('panelactive');
-		});
-	</script>
+	<script src="/mental_clinic/webroot/js/pageTop_return_button.js"></script>
+	<script src="/mental_clinic/webroot/js/list_button.js"></script>
 </body>

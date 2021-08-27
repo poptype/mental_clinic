@@ -6,7 +6,7 @@
 
 .reviews {
         position: relative;
-	margin: unset;
+        margin: unset;
 }
 
 .reviews>span {
@@ -52,6 +52,12 @@ b {
         font-family: Times;
         /* make sure ★ appears correctly*/
         line-height: 1;
+}
+
+@media (max-width: 450px) {
+        .Stars {
+                font-size: 2rem;
+        }
 }
 
 .Stars::before {
@@ -106,7 +112,6 @@ b {
         text-align: center;
         font-size: 2rem;
         font-weight: var(--Bold);
-        width: 25%;
         padding: 1rem 5rem;
         background: var(--secondary-strong-color);
         align-self: center;

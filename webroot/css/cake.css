@@ -68,6 +68,16 @@
         transition: 0.5s ease-out;
 }
 
+@media screen and (max-width: 450px) {
+        legend {
+                font-size: 5.5vw;
+        }
+
+        label {
+                font-size: 4.5vw;
+        }
+}
+
 .label:hover {
         cursor: pointer;
         filter: brightness(90%);
@@ -219,7 +229,7 @@
         padding: .5rem;
         margin-right: 1rem;
         /* border-left: .5rem solid var(--secondary-strong-color); */
-        width: 32%;
+        /* width: 32%; */
         color: #606c76;
 }
 
@@ -385,6 +395,27 @@
         }
 }
 
+@media (max-width: 465px) {
+        #search-wrap {
+                left: 10%;
+        }
+
+        /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+        #search-wrap.panelactive {
+                left: 10%;
+                top: 10%;
+        }
+
+        #list-wrap {
+                left: 10%;
+        }
+
+        #list-wrap.panelactive {
+                left: 10%;
+                top: 10%;
+        }
+}
+
 @media (max-width: 400px) {
         #search-wrap {
                 left: 1%;
@@ -450,17 +481,19 @@
         position: absolute;
         background: url('./search_black_24dp.svg');
         left: 26rem;
-        top: 8.4rem;
+        top: 8.3rem;
         background-repeat: no-repeat;
         background-color: unset !important;
         border: unset !important;
         transition: 1s ease-in;
 }
 
-.list_submit_img {
-        transform: translate(5%, 200%);
-        top: unset;
-        left: unset;
+@media screen and (max-width: 1200px) {
+
+        .submit_img {
+                top: 8.6rem;
+                left: 16rem;
+        }
 }
 
 /* .submit_img:hover{
@@ -493,7 +526,7 @@
         transform: translate(50%, 10%);
 }
 
-/* password EYE */
+/* --password EYE-- */
 #password_buttonEye {
         transform: translateY(20%);
 }
@@ -506,6 +539,43 @@
 .input.text.required {
         grid-column: 2/3;
 }
+
+/* --pageTop return button-- */
+#page_top {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        right: 0;
+        bottom: -50px;
+        background: var(--primary-strong-color);
+        border-radius: 50%;
+}
+
+#page_top a {
+        position: relative;
+        display: block;
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+}
+
+#page_top a::before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f102';
+        font-size: 25px;
+        color: #fff;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: -5px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        text-align: center;
+}
+
 
 /* ================================================== */
 
@@ -552,6 +622,16 @@ h1 {
         font-family: 'Meiryo';
         font-weight: 600;
         font-size: 3.8rem;
+}
+
+@media screen and (max-width: 450px) {
+        h1 {
+                font-size: 8.5vw;
+        }
+
+        h3 {
+                font-size: 7vw;
+        }
 }
 
 
@@ -605,6 +685,10 @@ aside {
         span {
                 font-size: 1.4rem;
         }
+
+        h4>a {
+                font-size: unset;
+        }
 }
 
 
@@ -637,6 +721,28 @@ input[type="reset"],
 input[type="submit"]:hover {
         /* cursor: pointer;
         filter: brightness(90%); */
+}
+
+@media screen and (max-width: 450px) {
+
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="text"],
+        input[type="url"],
+        input[type="color"],
+        input[type="date"],
+        input[type="month"],
+        input[type="week"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input:not([type]),
+        textarea,
+        select {
+                font-size: 3.6vw;
+        }
 }
 
 blockquote {
@@ -728,6 +834,13 @@ th {
 .logo_title {
         width: 20rem;
         margin-right: 1rem;
+}
+
+@media screen and (max-width: 465px) {
+        .logo_title {
+                margin: 0 0 1rem 20rem;
+                transform: translateX(-50%);
+        }
 }
 
 .nav-serach {

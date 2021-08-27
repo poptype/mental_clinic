@@ -3,7 +3,6 @@
 /* ---overlide--- */
 
 legend {
-        left: 25%;
         position: relative;
         font-size: 2.5rem !important;
 }
@@ -155,4 +154,14 @@ h2 {
         max-width: 80%;
         flex: 0 0 100%;
         max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+        .flex_wrapper {
+                grid-column: 1/4;
+        }
+
+        .input.text.required {
+                grid-column: 1/4;
+        }
 }

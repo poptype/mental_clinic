@@ -14,6 +14,16 @@ legend {
         padding-left: 1rem;
 }
 
+@media screen and (max-width: 450px) {
+        legend {
+                font-size: 5.5vw;
+        }
+
+        label {
+                font-size: 4.5vw;
+        }
+}
+
 input[type="submit"]:hover {
         cursor: pointer;
         filter: brightness(90%);
