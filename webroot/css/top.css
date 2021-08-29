@@ -241,6 +241,7 @@ article>div {
         font-size: 2rem;
         font-weight: var(--Medium);
         margin-top: 1rem;
+        border-left: unset;
 }
 
 .clinic-name>a {

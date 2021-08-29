@@ -42,35 +42,24 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 <body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 	<nav class="top-nav">
 		<a href="/mental_clinic/"><?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?></a>
-		<!-- <svg class="nav-titleLogo" xmlns="http://www.w3.org/2000/svg" width="186" height="45" viewBox="0 0 186 45">
-				<g id="titleLogo" transform="translate(-181 2)">
-					<g id="長方形_3" data-name="長方形 3" transform="translate(181)" fill="#fff" stroke="#707070" stroke-width="1">
-						<rect width="186" height="37" stroke="none" />
-						<rect x="0.5" y="0.5" width="185" height="36" fill="none" />
-					</g>
-					<text id="TitleLogo-2" data-name="TitleLogo" transform="translate(202 30)" fill="#707070" font-size="30" font-family="Meiryo">
-						<tspan x="0" y="0">TitleLogo</tspan>
-					</text>
-				</g>
-			</svg> -->
-
-
 		<?= $this->element('seach_menu') ?>
 		<?= $this->element('drop_list') ?>
 
 		<?php
+		// session reading section
 		$session = $this->getRequest()->getSession(); //session取得
-		$auth_id = $session->read('Auth.id'); //Auth.id取得
-		$auth_username = $session->read('Auth.username'); //Auth.username取得
+		$auth_id = $session->read('Auth.id'); //Auth.id read
+		$auth_username = $session->read('Auth.username'); //Auth.username read
+		$auth_avatar = $session->read('Auth.avatar'); //Auth.avatar read
+
 		if (is_null($auth_id)) : ?>
 			<a class="nav-login" target="_self" rel="noopener" href="/mental_clinic/users/login">Login</a>
 		<?php else : ?>
 			<a class="nav-userName tooltip" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>>
-				<?php if (empty($user->avatar)) {
+				<?php if (is_null($auth_avatar)) {
 					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'nav-avatar']);
 				} else {
-					$avatar = $user->avatar;
-					echo $this->Html->image("upload/${avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
+					echo $this->Html->image("upload/${auth_avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
 				} ?>
 				<span class="tooltip_txt"><?= $auth_username ?>さん</span>
 			</a> <!-- login username to view.php -->

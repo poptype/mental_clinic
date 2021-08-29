@@ -29,12 +29,6 @@
         font-weight: var(--Medium);
 }
 
-.heading::before {
-        content: '';
-        border-left: 0.5rem solid var(--secondary-strong-color);
-        margin-right: 1rem;
-}
-
-h4::before {
-    content: unset;
+h4{
+        border-left: unset;
 }
