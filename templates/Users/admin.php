@@ -131,7 +131,7 @@ $this->Breadcrumbs->add([
 		</div>
 
 		<div class="head_wrapper">
-			<h4 class="review_head"><?= __('口コミ履歴') ?></h4>
+			<h4><?= __('口コミ履歴') ?></h4>
 		</div>
 
 		<?php if (!empty($user->reviews)) : ?>

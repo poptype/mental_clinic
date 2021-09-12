@@ -62,6 +62,6 @@ class AppController extends Controller
     //
     // インデックスとビューのアクションを公開し、認証チェックをスキップします
     //
-        $this->Authentication->addUnauthenticatedActions(['index', 'view', 'top', 'list', 'searchResult']);
+        $this->Authentication->addUnauthenticatedActions(['home','display', 'index', 'view', 'top', 'list', 'searchResult']);
     }
 }

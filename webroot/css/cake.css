@@ -837,11 +837,29 @@ th {
         margin-right: 1rem;
 }
 
+.menu_item_wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
 @media screen and (max-width: 465px) {
-        .logo_title {
+        .logo {
+                flex: 1 1 100%;
+                display: flex;
+                justify-content: center;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #bfbfbf;
+        }
+
+        .menu_item_wrap {
+                padding-top: 1rem;
+        }
+
+        /*.logo_title {
                 margin: 0 0 1rem 20rem;
                 transform: translateX(-50%);
-        }
+        }*/
 }
 
 .nav-serach {
@@ -897,6 +915,7 @@ th {
         height: 36px;
         margin-right: 1rem;
         transition: 1s all;
+	cursor: pointer;
 }
 
 .list_wrapper:hover {

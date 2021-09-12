@@ -41,30 +41,32 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 
 <body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
 	<nav class="top-nav">
-		<a href="/mental_clinic/"><?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?></a>
-		<?= $this->element('seach_menu') ?>
-		<?= $this->element('drop_list') ?>
+		<a class="logo" href="/mental_clinic/"><?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?></a>
+		<div class="menu_item_wrap">
+			<?= $this->element('seach_menu') ?>
+			<?= $this->element('drop_list') ?>
 
-		<?php
-		// session reading section
-		$session = $this->getRequest()->getSession(); //session取得
-		$auth_id = $session->read('Auth.id'); //Auth.id read
-		$auth_username = $session->read('Auth.username'); //Auth.username read
-		$auth_avatar = $session->read('Auth.avatar'); //Auth.avatar read
+			<?php
+			// session reading section
+			$session = $this->getRequest()->getSession(); //session取得
+			$auth_id = $session->read('Auth.id'); //Auth.id read
+			$auth_username = $session->read('Auth.username'); //Auth.username read
+			$auth_avatar = $session->read('Auth.avatar'); //Auth.avatar read
 
-		if (is_null($auth_id)) : ?>
-			<a class="nav-login" target="_self" rel="noopener" href="/mental_clinic/users/login">Login</a>
-		<?php else : ?>
-			<a class="nav-userName tooltip" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>>
-				<?php if (is_null($auth_avatar)) {
-					echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'nav-avatar']);
-				} else {
-					echo $this->Html->image("upload/${auth_avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
-				} ?>
-				<span class="tooltip_txt"><?= $auth_username ?>さん</span>
-			</a> <!-- login username to view.php -->
-			<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">Logout</a>
-		<?php endif ?>
+			if (is_null($auth_id)) : ?>
+				<a class="nav-login" target="_self" rel="noopener" href="/mental_clinic/users/login">Login</a>
+			<?php else : ?>
+				<a class="nav-userName tooltip" target="_self" rel="noopener" href=<?php echo "/mental_clinic/users/view/" .  "$auth_id" ?>>
+					<?php if (is_null($auth_avatar)) {
+						echo $this->Html->image("upload/blank-profile.png", ['alt' => 'avatar image', 'class' => 'nav-avatar']);
+					} else {
+						echo $this->Html->image("upload/${auth_avatar}", ['alt' => 'clinic image', 'class' => 'nav-avatar']);
+					} ?>
+					<span class="tooltip_txt"><?= $auth_username ?>さん</span>
+				</a> <!-- login username to view.php -->
+				<a class="nav-logout" target="_self" rel="noopener" href="/mental_clinic/users/logout">Logout</a>
+			<?php endif ?>
+		</div>
 	</nav>
 	<main class="main">
 		<div class="container">
