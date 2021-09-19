@@ -41,7 +41,7 @@ fieldset {
         background-color: var(--primary-color);
         border: 3px solid #fff;
         border-radius: 3%;
-        font-family: "源ノ明朝";
+        font-family: "游明朝";
         color: #614A2B;
         top: 200px;
         position: relative;
@@ -87,7 +87,7 @@ fieldset {
         line-height: 2;
         border-radius: 10px;
         color: #614A2B;
-        font-family: "源ノ明朝";
+        font-family: "游明朝";
         margin-left: 2rem;
 }
 

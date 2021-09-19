@@ -12,6 +12,11 @@
         box-sizing: inherit
 }
 
+*:focus {
+  outline: none;
+}
+
+
 html {
         box-sizing: border-box;
         font-size: 62.5%

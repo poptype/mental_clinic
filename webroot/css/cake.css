@@ -640,6 +640,8 @@ a {
         color: #2f85ae;
         -webkit-transition: all 0.2s linear;
         transition: all 0.2s linear;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
 }
 
 a:hover,
@@ -915,7 +917,7 @@ th {
         height: 36px;
         margin-right: 1rem;
         transition: 1s all;
-	cursor: pointer;
+        cursor: pointer;
 }
 
 .list_wrapper:hover {
