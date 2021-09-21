@@ -9,9 +9,13 @@
         padding: 1rem;
 }
 
-.flex_container {
+/* .flex_container {
         align-items: center;
         justify-content: space-around;
+} */
+
+.grid {
+        margin: 0 auto;
 }
 
 .clinic_list {
@@ -21,7 +25,9 @@
         border: 1px solid #9b59b62b;
         border-radius: 1rem;
         box-shadow: 0 .7rem 1.4rem 0 rgba(60, 66, 87, 0.1), 0 .3rem .6rem 0 rgba(0, 0, 0, 0.07);
-	background-color: #FFF;
+        background-color: #FFF;
+        width: 300px;
+        margin-bottom: 2rem;
 }
 
 .heading {
@@ -29,6 +35,6 @@
         font-weight: var(--Medium);
 }
 
-h4{
+h4 {
         border-left: unset;
 }

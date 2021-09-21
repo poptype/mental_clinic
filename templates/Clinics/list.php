@@ -47,9 +47,11 @@ $this->Breadcrumbs->add([
 		</div>
 
 
-		<div class="flex_container">
+		<!-- <div class="flex_container"> -->
+		<div class="grid">
 			<?php foreach ($clinics as $clinic) : ?>
-				<div class="clinic_list">
+				<!-- <div class="clinic_list"> -->
+				<div class="grid-item clinic_list">
 					<!-- <!?= $this->Number->format($clinic->id) ?> -->
 					<h4 class="clinic_name">
 						<?= $this->Html->link(
@@ -79,3 +81,26 @@ $this->Breadcrumbs->add([
 
 	</div>
 	<?= $this->element('paginator') ?>
+
+	<!-- masonry.js  -->
+	<?php
+	$this->start("script");
+	echo '<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>';
+	echo '<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>';
+	$this->end();
+	?>
+	<script>
+		// init Masonry
+		var $grid = $('.grid').masonry({
+			percentPosition: true,
+			columnWidth: 300,
+			itemSelector: '.grid-item',
+			gutter: 20,
+			fitWidth: true,             //コンテンツ数に合わせ親の幅を自動調整
+		});
+
+		// layout Masonry after each image loads
+		$grid.imagesLoaded().progress(function() {
+			$grid.masonry('layout');
+		});
+	</script>

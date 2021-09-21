@@ -39,7 +39,7 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 	<?= $this->fetch('script') ?>
 </head>
 
-<body style="background: url(/mental_clinic/webroot/img/forest-3801537_1920.jpg) var(--background-color)  repeat-x 0 0 fixed;">
+<body>
 	<nav class="top-nav">
 		<a class="logo" href="/mental_clinic/"><?= $this->Html->image("tree_and_word_2.svg", ['class' => 'logo_title']) ?></a>
 		<div class="menu_item_wrap">
