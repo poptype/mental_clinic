@@ -67,12 +67,9 @@ $this->Breadcrumbs->add([
 				<?php endif; ?>
 				<span class="label">登録日</span>
 				<span class="created"><?= h($user->created->format('Y年m月d日')) ?></span>
-				<span class="label">病名</span>
-				<?= $user->has('disease_category') ? $this->Html->link(
-					$user->disease_category->name,
-					['controller' => 'DiseaseCategories', 'action' => 'view', $user->disease_category->id],
-					['class' => 'disease']
-				) : '' ?>
+				<!--<span class="label">病名</span>
+				<!?= $user->has('disease_category') ? $user->disease_category->name : '' ?>-->
+
 				<!-- <!?= h($user->email) ?> -->
 			</div>
 		<?php endforeach; ?>

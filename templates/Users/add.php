@@ -80,7 +80,7 @@ echo $this->Breadcrumbs->render(
 	</div>
 
 	<?php
-	$this->start("script");
+	$this->start("under_script");
 	echo $this->Html->script('imgPreView');
 	echo $this->Html->script('password_pushHideButton');
 	$this->end();

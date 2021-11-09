@@ -81,26 +81,12 @@ $this->Breadcrumbs->add([
 
 	</div>
 	<?= $this->element('paginator') ?>
-
-	<!-- masonry.js  -->
-	<?php
-	$this->start("script");
-	echo '<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>';
-	echo '<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>';
-	$this->end();
-	?>
-	<script>
-		// init Masonry
-		var $grid = $('.grid').masonry({
-			percentPosition: true,
-			columnWidth: 300,
-			itemSelector: '.grid-item',
-			gutter: 20,
-			fitWidth: true,             //コンテンツ数に合わせ親の幅を自動調整
-		});
-
-		// layout Masonry after each image loads
-		$grid.imagesLoaded().progress(function() {
-			$grid.masonry('layout');
-		});
-	</script>
+</div>
+<!-- masonry.js  -->
+<?php
+$this->start("under_script");
+echo '<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>';
+echo '<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>';
+echo $this->Html->script('masonry');
+$this->end();
+?>

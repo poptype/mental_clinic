@@ -78,6 +78,8 @@ $cakeDescription = 'メンタルクリニック　コメントサイト';
 	<footer>
 		<p class="copyright">Copyright © 2021 ○○○○ All Rights Reserved.</p>
 	</footer>
+
+	<?= $this->fetch('under_script') ?>
 	<script src="/mental_clinic/webroot/js/pageTop_return_button.js"></script>
 	<script src="/mental_clinic/webroot/js/list_button.js"></script>
 </body>
